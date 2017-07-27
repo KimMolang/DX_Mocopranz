@@ -33,9 +33,6 @@
 
 using namespace  std;
 
-// Time -------------------------------
-//#include <time.h>
-
 // FBX --------------
 #include <fbxsdk.h>
 #pragma  comment(lib, "libfbxsdk-md.lib")
@@ -80,3 +77,7 @@ using namespace  std;
 #pragma  comment(lib, "d3dx11.lib")
 #pragma  comment(lib, "Effects11d.lib")
 #endif
+
+// Mgr ----------------------------------
+#include "../Code/Device.h"
+#include "../Code/Timer.h"

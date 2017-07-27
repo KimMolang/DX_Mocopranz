@@ -23,27 +23,27 @@ static void Safe_Delete(T& Temp)
 	if (Temp)
 	{
 		delete Temp;
-		Temp = NULL;
+		Temp = nullptr;
 	}
 }
 
 template <typename T>
 void Safe_Delete_Array(T& pointer)
 {
-	if (NULL != pointer)
+	if (nullptr != pointer)
 	{
 		delete[] pointer;
-		pointer = NULL;
+		pointer = nullptr;
 	}
 }
 
 template <typename T>
 void Safe_Release(T& pointer)
 {
-	if (NULL != pointer)
+	if (nullptr != pointer)
 	{
 		pointer->Release();
-		pointer = NULL;
+		pointer = nullptr;
 	}
 }
 

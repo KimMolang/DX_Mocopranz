@@ -5,9 +5,9 @@ IMPLEMENT_SINGLETON(CKeyMgr)
 
 
 CKeyMgr::CKeyMgr()
-: m_pInput(NULL)
-, m_pKeyBoardDevice(NULL)
-, m_pMouseDevice(NULL)
+: m_pInput(nullptr)
+, m_pKeyBoardDevice(nullptr)
+, m_pMouseDevice(nullptr)
 
 , m_bMouseDown(false)
 , m_bMousePressed(false)
@@ -31,7 +31,7 @@ HRESULT CKeyMgr::Init(HINSTANCE _hInst, HWND _hWnd)
 		, DIRECTINPUT_VERSION
 		, IID_IDirectInput8
 		, (void**)&m_pInput
-		, NULL), L"다이렉트 인풋 생성 실패");
+		, nullptr), L"다이렉트 인풋 생성 실패");
 
 	FAILED_CHECK_MSG(InitKeyBoard(_hWnd), L"키보드 생성 실패");
 	FAILED_CHECK_MSG(InitMouse(_hWnd), L"마우스 생성 실패");
@@ -43,7 +43,7 @@ HRESULT CKeyMgr::Init(HINSTANCE _hInst, HWND _hWnd)
 HRESULT CKeyMgr::InitKeyBoard(HWND _hWnd)
 {
 	FAILED_CHECK(
-		m_pInput->CreateDevice(GUID_SysKeyboard, &m_pKeyBoardDevice, NULL));
+		m_pInput->CreateDevice(GUID_SysKeyboard, &m_pKeyBoardDevice, nullptr));
 
 	m_pKeyBoardDevice->SetCooperativeLevel(_hWnd, DISCL_BACKGROUND | DISCL_NONEXCLUSIVE);
 	m_pKeyBoardDevice->SetDataFormat(&c_dfDIKeyboard);
@@ -54,7 +54,7 @@ HRESULT CKeyMgr::InitKeyBoard(HWND _hWnd)
 
 HRESULT CKeyMgr::InitMouse(HWND _hWnd)
 {
-	FAILED_CHECK(m_pInput->CreateDevice(GUID_SysMouse, &m_pMouseDevice, NULL));
+	FAILED_CHECK(m_pInput->CreateDevice(GUID_SysMouse, &m_pMouseDevice, nullptr));
 
 	m_pMouseDevice->SetCooperativeLevel(_hWnd, DISCL_BACKGROUND | DISCL_NONEXCLUSIVE);
 	m_pMouseDevice->SetDataFormat(&c_dfDIMouse);

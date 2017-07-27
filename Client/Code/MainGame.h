@@ -1,13 +1,12 @@
 #pragma once
 
-//class CSceneMgr;
 //class CServerMgr;
 class CMainGame
 {
 private:
 	class CDevice*		m_pDevice;
 
-	//CSceneMgr*		m_pSceneMgr;
+	class CSceneMgr*	m_pSceneMgr;
 	class CTimer*		m_pTimer;
 
 	class CKeyMgr*		m_pKeyMgr;
