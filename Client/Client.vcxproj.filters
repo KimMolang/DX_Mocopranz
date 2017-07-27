@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Client\Include\stdafx.cpp" />
+    <ClCompile Include="Include\Client.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Client\Headers\Define.h" />
+    <ClInclude Include="..\Client\Headers\Enum.h" />
+    <ClInclude Include="..\Client\Headers\Function.h" />
+    <ClInclude Include="..\Client\Headers\Functor.h" />
+    <ClInclude Include="..\Client\Headers\Include.h" />
+    <ClInclude Include="..\Client\Headers\KeyValue.h" />
+    <ClInclude Include="..\Client\Headers\Namespace.h" />
+    <ClInclude Include="..\Client\Headers\Struct.h" />
+    <ClInclude Include="..\Client\Headers\Value.h" />
+    <ClInclude Include="..\Client\Include\Client.h" />
+    <ClInclude Include="..\Client\Include\Resource.h" />
+    <ClInclude Include="..\Client\Include\stdafx.h" />
+    <ClInclude Include="..\Client\Include\targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{590d505c-f5e2-4a49-87e0-a16e3d463ae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{cb2c394f-a6cb-437a-9b12-0dcd777ee967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{2339e3bf-345d-4da5-9758-7cc396e4a3b1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Client\Include\Client.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\Client\Include\Client.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
