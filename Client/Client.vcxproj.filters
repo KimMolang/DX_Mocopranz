@@ -13,13 +13,16 @@
     <ClCompile Include="Code\Device.cpp">
       <Filter>Source Files\00. Mgr\Device</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Timer.cpp">
+      <Filter>Source Files\00. Mgr\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\KeyMgr.cpp">
+      <Filter>Source Files\00. Mgr\KeyMgr</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Client\Headers\Define.h" />
     <ClInclude Include="..\Client\Headers\Value.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Headers\Struct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Client\Include\stdafx.h">
@@ -57,6 +60,12 @@
     </ClInclude>
     <ClInclude Include="Code\Device.h">
       <Filter>Source Files\00. Mgr\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Timer.h">
+      <Filter>Source Files\00. Mgr\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\KeyMgr.h">
+      <Filter>Source Files\00. Mgr\KeyMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +107,12 @@
     </Filter>
     <Filter Include="Source Files\00. Mgr\Device">
       <UniqueIdentifier>{9ce67377-16cd-47ae-a58d-c86d1da59b98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\Timer">
+      <UniqueIdentifier>{c6b0ea5c-c130-412d-a05c-e66054b90d99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\KeyMgr">
+      <UniqueIdentifier>{89bb0eff-9d47-4556-9d5f-99409bc23e4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

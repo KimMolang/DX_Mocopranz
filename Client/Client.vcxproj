@@ -72,7 +72,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>./bin/</OutDir>
-    <IncludePath>..\Reference\Headers;$(IncludePath)</IncludePath>
+    <IncludePath>..\Reference\Headers;.\Headers;$(IncludePath)</IncludePath>
     <LibraryPath>..\Reference\Librarys;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -81,7 +81,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>./bin/</OutDir>
-    <IncludePath>..\Reference\Headers;$(IncludePath)</IncludePath>
+    <IncludePath>..\Reference\Headers;.\Headers;$(IncludePath)</IncludePath>
     <LibraryPath>..\Reference\Librarys;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -167,18 +167,21 @@
     <ClInclude Include="..\Client\Headers\Include.h" />
     <ClInclude Include="..\Client\Headers\KeyValue.h" />
     <ClInclude Include="..\Client\Headers\Namespace.h" />
-    <ClInclude Include="..\Client\Headers\Struct.h" />
     <ClInclude Include="..\Client\Headers\Value.h" />
     <ClInclude Include="..\Client\Include\Client.h" />
     <ClInclude Include="..\Client\Include\Resource.h" />
     <ClInclude Include="..\Client\Include\stdafx.h" />
     <ClInclude Include="..\Client\Include\targetver.h" />
     <ClInclude Include="Code\Device.h" />
+    <ClInclude Include="Code\KeyMgr.h" />
     <ClInclude Include="Code\MainGame.h" />
+    <ClInclude Include="Code\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Device.cpp" />
+    <ClCompile Include="Code\KeyMgr.cpp" />
     <ClCompile Include="Code\MainGame.cpp" />
+    <ClCompile Include="Code\Timer.cpp" />
     <ClCompile Include="Include\Client.cpp" />
     <ClCompile Include="..\Client\Include\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
