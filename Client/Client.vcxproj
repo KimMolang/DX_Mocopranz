@@ -173,8 +173,12 @@
     <ClInclude Include="..\Client\Include\Resource.h" />
     <ClInclude Include="..\Client\Include\stdafx.h" />
     <ClInclude Include="..\Client\Include\targetver.h" />
+    <ClInclude Include="Code\Device.h" />
+    <ClInclude Include="Code\MainGame.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Device.cpp" />
+    <ClCompile Include="Code\MainGame.cpp" />
     <ClCompile Include="Include\Client.cpp" />
     <ClCompile Include="..\Client\Include\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

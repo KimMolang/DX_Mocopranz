@@ -1,23 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\Client\Include\stdafx.cpp" />
-    <ClCompile Include="Include\Client.cpp" />
+    <ClCompile Include="..\Client\Include\stdafx.cpp">
+      <Filter>Source Files\99. Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\MainGame.cpp">
+      <Filter>Source Files\01. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Include\Client.cpp">
+      <Filter>Source Files\99. Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Device.cpp">
+      <Filter>Source Files\00. Mgr\Device</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Client\Headers\Define.h" />
-    <ClInclude Include="..\Client\Headers\Enum.h" />
-    <ClInclude Include="..\Client\Headers\Function.h" />
-    <ClInclude Include="..\Client\Headers\Functor.h" />
-    <ClInclude Include="..\Client\Headers\Include.h" />
-    <ClInclude Include="..\Client\Headers\KeyValue.h" />
-    <ClInclude Include="..\Client\Headers\Namespace.h" />
-    <ClInclude Include="..\Client\Headers\Struct.h" />
-    <ClInclude Include="..\Client\Headers\Value.h" />
-    <ClInclude Include="..\Client\Include\Client.h" />
-    <ClInclude Include="..\Client\Include\Resource.h" />
-    <ClInclude Include="..\Client\Include\stdafx.h" />
-    <ClInclude Include="..\Client\Include\targetver.h" />
+    <ClInclude Include="..\Client\Headers\Value.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Headers\Struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Include\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Headers\Include.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Headers\Functor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Headers\Function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Headers\Enum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Include\targetver.h">
+      <Filter>Source Files\99. Default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Headers\Namespace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\MainGame.h">
+      <Filter>Source Files\01. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Headers\KeyValue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Include\Client.h">
+      <Filter>Source Files\99. Default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Client\Include\Resource.h">
+      <Filter>Source Files\99. Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Device.h">
+      <Filter>Source Files\00. Mgr\Device</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -28,6 +68,36 @@
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{2339e3bf-345d-4da5-9758-7cc396e4a3b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Design">
+      <UniqueIdentifier>{4eba92a9-0e29-46a7-a5ff-32b4e4d60300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr">
+      <UniqueIdentifier>{38f277e7-ed45-46c1-a866-c9c30c8f7986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\01. MainGame">
+      <UniqueIdentifier>{56bcc4ec-9a94-4d11-97eb-0635b8070111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\02. Scene">
+      <UniqueIdentifier>{6b8d7999-a7f3-40cc-b7bc-42699740a5df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\03. Layer">
+      <UniqueIdentifier>{624f0657-e627-4ed3-ac98-5708462b87d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj">
+      <UniqueIdentifier>{627d03e7-cc35-44ed-9040-9ed96be49f95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component">
+      <UniqueIdentifier>{38e6ccfe-26b6-4d8a-91a7-bc306b2c8e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\98. Etc">
+      <UniqueIdentifier>{d0168c6b-cdf2-41c8-85f1-87e5d7238bcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\99. Default">
+      <UniqueIdentifier>{77197ccb-5e5c-4430-af8a-47e41d3cb025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\Device">
+      <UniqueIdentifier>{9ce67377-16cd-47ae-a58d-c86d1da59b98}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -4,10 +4,15 @@
 #include "stdafx.h"
 #include "Client.h"
 
+// (수정) 아래 두 개 포함 헤더들 정리를 예쁘게 해보자
+#include "../Headers/Define.h"
+#include "../Headers/Value.h"
+#include "../Code/MainGame.h"
+
 #define MAX_LOADSTRING 100
 
 // Global Variables:
-HINSTANCE hInst;                                // current instance
+HINSTANCE g_hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
@@ -16,6 +21,9 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+
+HWND	g_hWnd;
+
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -38,19 +46,37 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return FALSE;
     }
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_Client));
 
     MSG msg;
+	msg.message = WM_NULL;
 
-    // Main message loop:
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }
+	CMainGame	MainGame;
+
+	FAILED_CHECK(MainGame.Init());
+	//ShowCursor(false);
+
+	while (msg.message != WM_QUIT)
+	{
+		if ( PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) )
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			//static DWORD nStandardTime = GetTickCount();
+			//static DWORD nTimer = GetTickCount();
+			//nTimer = GetTickCount();
+
+			//if (nTimer - nStandardTime >= 10)
+			//{
+				MainGame.Update();
+				MainGame.Render();
+
+			//	nStandardTime = nTimer;
+			//}
+		}
+	}   
 
     return (int) msg.wParam;
 }
@@ -76,7 +102,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_Client));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_Client);
+    wcex.lpszMenuName   = NULL;
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -95,18 +121,25 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-   hInst = hInstance; // Store instance handle in our global variable
+	RECT rc = { (LONG)0, (LONG)0, (LONG)CLIENT_WINCX, (LONG)CLIENT_WINCY };
+	g_hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+	AdjustWindowRect( &rc, WS_OVERLAPPEDWINDOW, FALSE );
 
-   if (!hWnd)
-   {
-      return FALSE;
-   }
+	g_hWnd = CreateWindow(
+		szWindowClass, szTitle,
+		WS_OVERLAPPEDWINDOW,
+		CW_USEDEFAULT, 0,
+		rc.right - rc.left,
+		rc.bottom - rc.top, NULL, NULL, hInstance, NULL);
 
-   ShowWindow(hWnd, nCmdShow);
-   UpdateWindow(hWnd);
+	if (!g_hWnd)
+	{
+		return FALSE;
+	}
+
+   ShowWindow(g_hWnd, nCmdShow);
+   UpdateWindow(g_hWnd);
 
    return TRUE;
 }
@@ -132,7 +165,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             switch (wmId)
             {
             case IDM_ABOUT:
-                DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+                DialogBox(g_hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
                 break;
             case IDM_EXIT:
                 DestroyWindow(hWnd);
