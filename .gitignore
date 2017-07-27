@@ -1,0 +1,8 @@
+*.tlog
+*.obj
+*.exe
+*.ipch
+*.log
+*.db
+*.pdb
+*.idb
