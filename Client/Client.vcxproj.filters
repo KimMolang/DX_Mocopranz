@@ -44,13 +44,52 @@
       <Filter>Source Files\98. Etc\FbxParser</Filter>
     </ClCompile>
     <ClCompile Include="Code\Physics.cpp">
-      <Filter>Source Files\05. Component\Physics</Filter>
+      <Filter>Source Files\05. Component\02%29 Collision\Physics</Filter>
     </ClCompile>
     <ClCompile Include="Code\Loading.cpp">
       <Filter>Source Files\02. Scene\Loading</Filter>
     </ClCompile>
     <ClCompile Include="Code\InMap.cpp">
       <Filter>Source Files\02. Scene\InMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Resource.cpp">
+      <Filter>Source Files\05. Component\01%29 Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Buffer.cpp">
+      <Filter>Source Files\05. Component\01%29 Resource\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Texture.cpp">
+      <Filter>Source Files\05. Component\01%29 Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Shader.cpp">
+      <Filter>Source Files\05. Component\01%29 Resource\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\BufferSkyBox.cpp">
+      <Filter>Source Files\05. Component\01%29 Resource\Buffer\SkyBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\ShaderSkyBox.cpp">
+      <Filter>Source Files\05. Component\01%29 Resource\Shader\SkyBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\CameraDynamic.cpp">
+      <Filter>Source Files\04. Obj\Camera\Dynamic</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\ObjMgr.cpp">
+      <Filter>Source Files\00. Mgr\ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\ResourceMgr.cpp">
+      <Filter>Source Files\00. Mgr\ResourceMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Font.cpp">
+      <Filter>Source Files\05. Component\01%29 Resource\Font</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\BackGround.cpp">
+      <Filter>Source Files\04. Obj\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\SkyBox.cpp">
+      <Filter>Source Files\04. Obj\Background\SkyBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\LoadMgr.cpp">
+      <Filter>Source Files\00. Mgr\LoadMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,13 +164,52 @@
       <Filter>Source Files\98. Etc\FbxParser</Filter>
     </ClInclude>
     <ClInclude Include="Code\Physics.h">
-      <Filter>Source Files\05. Component\Physics</Filter>
+      <Filter>Source Files\05. Component\02%29 Collision\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Code\Loading.h">
       <Filter>Source Files\02. Scene\Loading</Filter>
     </ClInclude>
     <ClInclude Include="Code\InMap.h">
       <Filter>Source Files\02. Scene\InMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Resource.h">
+      <Filter>Source Files\05. Component\01%29 Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Buffer.h">
+      <Filter>Source Files\05. Component\01%29 Resource\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Texture.h">
+      <Filter>Source Files\05. Component\01%29 Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Shader.h">
+      <Filter>Source Files\05. Component\01%29 Resource\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\BufferSkyBox.h">
+      <Filter>Source Files\05. Component\01%29 Resource\Buffer\SkyBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\ShaderSkyBox.h">
+      <Filter>Source Files\05. Component\01%29 Resource\Shader\SkyBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\CameraDynamic.h">
+      <Filter>Source Files\04. Obj\Camera\Dynamic</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\ObjMgr.h">
+      <Filter>Source Files\00. Mgr\ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\ResourceMgr.h">
+      <Filter>Source Files\00. Mgr\ResourceMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Font.h">
+      <Filter>Source Files\05. Component\01%29 Resource\Font</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\BackGround.h">
+      <Filter>Source Files\04. Obj\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\SkyBox.h">
+      <Filter>Source Files\04. Obj\Background\SkyBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\LoadMgr.h">
+      <Filter>Source Files\00. Mgr\LoadMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -192,14 +270,62 @@
     <Filter Include="Source Files\98. Etc\FbxParser">
       <UniqueIdentifier>{f1bd5238-9b21-4695-9e4b-acbda4fbf40e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\05. Component\Physics">
-      <UniqueIdentifier>{1ea9a3fb-95f5-47bb-9a40-75dd46c8127d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\02. Scene\Loading">
       <UniqueIdentifier>{6557a2ae-081d-445d-aae1-75046421f7c9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\02. Scene\InMap">
       <UniqueIdentifier>{eee49182-72ce-4a46-ab29-81c9f7eae471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\01%29 Resource">
+      <UniqueIdentifier>{7be444a9-1b91-46cc-8c0f-1bf9a5dea4fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\02%29 Collision">
+      <UniqueIdentifier>{b71f45aa-9700-4e67-ab00-76d83d6f1198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\03%29 Etc">
+      <UniqueIdentifier>{494dcf9d-5be8-46ac-bf00-ce84eea5cfca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\02%29 Collision\Physics">
+      <UniqueIdentifier>{1ea9a3fb-95f5-47bb-9a40-75dd46c8127d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\01%29 Resource\Buffer">
+      <UniqueIdentifier>{a59603d8-5bb5-4c08-a3aa-6d92c83b14eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\01%29 Resource\Buffer\SkyBox">
+      <UniqueIdentifier>{e763e72c-7dee-4851-af5f-83a87287aa9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\01%29 Resource\Shader">
+      <UniqueIdentifier>{39090fd2-8a16-47dd-92aa-c14f221cecc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\01%29 Resource\Texture">
+      <UniqueIdentifier>{55cfd115-7fc9-4f79-8a67-2973bef84ac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\01%29 Resource\Shader\SkyBox">
+      <UniqueIdentifier>{16f262c6-fbab-4dec-b64f-702ae181256c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\Camera\Dynamic">
+      <UniqueIdentifier>{cc863c83-b10a-40a7-b1cf-d31195667b19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\ObjMgr">
+      <UniqueIdentifier>{0784360a-b2e5-47a2-b300-f0c6a66b8375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\ResourceMgr">
+      <UniqueIdentifier>{7a548c79-4928-48d8-9ebf-1217cfff0247}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\05. Component\01%29 Resource\Font">
+      <UniqueIdentifier>{a844d946-53af-4885-be1e-e95c16084a68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\Background">
+      <UniqueIdentifier>{cc5071e3-2d1a-4c13-b4a0-0e4c325e9b52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\Background\SkyBox">
+      <UniqueIdentifier>{cdc45656-7e87-4d0d-9e51-b2a867f56d16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\LoadMgr">
+      <UniqueIdentifier>{8e38ca71-2aac-4970-ac82-ac0c3f95e9b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Fx">
+      <UniqueIdentifier>{14dd5978-40f2-4e42-bd5f-5d6e585b072c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -211,5 +337,10 @@
     <ResourceCompile Include="..\Client\Include\Client.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="bin\Resource\Fx\SkyBox.fx">
+      <Filter>Resource Files\Fx</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

@@ -3,18 +3,18 @@
 
 //#include "InMapMgr.h"
 //
-//#include "Layer.h"
+#include "Layer.h"
 //#include "LoadMgr.h"
-//#include "ResourceMgr.h"
+#include "ResourceMgr.h"
 //#include "ColMgr.h"
-//#include "ObjMgr.h"
+#include "ObjMgr.h"
 //
 //#include "Player.h"
 //#include "Enemy.h"	// (수정) for Test
 //
-//#include "DynamicCamera.h"
+#include "CameraDynamic.h"
 //#include "StaticCamera.h"
-//#include "SkyBox.h"
+#include "SkyBox.h"
 //#include "ProgressMgr.h"
 
 
@@ -65,10 +65,10 @@ HRESULT CInMap::Init()
 	//pColMgr->SetMapObjList(CLayer::LAYERTYPE_GAMELOGIC,
 	//	m_pLayer[CLayer::LAYERTYPE_GAMELOGIC]->GetMapObjList());
 
-	//CObjMgr::GetInstance()->SetLayer(
-	//	m_pLayer[CLayer::LAYERTYPE_ENVIRONMENT],
-	//	m_pLayer[CLayer::LAYERTYPE_GAMELOGIC],
-	//	m_pLayer[CLayer::LAYERTYPE_UI]);
+	CObjMgr::GetInstance()->SetLayer(
+		m_pLayer[CLayer::LAYERTYPE_ENVIRONMENT],
+		m_pLayer[CLayer::LAYERTYPE_GAMELOGIC],
+		m_pLayer[CLayer::LAYERTYPE_UI]);
 
 
 	//m_pInMapMgr->SetPlayerToReady();
@@ -100,14 +100,14 @@ HRESULT CInMap::AddLayer_Environment()
 
 	CObj* pObj = NULL;
 
-	//// SkyBox
-	//pObj = CSkyBox::Create(m_pDevice, L"Texture_SkyBox_00");
-	//NULL_CHECK_RETURN(pObj, E_FAIL);
-	//((CBackGround*)pObj)->SetWorldMatrix(
-	//	D3DXVECTOR3(0.f, 250.f, 0.f),
-	//	D3DXVECTOR3(0.f, 0.f, 0.f),
-	//	D3DXVECTOR3(1200.f, 500.f, 1200.f));
-	//pLayer->AddObj(L"SkyBox", pObj);
+	// SkyBox
+	pObj = CSkyBox::Create(m_pDevice, L"Texture_SkyBox_00");
+	NULL_CHECK_RETURN(pObj, E_FAIL);
+	((CBackGround*)pObj)->SetWorldMatrix(
+		D3DXVECTOR3(0.f, 250.f, 0.f),
+		D3DXVECTOR3(0.f, 0.f, 0.f),
+		D3DXVECTOR3(1200.f, 500.f, 1200.f)); // (수정) 이거 로컬에서 값 바꾸셈 스케일링 하지 말고
+	pLayer->AddObj(L"SkyBox", pObj);
 
 
 	m_pLayer[CLayer::LAYERTYPE_ENVIRONMENT] = pLayer;
@@ -156,11 +156,11 @@ HRESULT CInMap::AddLayer_UI()
 	CObj* pObj = NULL;
 
 
-//// 	// Camera
-//// 	pObj = CDynamicCamera::Create(m_pDevice);
-//// 	NULL_CHECK_RETURN(pObj, E_FAIL);
-//// 	pLayer->AddObj(L"DynamicCamera", pObj);
-//// 	m_pMainCamera = dynamic_cast<CCamera*>(pObj);
+ 	// Camera
+ 	pObj = CCameraDynamic::Create(m_pDevice);
+ 	NULL_CHECK_RETURN(pObj, E_FAIL);
+ 	pLayer->AddObj(L"DynamicCamera", pObj);
+ 	m_pMainCamera = dynamic_cast<CCamera*>(pObj);
 //
 //	CUnit* pPlayer = (CUnit*)
 //		(m_pLayer[CLayer::LAYERTYPE_GAMELOGIC]->GetObj(L"Player"));

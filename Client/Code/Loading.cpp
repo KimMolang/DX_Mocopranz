@@ -3,7 +3,7 @@
 
 #include <process.h>
 
-//#include "LoadMgr.h"
+#include "LoadMgr.h"
 #include "SceneMgr.h"
 
 
@@ -53,8 +53,8 @@ HRESULT CLoading::Init()
 // 	m_hThread = (HANDLE)_beginthreadex(NULL, 0, ResourceLoad, this, 0, NULL);
 
 
-	//CLoadMgr::GetInstance()->LoadResource(
-	//	CDevice::GetInstance(), CSceneMgr::GetInstance()->GetScene());
+	CLoadMgr::GetInstance()->LoadResource(
+		CDevice::GetInstance(), CSceneMgr::GetInstance()->GetScene());
 	CSceneMgr::GetInstance()->SetSceneLoadingEnd(true);
 
 	return S_OK;

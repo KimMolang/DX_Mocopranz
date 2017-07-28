@@ -53,7 +53,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	CMainGame	MainGame;
 
 	FAILED_CHECK(MainGame.Init());
-	//ShowCursor(false);
+	ShowCursor(false);
 
 	while (msg.message != WM_QUIT)
 	{
@@ -183,6 +183,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             EndPaint(hWnd, &ps);
         }
         break;
+
+	case WM_KEYDOWN :
+		{
+			switch (wParam)
+			{
+			case VK_ESCAPE :
+				PostQuitMessage(0);
+				break;
+			default:
+				break;
+			}
+		}
+		break;
+
     case WM_DESTROY:
         PostQuitMessage(0);
         break;

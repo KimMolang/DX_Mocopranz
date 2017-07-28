@@ -172,37 +172,63 @@
     <ClInclude Include="..\Client\Include\Resource.h" />
     <ClInclude Include="..\Client\Include\stdafx.h" />
     <ClInclude Include="..\Client\Include\targetver.h" />
+    <ClInclude Include="Code\BackGround.h" />
+    <ClInclude Include="Code\Buffer.h" />
+    <ClInclude Include="Code\BufferSkyBox.h" />
     <ClInclude Include="Code\Camera.h" />
+    <ClInclude Include="Code\CameraDynamic.h" />
     <ClInclude Include="Code\Component.h" />
     <ClInclude Include="Code\Device.h" />
     <ClInclude Include="Code\FbxParser.h" />
+    <ClInclude Include="Code\Font.h" />
     <ClInclude Include="Code\InMap.h" />
     <ClInclude Include="Code\KeyMgr.h" />
     <ClInclude Include="Code\Layer.h" />
     <ClInclude Include="Code\Loading.h" />
+    <ClInclude Include="Code\LoadMgr.h" />
     <ClInclude Include="Code\MainGame.h" />
     <ClInclude Include="Code\Obj.h" />
+    <ClInclude Include="Code\ObjMgr.h" />
     <ClInclude Include="Code\Physics.h" />
     <ClInclude Include="Code\Renderer.h" />
+    <ClInclude Include="Code\Resource.h" />
+    <ClInclude Include="Code\ResourceMgr.h" />
     <ClInclude Include="Code\Scene.h" />
     <ClInclude Include="Code\SceneMgr.h" />
+    <ClInclude Include="Code\Shader.h" />
+    <ClInclude Include="Code\ShaderSkyBox.h" />
+    <ClInclude Include="Code\SkyBox.h" />
+    <ClInclude Include="Code\Texture.h" />
     <ClInclude Include="Code\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\BackGround.cpp" />
+    <ClCompile Include="Code\Buffer.cpp" />
+    <ClCompile Include="Code\BufferSkyBox.cpp" />
     <ClCompile Include="Code\Camera.cpp" />
+    <ClCompile Include="Code\CameraDynamic.cpp" />
     <ClCompile Include="Code\Component.cpp" />
     <ClCompile Include="Code\Device.cpp" />
     <ClCompile Include="Code\FbxParser.cpp" />
+    <ClCompile Include="Code\Font.cpp" />
     <ClCompile Include="Code\InMap.cpp" />
     <ClCompile Include="Code\KeyMgr.cpp" />
     <ClCompile Include="Code\Layer.cpp" />
     <ClCompile Include="Code\Loading.cpp" />
+    <ClCompile Include="Code\LoadMgr.cpp" />
     <ClCompile Include="Code\MainGame.cpp" />
     <ClCompile Include="Code\Obj.cpp" />
+    <ClCompile Include="Code\ObjMgr.cpp" />
     <ClCompile Include="Code\Physics.cpp" />
     <ClCompile Include="Code\Renderer.cpp" />
+    <ClCompile Include="Code\Resource.cpp" />
+    <ClCompile Include="Code\ResourceMgr.cpp" />
     <ClCompile Include="Code\Scene.cpp" />
     <ClCompile Include="Code\SceneMgr.cpp" />
+    <ClCompile Include="Code\Shader.cpp" />
+    <ClCompile Include="Code\ShaderSkyBox.cpp" />
+    <ClCompile Include="Code\SkyBox.cpp" />
+    <ClCompile Include="Code\Texture.cpp" />
     <ClCompile Include="Code\Timer.cpp" />
     <ClCompile Include="Include\Client.cpp" />
     <ClCompile Include="..\Client\Include\stdafx.cpp">
@@ -215,6 +241,14 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\Client\Include\Client.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="bin\Resource\Fx\SkyBox.fx">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.0</ShaderModel>
+    </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

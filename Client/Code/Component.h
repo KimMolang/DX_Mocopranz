@@ -6,7 +6,7 @@
  * Contact: bluevill04@gmail.com
  *
  * \brief 
- *
+ *                                                                                                                                                            
  * TODO: long description
  *
  * \note
@@ -16,6 +16,13 @@
 
 #ifndef Component_h__
 #define Component_h__
+
+//enum ComponentType
+//{
+//	COMPONENT_TYPE_PHYSICS,
+//	COMPONENT_TYPE_TEXTURE,
+//	COMPONENT_TYPE_BUFFER,
+//};
 
 class CComponent
 {
