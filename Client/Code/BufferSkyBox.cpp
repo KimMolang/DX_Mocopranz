@@ -37,7 +37,6 @@ HRESULT CBufferSkyBox::Init()
 	m_nVtxNum = 8;
 	m_nVtxStride = sizeof(VertexSkyBox);
 	m_nVtxOffset = 0;
-	//m_nVtxStart = 1;
 	m_nVtxStart = 0;
 
 	m_nIdxNum = 36;
