@@ -39,7 +39,6 @@ void CBuffer::Render()
 		pDeviceContext->RSSetState(m_pRasterizerState);
 
 	pDeviceContext->DrawIndexed(m_nIdxNum, m_nIdxStart, m_nIdxPlus);
-	pDeviceContext->Draw(m_nVtxNum, m_nVtxStart);
 }
 
 void CBuffer::CreateRasterizerState()

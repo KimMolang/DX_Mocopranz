@@ -130,8 +130,7 @@ void CBufferSkyBox::Init_Idx()
 	D3D11_BUFFER_DESC tBufferDesc;
 	ZeroMemory(&tBufferDesc, sizeof(D3D11_BUFFER_DESC));
 	tBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	tBufferDesc.ByteWidth = sizeof(Index16) * m_nIdxNum;
-	//tBufferDesc.ByteWidth = sizeof(WORD) * m_nIdxNum;
+	tBufferDesc.ByteWidth = sizeof(WORD) * m_nIdxNum;
 	tBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	tBufferDesc.CPUAccessFlags = 0;
 
