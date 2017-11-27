@@ -71,23 +71,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>.\bin\$(Platform)\$(Configuration)</OutDir>
-    <IncludePath>..\Reference\Headers;.\Headers;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Reference\Librarys;$(LibraryPath)</LibraryPath>
+    <OutDir>.\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Reference\Librarys\dx\x86;..\Reference\Librarys\fontWrapper;$(LibraryPath)</LibraryPath>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Reference\Librarys\dx\x64;..\Reference\Librarys\fontWrapper;$(LibraryPath)</LibraryPath>
+    <OutDir>.\bin\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>.\bin\$(Platform)\$(Configuration)</OutDir>
-    <IncludePath>..\Reference\Headers;.\Headers;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Reference\Librarys;$(LibraryPath)</LibraryPath>
+    <OutDir>.\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Reference\Librarys\dx\x86;..\Reference\Librarys\fontWrapper;$(LibraryPath)</LibraryPath>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Reference\Librarys\dx\x64;..\Reference\Librarys\fontWrapper;$(LibraryPath)</LibraryPath>
+    <OutDir>.\bin\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -162,95 +168,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Client\Headers\Define.h" />
-    <ClInclude Include="..\Client\Headers\Enum.h" />
-    <ClInclude Include="..\Client\Headers\Function.h" />
-    <ClInclude Include="..\Client\Headers\Functor.h" />
-    <ClInclude Include="..\Client\Headers\Include.h" />
-    <ClInclude Include="..\Client\Headers\KeyValue.h" />
-    <ClInclude Include="..\Client\Headers\Namespace.h" />
-    <ClInclude Include="..\Client\Headers\Value.h" />
-    <ClInclude Include="..\Client\Include\Client.h" />
-    <ClInclude Include="..\Client\Include\Resource.h" />
-    <ClInclude Include="..\Client\Include\stdafx.h" />
-    <ClInclude Include="..\Client\Include\targetver.h" />
-    <ClInclude Include="Code\BackGround.h" />
-    <ClInclude Include="Code\Buffer.h" />
-    <ClInclude Include="Code\BufferSkyBox.h" />
-    <ClInclude Include="Code\Camera.h" />
-    <ClInclude Include="Code\CameraDynamic.h" />
-    <ClInclude Include="Code\Component.h" />
-    <ClInclude Include="Code\Device.h" />
-    <ClInclude Include="Code\FbxParser.h" />
-    <ClInclude Include="Code\Font.h" />
-    <ClInclude Include="Code\InMap.h" />
-    <ClInclude Include="Code\KeyMgr.h" />
-    <ClInclude Include="Code\Layer.h" />
-    <ClInclude Include="Code\Loading.h" />
-    <ClInclude Include="Code\LoadMgr.h" />
+    <ClInclude Include="..\Client\Code\Headers\Define.h" />
+    <ClInclude Include="..\Client\Code\Basic\Client.h" />
+    <ClInclude Include="..\Client\Code\Basic\Resource.h" />
+    <ClInclude Include="..\Client\Code\Basic\stdafx.h" />
+    <ClInclude Include="..\Client\Code\Basic\targetver.h" />
     <ClInclude Include="Code\MainGame.h" />
-    <ClInclude Include="Code\Obj.h" />
-    <ClInclude Include="Code\ObjMgr.h" />
-    <ClInclude Include="Code\Physics.h" />
-    <ClInclude Include="Code\Renderer.h" />
-    <ClInclude Include="Code\Resource.h" />
-    <ClInclude Include="Code\ResourceMgr.h" />
-    <ClInclude Include="Code\Scene.h" />
-    <ClInclude Include="Code\SceneMgr.h" />
-    <ClInclude Include="Code\Shader.h" />
-    <ClInclude Include="Code\ShaderSkyBox.h" />
-    <ClInclude Include="Code\SkyBox.h" />
-    <ClInclude Include="Code\Texture.h" />
-    <ClInclude Include="Code\Timer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\BackGround.cpp" />
-    <ClCompile Include="Code\Buffer.cpp" />
-    <ClCompile Include="Code\BufferSkyBox.cpp" />
-    <ClCompile Include="Code\Camera.cpp" />
-    <ClCompile Include="Code\CameraDynamic.cpp" />
-    <ClCompile Include="Code\Component.cpp" />
-    <ClCompile Include="Code\Device.cpp" />
-    <ClCompile Include="Code\FbxParser.cpp" />
-    <ClCompile Include="Code\Font.cpp" />
-    <ClCompile Include="Code\InMap.cpp" />
-    <ClCompile Include="Code\KeyMgr.cpp" />
-    <ClCompile Include="Code\Layer.cpp" />
-    <ClCompile Include="Code\Loading.cpp" />
-    <ClCompile Include="Code\LoadMgr.cpp" />
     <ClCompile Include="Code\MainGame.cpp" />
-    <ClCompile Include="Code\Obj.cpp" />
-    <ClCompile Include="Code\ObjMgr.cpp" />
-    <ClCompile Include="Code\Physics.cpp" />
-    <ClCompile Include="Code\Renderer.cpp" />
-    <ClCompile Include="Code\Resource.cpp" />
-    <ClCompile Include="Code\ResourceMgr.cpp" />
-    <ClCompile Include="Code\Scene.cpp" />
-    <ClCompile Include="Code\SceneMgr.cpp" />
-    <ClCompile Include="Code\Shader.cpp" />
-    <ClCompile Include="Code\ShaderSkyBox.cpp" />
-    <ClCompile Include="Code\SkyBox.cpp" />
-    <ClCompile Include="Code\Texture.cpp" />
-    <ClCompile Include="Code\Timer.cpp" />
-    <ClCompile Include="Include\Client.cpp" />
-    <ClCompile Include="..\Client\Include\stdafx.cpp">
+    <ClCompile Include="Code\Basic\Client.cpp" />
+    <ClCompile Include="..\Client\Code\Basic\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Client\Include\Client.ico" />
+    <Image Include="..\Client\Code\Basic\Client.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\Client\Include\Client.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="bin\Resource\Fx\SkyBox.fx">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Effect</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.0</ShaderModel>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Effect</ShaderType>
-      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.0</ShaderModel>
-    </FxCompile>
+    <ResourceCompile Include="..\Client\Code\Basic\Client.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

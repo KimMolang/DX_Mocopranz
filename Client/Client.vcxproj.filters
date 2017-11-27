@@ -1,215 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\Client\Include\stdafx.cpp">
+    <ClCompile Include="..\Client\Code\Basic\stdafx.cpp">
       <Filter>Source Files\99. Default</Filter>
     </ClCompile>
     <ClCompile Include="Code\MainGame.cpp">
       <Filter>Source Files\01. MainGame</Filter>
     </ClCompile>
-    <ClCompile Include="Include\Client.cpp">
-      <Filter>Source Files\99. Default</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Device.cpp">
-      <Filter>Source Files\00. Mgr\Device</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Timer.cpp">
-      <Filter>Source Files\00. Mgr\Timer</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\KeyMgr.cpp">
-      <Filter>Source Files\00. Mgr\KeyMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Renderer.cpp">
-      <Filter>Source Files\00. Mgr\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\SceneMgr.cpp">
-      <Filter>Source Files\00. Mgr\SceneMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Scene.cpp">
-      <Filter>Source Files\02. Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Layer.cpp">
-      <Filter>Source Files\03. Layer</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Camera.cpp">
-      <Filter>Source Files\04. Obj\Camera</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Obj.cpp">
-      <Filter>Source Files\04. Obj</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Component.cpp">
-      <Filter>Source Files\05. Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\FbxParser.cpp">
-      <Filter>Source Files\98. Etc\FbxParser</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Physics.cpp">
-      <Filter>Source Files\05. Component\02%29 Collision\Physics</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Loading.cpp">
-      <Filter>Source Files\02. Scene\Loading</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\InMap.cpp">
-      <Filter>Source Files\02. Scene\InMap</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Resource.cpp">
-      <Filter>Source Files\05. Component\01%29 Resource</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Buffer.cpp">
-      <Filter>Source Files\05. Component\01%29 Resource\Buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Texture.cpp">
-      <Filter>Source Files\05. Component\01%29 Resource\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Shader.cpp">
-      <Filter>Source Files\05. Component\01%29 Resource\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\BufferSkyBox.cpp">
-      <Filter>Source Files\05. Component\01%29 Resource\Buffer\SkyBox</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\ShaderSkyBox.cpp">
-      <Filter>Source Files\05. Component\01%29 Resource\Shader\SkyBox</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\CameraDynamic.cpp">
-      <Filter>Source Files\04. Obj\Camera\Dynamic</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\ObjMgr.cpp">
-      <Filter>Source Files\00. Mgr\ObjMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\ResourceMgr.cpp">
-      <Filter>Source Files\00. Mgr\ResourceMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Font.cpp">
-      <Filter>Source Files\05. Component\01%29 Resource\Font</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\BackGround.cpp">
-      <Filter>Source Files\04. Obj\Background</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\SkyBox.cpp">
-      <Filter>Source Files\04. Obj\Background\SkyBox</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\LoadMgr.cpp">
-      <Filter>Source Files\00. Mgr\LoadMgr</Filter>
-    </ClCompile>
+    <ClCompile Include="Code\Basic\Client.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Client\Headers\Define.h" />
-    <ClInclude Include="..\Client\Headers\Value.h">
+    <ClInclude Include="..\Client\Code\Headers\Define.h" />
+    <ClInclude Include="..\Client\Code\Basic\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Client\Include\stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Headers\Include.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Headers\Functor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Headers\Function.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Headers\Enum.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Include\targetver.h">
+    <ClInclude Include="..\Client\Code\Basic\targetver.h">
       <Filter>Source Files\99. Default</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Headers\Namespace.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\MainGame.h">
       <Filter>Source Files\01. MainGame</Filter>
     </ClInclude>
-    <ClInclude Include="..\Client\Headers\KeyValue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Include\Client.h">
+    <ClInclude Include="..\Client\Code\Basic\Client.h">
       <Filter>Source Files\99. Default</Filter>
     </ClInclude>
-    <ClInclude Include="..\Client\Include\Resource.h">
+    <ClInclude Include="..\Client\Code\Basic\Resource.h">
       <Filter>Source Files\99. Default</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Device.h">
-      <Filter>Source Files\00. Mgr\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Timer.h">
-      <Filter>Source Files\00. Mgr\Timer</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\KeyMgr.h">
-      <Filter>Source Files\00. Mgr\KeyMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Renderer.h">
-      <Filter>Source Files\00. Mgr\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\SceneMgr.h">
-      <Filter>Source Files\00. Mgr\SceneMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Scene.h">
-      <Filter>Source Files\02. Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Layer.h">
-      <Filter>Source Files\03. Layer</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Camera.h">
-      <Filter>Source Files\04. Obj\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Obj.h">
-      <Filter>Source Files\04. Obj</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Component.h">
-      <Filter>Source Files\05. Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\FbxParser.h">
-      <Filter>Source Files\98. Etc\FbxParser</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Physics.h">
-      <Filter>Source Files\05. Component\02%29 Collision\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Loading.h">
-      <Filter>Source Files\02. Scene\Loading</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\InMap.h">
-      <Filter>Source Files\02. Scene\InMap</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Resource.h">
-      <Filter>Source Files\05. Component\01%29 Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Buffer.h">
-      <Filter>Source Files\05. Component\01%29 Resource\Buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Texture.h">
-      <Filter>Source Files\05. Component\01%29 Resource\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Shader.h">
-      <Filter>Source Files\05. Component\01%29 Resource\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\BufferSkyBox.h">
-      <Filter>Source Files\05. Component\01%29 Resource\Buffer\SkyBox</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\ShaderSkyBox.h">
-      <Filter>Source Files\05. Component\01%29 Resource\Shader\SkyBox</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\CameraDynamic.h">
-      <Filter>Source Files\04. Obj\Camera\Dynamic</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\ObjMgr.h">
-      <Filter>Source Files\00. Mgr\ObjMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\ResourceMgr.h">
-      <Filter>Source Files\00. Mgr\ResourceMgr</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Font.h">
-      <Filter>Source Files\05. Component\01%29 Resource\Font</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\BackGround.h">
-      <Filter>Source Files\04. Obj\Background</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\SkyBox.h">
-      <Filter>Source Files\04. Obj\Background\SkyBox</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\LoadMgr.h">
-      <Filter>Source Files\00. Mgr\LoadMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -266,9 +81,6 @@
     </Filter>
     <Filter Include="Source Files\04. Obj\Camera">
       <UniqueIdentifier>{810c8f4d-dcfe-49d0-9665-235462adc2c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\98. Etc\FbxParser">
-      <UniqueIdentifier>{f1bd5238-9b21-4695-9e4b-acbda4fbf40e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\02. Scene\Loading">
       <UniqueIdentifier>{6557a2ae-081d-445d-aae1-75046421f7c9}</UniqueIdentifier>
@@ -329,18 +141,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Client\Include\Client.ico">
+    <Image Include="..\Client\Code\Basic\Client.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\Client\Include\Client.rc">
+    <ResourceCompile Include="..\Client\Code\Basic\Client.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="bin\Resource\Fx\SkyBox.fx">
-      <Filter>Resource Files\Fx</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>
