@@ -4,9 +4,6 @@
 #include "stdafx.h"
 #include "Client.h"
 
-// (수정) 아래 두 개 포함 헤더들 정리를 예쁘게 해보자
-#include "../Headers/Define.h"
-#include "../Headers/Value.h"
 #include "../Code/MainGame.h"
 
 #define MAX_LOADSTRING 100
