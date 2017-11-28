@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "targetver.h"
+#include "..\Basic\targetver.h"
 
 #define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
 // Windows Header Files:
@@ -19,9 +19,12 @@
 
 
 // TODO: reference additional headers your program requires here
-
+#include "Define_Check.h"
+#include "Function_Safe.h"
+#include "Value_Common.h"
 
 // STL -----------------------------
+#include <memory>
 #include <vector>
 #include <list>
 #include <map>

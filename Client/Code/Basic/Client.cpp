@@ -4,12 +4,11 @@
 #include "stdafx.h"
 #include "Client.h"
 
-#include "../MainGame.h"
+#include "../MainGame/MainGame.h"
 
 #define MAX_LOADSTRING 100
 
 // Global Variables:
-HINSTANCE g_hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
@@ -19,7 +18,9 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-HWND	g_hWnd;
+HINSTANCE	g_hInst;
+HWND		g_hWnd;
+
 
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -47,22 +48,22 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 	msg.message = WM_NULL;
 
-	//CMainGame	MainGame;
+	CMainGame	MainGame;
 
-	//FAILED_CHECK(MainGame.Init());
+	CHECK_FAILED(MainGame.Init());
 	//ShowCursor(false);
 
 	while (msg.message != WM_QUIT)
 	{
-		if ( PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) )
+		if ( PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE) )
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
 		else
 		{
-				//MainGame.Update();
-				//MainGame.Render();
+			MainGame.Update();
+			MainGame.Render();
 		}
 	}   
 
@@ -90,7 +91,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_Client));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = NULL;
+    wcex.lpszMenuName   = nullptr;
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -109,17 +110,25 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
+	// (수정) (옵션)
 	RECT rc = { (LONG)0, (LONG)0, (LONG)800, (LONG)600 };
 	g_hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
 	AdjustWindowRect( &rc, WS_OVERLAPPEDWINDOW, FALSE );
 
 	g_hWnd = CreateWindow(
-		szWindowClass, szTitle,
-		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, 0,
-		rc.right - rc.left,
-		rc.bottom - rc.top, NULL, NULL, hInstance, NULL);
+		szWindowClass			// 윈도우 클래스 명
+		, szTitle				// 윈도우 명
+		, WS_OVERLAPPEDWINDOW	// 윈도우 스타일 http://www.soen.kr/lecture/win32api/reference/Function/CreateWindow.htm
+		, CW_USEDEFAULT			// 부모 윈도우 기반 윈도우 시작 좌표 x
+		, 0						// 부모 윈도우 기반 윈도우 시작 좌표 y
+		, rc.right - rc.left	// 윈도우 넓이
+		, rc.bottom - rc.top	// 윈도우 높이
+		, NULL					// 부모 윈도우
+		, NULL					// 메뉴 핸들
+		, hInstance				// 인스턴스 핸들
+		, NULL					// 추가 파라메터
+	);
 
 	if (!g_hWnd)
 	{

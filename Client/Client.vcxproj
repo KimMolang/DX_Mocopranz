@@ -72,26 +72,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>.\bin\$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;$(IncludePath)</IncludePath>
+    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;.\Code\Headers;$(IncludePath)</IncludePath>
     <LibraryPath>..\Reference\Librarys\dx\x86;..\Reference\Librarys\fontWrapper;$(LibraryPath)</LibraryPath>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;$(IncludePath)</IncludePath>
+    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;.\Code\Headers;$(IncludePath)</IncludePath>
     <LibraryPath>..\Reference\Librarys\dx\x64;..\Reference\Librarys\fontWrapper;$(LibraryPath)</LibraryPath>
     <OutDir>.\bin\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>.\bin\$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;$(IncludePath)</IncludePath>
+    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;.\Code\Headers;$(IncludePath)</IncludePath>
     <LibraryPath>..\Reference\Librarys\dx\x86;..\Reference\Librarys\fontWrapper;$(LibraryPath)</LibraryPath>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;$(IncludePath)</IncludePath>
+    <IncludePath>..\Reference\Headers\dx;..\Reference\Headers\fbxsdk;.\Code\Headers;$(IncludePath)</IncludePath>
     <LibraryPath>..\Reference\Librarys\dx\x64;..\Reference\Librarys\fontWrapper;$(LibraryPath)</LibraryPath>
     <OutDir>.\bin\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
@@ -106,6 +106,8 @@
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
       <BrowseInformationFile>$(IntDir)</BrowseInformationFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -140,6 +142,8 @@
       <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <XMLDocumentationFileName>$(IntDir)</XMLDocumentationFileName>
       <BrowseInformationFile>$(IntDir)</BrowseInformationFile>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -171,12 +175,15 @@
     <ClInclude Include="..\Client\Code\Headers\Define.h" />
     <ClInclude Include="..\Client\Code\Basic\Client.h" />
     <ClInclude Include="..\Client\Code\Basic\Resource.h" />
-    <ClInclude Include="..\Client\Code\Basic\stdafx.h" />
     <ClInclude Include="..\Client\Code\Basic\targetver.h" />
-    <ClInclude Include="Code\MainGame.h" />
+    <ClInclude Include="Code\Headers\Define_Check.h" />
+    <ClInclude Include="Code\Headers\Function_Safe.h" />
+    <ClInclude Include="Code\Headers\stdafx.h" />
+    <ClInclude Include="Code\Headers\Value_Common.h" />
+    <ClInclude Include="Code\MainGame\Device.h" />
+    <ClInclude Include="Code\MainGame\MainGame.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\MainGame.cpp" />
     <ClCompile Include="Code\Basic\Client.cpp" />
     <ClCompile Include="..\Client\Code\Basic\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -184,6 +191,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Code\MainGame\Device.cpp" />
+    <ClCompile Include="Code\MainGame\MainGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Client\Code\Basic\Client.ico" />

@@ -4,27 +4,42 @@
     <ClCompile Include="..\Client\Code\Basic\stdafx.cpp">
       <Filter>Source Files\99. Default</Filter>
     </ClCompile>
-    <ClCompile Include="Code\MainGame.cpp">
+    <ClCompile Include="Code\Basic\Client.cpp" />
+    <ClCompile Include="Code\MainGame\MainGame.cpp">
       <Filter>Source Files\01. MainGame</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Basic\Client.cpp" />
+    <ClCompile Include="Code\MainGame\Device.cpp">
+      <Filter>Source Files\01. MainGame\Device</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Client\Code\Headers\Define.h" />
-    <ClInclude Include="..\Client\Code\Basic\stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Client\Code\Basic\targetver.h">
       <Filter>Source Files\99. Default</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\MainGame.h">
-      <Filter>Source Files\01. MainGame</Filter>
     </ClInclude>
     <ClInclude Include="..\Client\Code\Basic\Client.h">
       <Filter>Source Files\99. Default</Filter>
     </ClInclude>
     <ClInclude Include="..\Client\Code\Basic\Resource.h">
       <Filter>Source Files\99. Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Headers\Define_Check.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\MainGame\MainGame.h">
+      <Filter>Source Files\01. MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\MainGame\Device.h">
+      <Filter>Source Files\01. MainGame\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Headers\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Headers\Function_Safe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Headers\Value_Common.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -36,9 +51,6 @@
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{2339e3bf-345d-4da5-9758-7cc396e4a3b1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\00. Design">
-      <UniqueIdentifier>{4eba92a9-0e29-46a7-a5ff-32b4e4d60300}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\00. Mgr">
       <UniqueIdentifier>{38f277e7-ed45-46c1-a866-c9c30c8f7986}</UniqueIdentifier>
@@ -63,9 +75,6 @@
     </Filter>
     <Filter Include="Source Files\99. Default">
       <UniqueIdentifier>{77197ccb-5e5c-4430-af8a-47e41d3cb025}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\00. Mgr\Device">
-      <UniqueIdentifier>{9ce67377-16cd-47ae-a58d-c86d1da59b98}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\00. Mgr\Timer">
       <UniqueIdentifier>{c6b0ea5c-c130-412d-a05c-e66054b90d99}</UniqueIdentifier>
@@ -138,6 +147,9 @@
     </Filter>
     <Filter Include="Resource Files\Fx">
       <UniqueIdentifier>{14dd5978-40f2-4e42-bd5f-5d6e585b072c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\01. MainGame\Device">
+      <UniqueIdentifier>{a731e4c6-baf6-4f59-80f7-8ce192317854}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
