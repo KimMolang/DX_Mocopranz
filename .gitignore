@@ -7,3 +7,11 @@
 *.pdb
 *.idb
 *.res
+*.exp
+*.iobj
+*.ipdb
+*.opendb
+*.pch
+*.ilk
+*.db-shm
+*.db-wal
