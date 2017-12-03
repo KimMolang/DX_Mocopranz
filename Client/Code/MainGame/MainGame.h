@@ -1,14 +1,17 @@
 #pragma once
 
-class CDevice;
-class CMainGame
+namespace Engine
+{
+	class GraphicDevice;
+}
+class MainGame
 {
 public:
-	explicit CMainGame();
-	~CMainGame();
+	explicit MainGame();
+	~MainGame();
 
 private :
-	std::unique_ptr<CDevice>	m_pDevice;
+	std::shared_ptr<Engine::GraphicDevice>	m_pGraphicDevice;
 
 public:
 	HRESULT		Init();

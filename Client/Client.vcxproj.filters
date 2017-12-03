@@ -1,44 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\Client\Code\Basic\stdafx.cpp">
-      <Filter>Source Files\99. Default</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Basic\Client.cpp" />
     <ClCompile Include="Code\MainGame\MainGame.cpp">
       <Filter>Source Files\01. MainGame</Filter>
     </ClCompile>
-    <ClCompile Include="Code\MainGame\Device.cpp">
-      <Filter>Source Files\01. MainGame\Device</Filter>
+    <ClCompile Include="Code\Basic\Client.cpp">
+      <Filter>Source Files\99. Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Basic\stdafx.cpp">
+      <Filter>Source Files\99. Default</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Client\Code\Headers\Define.h" />
-    <ClInclude Include="..\Client\Code\Basic\targetver.h">
-      <Filter>Source Files\99. Default</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Client\Code\Basic\Client.h">
-      <Filter>Source Files\99. Default</Filter>
-    </ClInclude>
     <ClInclude Include="..\Client\Code\Basic\Resource.h">
       <Filter>Source Files\99. Default</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Headers\Define_Check.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\MainGame\MainGame.h">
       <Filter>Source Files\01. MainGame</Filter>
     </ClInclude>
-    <ClInclude Include="Code\MainGame\Device.h">
-      <Filter>Source Files\01. MainGame\Device</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Headers\stdafx.h">
+    <ClInclude Include="Code\Header\Value_Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Headers\Function_Safe.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Code\Basic\Client.h">
+      <Filter>Source Files\99. Default</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Headers\Value_Common.h">
+    <ClInclude Include="Code\Basic\targetver.h">
+      <Filter>Source Files\99. Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Header\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -147,9 +136,6 @@
     </Filter>
     <Filter Include="Resource Files\Fx">
       <UniqueIdentifier>{14dd5978-40f2-4e42-bd5f-5d6e585b072c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\01. MainGame\Device">
-      <UniqueIdentifier>{a731e4c6-baf6-4f59-80f7-8ce192317854}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

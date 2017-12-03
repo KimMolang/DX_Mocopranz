@@ -48,7 +48,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     MSG msg;
 	msg.message = WM_NULL;
 
-	CMainGame	MainGame;
+	MainGame	MainGame;
 
 	CHECK_FAILED(MainGame.Init());
 	//ShowCursor(false);
@@ -111,7 +111,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 	// (수정) (옵션)
-	RECT rc = { (LONG)0, (LONG)0, (LONG)800, (LONG)600 };
+	RECT rc = { (LONG)0, (LONG)0, (LONG)CLIENT_WINDOW_SIZE_X, (LONG)CLIENT_WINDOW_SIZE_Y };
 	g_hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
 	AdjustWindowRect( &rc, WS_OVERLAPPEDWINDOW, FALSE );

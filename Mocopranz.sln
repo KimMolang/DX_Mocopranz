@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{2C96AF7C-04CD-4CEC-8A98-7599019FC517}"
 EndProject
@@ -10,10 +10,30 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool_Map", "Tool_Map", "{7B9B74D7-C09D-4408-A89D-0B1DB6298E2B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcxproj", "{41224AE3-AD96-4C95-8D8D-2FEC80870F13}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C} = {E102A399-E4DE-4056-B1C4-9743AE5DC75C}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool_CheckShader", "Tool_CheckShader", "{8500B127-7997-45FA-BE13-6A404B35B61C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tool_CheckShader", "Tool_CheckShader\Tool_CheckShader.vcxproj", "{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3636B88A-3239-4EDF-82D2-8D6692154C19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{F052D872-4E2D-47AA-875A-CE6902F24DFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{F10F6FCA-F2CF-48DC-BC29-6B7C1F68260C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Header", "Header", "{92B68504-13FC-4CE5-9603-2D0A2EC04630}"
+	ProjectSection(SolutionItems) = preProject
+		Engine\Hearder\Engine_Define_Check.h = Engine\Hearder\Engine_Define_Check.h
+		Engine\Hearder\Engine_Define_Dll.h = Engine\Hearder\Engine_Define_Dll.h
+		Engine\Hearder\Engine_Function_Safe.h = Engine\Hearder\Engine_Function_Safe.h
+		Engine\Hearder\Engine_Include_Common.h = Engine\Hearder\Engine_Include_Common.h
+		Engine\Hearder\Engine_Value_Common.h = Engine\Hearder\Engine_Value_Common.h
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "System", "Engine\System\System.vcxproj", "{E102A399-E4DE-4056-B1C4-9743AE5DC75C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,20 +51,27 @@ Global
 		{41224AE3-AD96-4C95-8D8D-2FEC80870F13}.Release|x64.Build.0 = Release|x64
 		{41224AE3-AD96-4C95-8D8D-2FEC80870F13}.Release|x86.ActiveCfg = Release|Win32
 		{41224AE3-AD96-4C95-8D8D-2FEC80870F13}.Release|x86.Build.0 = Release|Win32
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}.Debug|x64.ActiveCfg = Debug|x64
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}.Debug|x64.Build.0 = Debug|x64
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}.Debug|x86.ActiveCfg = Debug|Win32
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}.Debug|x86.Build.0 = Debug|Win32
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}.Release|x64.ActiveCfg = Release|x64
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}.Release|x64.Build.0 = Release|x64
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}.Release|x86.ActiveCfg = Release|Win32
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D}.Release|x86.Build.0 = Release|Win32
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C}.Debug|x64.ActiveCfg = Debug|x64
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C}.Debug|x64.Build.0 = Debug|x64
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C}.Debug|x86.ActiveCfg = Debug|Win32
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C}.Debug|x86.Build.0 = Debug|Win32
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C}.Release|x64.ActiveCfg = Release|x64
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C}.Release|x64.Build.0 = Release|x64
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C}.Release|x86.ActiveCfg = Release|Win32
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{41224AE3-AD96-4C95-8D8D-2FEC80870F13} = {2C96AF7C-04CD-4CEC-8A98-7599019FC517}
-		{475971F8-9B8D-45B5-B1F4-8E89B490BA7D} = {8500B127-7997-45FA-BE13-6A404B35B61C}
+		{3636B88A-3239-4EDF-82D2-8D6692154C19} = {B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}
+		{F052D872-4E2D-47AA-875A-CE6902F24DFE} = {B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}
+		{F10F6FCA-F2CF-48DC-BC29-6B7C1F68260C} = {B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}
+		{92B68504-13FC-4CE5-9603-2D0A2EC04630} = {B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}
+		{E102A399-E4DE-4056-B1C4-9743AE5DC75C} = {3636B88A-3239-4EDF-82D2-8D6692154C19}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F98D8F8D-FC03-48F5-BC92-E7DF54B285C4}
 	EndGlobalSection
 EndGlobal

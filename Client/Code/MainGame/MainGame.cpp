@@ -1,37 +1,40 @@
 #include "stdafx.h"
 #include "MainGame.h"
 
-#include "Device.h"
+#include "GraphicDevice.h"
 
-CMainGame::CMainGame()
+extern HWND g_hWnd;
+
+
+MainGame::MainGame()
 {
 
 }
 
-CMainGame::~CMainGame()
+MainGame::~MainGame()
 {
 	Release();
 }
 
-HRESULT CMainGame::Init()
+HRESULT MainGame::Init()
 {
-	m_pDevice = std::make_unique<CDevice>();
-	m_pDevice->Init();
+	m_pGraphicDevice = std::make_shared<Engine::GraphicDevice>();
+	m_pGraphicDevice->Init( g_hWnd, CLIENT_WINDOW_SIZE_X, CLIENT_WINDOW_SIZE_Y );
 
 	return S_OK;
 }
 
-void CMainGame::Update()
+void MainGame::Update()
 {
 	
 }
 
-void CMainGame::Render()
+void MainGame::Render()
 {
 	
 }
 
-void CMainGame::Release()
+void MainGame::Release()
 {
-	::Safe_Release(m_pDevice);
+	::Safe_Release(m_pGraphicDevice);
 }
