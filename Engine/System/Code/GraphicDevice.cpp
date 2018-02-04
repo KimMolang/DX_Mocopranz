@@ -3,6 +3,9 @@
 
 
 BEGIN(Engine)
+IMPLEMENT_SINGLETON(GraphicDevice)
+
+
 GraphicDevice::GraphicDevice()
 : m_pDevice(nullptr)
 , m_pDeviceContext(nullptr)

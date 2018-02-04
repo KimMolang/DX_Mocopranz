@@ -2,12 +2,12 @@
 
 
 template<typename T>
-static void Safe_Delete(T& Temp)
+static void Safe_Delete(T& pointer)
 {
 	if (Temp)
 	{
-		delete Temp;
-		Temp = nullptr;
+		delete pointer;
+		pointer = nullptr;
 	}
 }
 
@@ -20,6 +20,19 @@ void Safe_Delete_Array(T& pointer)
 		pointer = nullptr;
 	}
 }
+
+struct Safe_Delete_map
+{
+	template<class T>
+	void operator()(T& pointer)
+	{
+		if (pointer.second)
+		{
+			delete pointer.second;
+			pointer.second = nullptr;
+		}
+	}
+};
 
 template <typename T>
 void Safe_Release(T& pointer)

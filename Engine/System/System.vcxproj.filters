@@ -13,6 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\00.GraphicDevice">
+      <UniqueIdentifier>{6ad414d9-3a90-41a4-a075-9e951c2de500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Scene">
+      <UniqueIdentifier>{a67ff5dd-e9a9-4f3b-93cc-5c42497c5415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03.Object">
+      <UniqueIdentifier>{88f2bd18-a3ae-452e-a5ed-9d4e29e1f067}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Component">
+      <UniqueIdentifier>{0ecd4d90-858a-40c9-a541-e862e754ba04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Component\Resource">
+      <UniqueIdentifier>{216126be-db2b-45fe-80bc-06c393a4ecbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Component\Resource\Buffer">
+      <UniqueIdentifier>{99b9d8d8-551b-45ff-a08b-8d2d4da74a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Component\Resource\Shader">
+      <UniqueIdentifier>{4ff332fc-1bc6-4c52-86fa-96fd0c00cc31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Component\Resource\Texture">
+      <UniqueIdentifier>{0e6812be-43fb-4430-9af7-9e442303f173}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Component\Collision">
+      <UniqueIdentifier>{4e3649a8-7aca-44db-bfdb-e434ffcd99bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Layer">
+      <UniqueIdentifier>{2203f645-2fbe-4d93-92f7-214cb8cde67f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Component\Transform">
+      <UniqueIdentifier>{975c5040-0511-4608-8fc4-a43208ce73e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Export">
+      <UniqueIdentifier>{8c1b2f4d-7a17-451f-8d3c-115ab2f99192}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -22,7 +58,28 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Code\GraphicDevice.h">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\00.GraphicDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Scene.h">
+      <Filter>소스 파일\01.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Layer.h">
+      <Filter>소스 파일\02.Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Object.h">
+      <Filter>소스 파일\03.Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Component.h">
+      <Filter>소스 파일\04.Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Resource.h">
+      <Filter>소스 파일\04.Component\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Texture.h">
+      <Filter>소스 파일\04.Component\Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Export_Function_System.h">
+      <Filter>소스 파일\99.Export</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -30,7 +87,30 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Code\GraphicDevice.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\00.GraphicDevice</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Scene.cpp">
+      <Filter>소스 파일\01.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Layer.cpp">
+      <Filter>소스 파일\02.Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Object.cpp">
+      <Filter>소스 파일\03.Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Component.cpp">
+      <Filter>소스 파일\04.Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Resource.cpp">
+      <Filter>소스 파일\04.Component\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Texture.cpp">
+      <Filter>소스 파일\04.Component\Resource\Texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Code\Export_Function_System.inl">
+      <Filter>소스 파일\99.Export</Filter>
+    </None>
   </ItemGroup>
 </Project>

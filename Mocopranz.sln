@@ -22,15 +22,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3636B8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{F052D872-4E2D-47AA-875A-CE6902F24DFE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resource", "Resource", "{F10F6FCA-F2CF-48DC-BC29-6B7C1F68260C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Header", "Header", "{92B68504-13FC-4CE5-9603-2D0A2EC04630}"
 	ProjectSection(SolutionItems) = preProject
-		Engine\Hearder\Engine_Define_Check.h = Engine\Hearder\Engine_Define_Check.h
-		Engine\Hearder\Engine_Define_Dll.h = Engine\Hearder\Engine_Define_Dll.h
-		Engine\Hearder\Engine_Function_Safe.h = Engine\Hearder\Engine_Function_Safe.h
-		Engine\Hearder\Engine_Include_Common.h = Engine\Hearder\Engine_Include_Common.h
-		Engine\Hearder\Engine_Value_Common.h = Engine\Hearder\Engine_Value_Common.h
+		Engine\Header\Engine_Define_Check.h = Engine\Header\Engine_Define_Check.h
+		Engine\Header\Engine_Define_Dll.h = Engine\Header\Engine_Define_Dll.h
+		Engine\Header\Engine_Define_Pattern.h = Engine\Header\Engine_Define_Pattern.h
+		Engine\Header\Engine_Function_Safe.h = Engine\Header\Engine_Function_Safe.h
+		Engine\Header\Engine_Include_Common.h = Engine\Header\Engine_Include_Common.h
+		Engine\Header\Engine_Struct_Arg.h = Engine\Header\Engine_Struct_Arg.h
+		Engine\Header\Engine_Value_Common.h = Engine\Header\Engine_Value_Common.h
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "System", "Engine\System\System.vcxproj", "{E102A399-E4DE-4056-B1C4-9743AE5DC75C}"
@@ -67,7 +67,6 @@ Global
 		{41224AE3-AD96-4C95-8D8D-2FEC80870F13} = {2C96AF7C-04CD-4CEC-8A98-7599019FC517}
 		{3636B88A-3239-4EDF-82D2-8D6692154C19} = {B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}
 		{F052D872-4E2D-47AA-875A-CE6902F24DFE} = {B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}
-		{F10F6FCA-F2CF-48DC-BC29-6B7C1F68260C} = {B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}
 		{92B68504-13FC-4CE5-9603-2D0A2EC04630} = {B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}
 		{E102A399-E4DE-4056-B1C4-9743AE5DC75C} = {3636B88A-3239-4EDF-82D2-8D6692154C19}
 	EndGlobalSection

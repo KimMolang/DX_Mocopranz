@@ -46,10 +46,22 @@
 #pragma  comment(lib, "d3dx11.lib")
 #endif
 
-// Engine -----------------------------
+// Header
+#include "Engine_Value_Common.h"
+
+#include "Engine_Struct_Arg.h"
+
 #include "Engine_Define_Check.h"
 #include "Engine_Define_Dll.h"
+#include "Engine_Define_Pattern.h"
 
 #include "Engine_Function_Safe.h"
 
-#include "Engine_Value_Common.h"
+
+// Warning
+// ex.
+//#pragma warning( disable : 4507 34 )  // 경고 메시지 4507과 4034를 끈다(disable).
+//#pragma warning( once : 4385 )         // 경고 4385를 한 번만 발생시킨다.
+//#pragma warning( error : 164 )           // 경고 4164를 에러로 보고한다.
+
+#pragma warning( disable : 4251 )

@@ -49,7 +49,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	msg.message = WM_NULL;
 
 	MainGame	MainGame;
-
 	CHECK_FAILED(MainGame.Init());
 	//ShowCursor(false);
 
@@ -62,6 +61,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		}
 		else
 		{
+			// (수정) (옵션) 프레임
 			MainGame.Update();
 			MainGame.Render();
 		}
@@ -110,7 +110,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-	// (수정) (옵션)
+	// (수정) (옵션) 해상도
 	RECT rc = { (LONG)0, (LONG)0, (LONG)CLIENT_WINDOW_SIZE_X, (LONG)CLIENT_WINDOW_SIZE_Y };
 	g_hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 

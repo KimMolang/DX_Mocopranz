@@ -171,18 +171,34 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Component.h" />
+    <ClInclude Include="Code\Export_Function_System.h" />
     <ClInclude Include="Code\GraphicDevice.h" />
+    <ClInclude Include="Code\Layer.h" />
+    <ClInclude Include="Code\Object.h" />
+    <ClInclude Include="Code\Resource.h" />
+    <ClInclude Include="Code\Scene.h" />
+    <ClInclude Include="Code\Texture.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Component.cpp" />
     <ClCompile Include="Code\GraphicDevice.cpp" />
+    <ClCompile Include="Code\Layer.cpp" />
+    <ClCompile Include="Code\Object.cpp" />
+    <ClCompile Include="Code\Resource.cpp" />
+    <ClCompile Include="Code\Scene.cpp" />
+    <ClCompile Include="Code\Texture.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Code\Export_Function_System.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

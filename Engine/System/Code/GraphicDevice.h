@@ -1,14 +1,19 @@
 #pragma once
 
 BEGIN(Engine)
+
+
 class ENGINE_DLL GraphicDevice
 {
+	DECLARE_SINGLETON(GraphicDevice)
+
+private:
+	GraphicDevice();
 public:
-	enum WinMode { WIN_MODE_FULL, WIN_MODE_WIN };
+	~GraphicDevice();
 
 public:
-	explicit GraphicDevice();
-	~GraphicDevice();
+	enum WinMode { WIN_MODE_FULL, WIN_MODE_WIN };
 
 public:
 	HRESULT	Init(const HWND _hWnd

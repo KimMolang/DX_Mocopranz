@@ -24,4 +24,7 @@
 // Engine -----------------------------
 #include "Engine_Include_Common.h"
 
+// Export Function -----------------------------
+#include "Export_Function_System.h"
+
 #pragma  comment(lib, "System.lib")
