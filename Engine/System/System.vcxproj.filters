@@ -78,7 +78,7 @@
     <ClInclude Include="Code\Texture.h">
       <Filter>소스 파일\04.Component\Resource\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Export_Function_System.h">
+    <ClInclude Include="Code\Export_Function_Mgr_GraphicDevice.h">
       <Filter>소스 파일\99.Export</Filter>
     </ClInclude>
   </ItemGroup>
@@ -107,10 +107,5 @@
     <ClCompile Include="Code\Texture.cpp">
       <Filter>소스 파일\04.Component\Resource\Texture</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Code\Export_Function_System.inl">
-      <Filter>소스 파일\99.Export</Filter>
-    </None>
   </ItemGroup>
 </Project>

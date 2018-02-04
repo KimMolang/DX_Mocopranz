@@ -172,7 +172,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Code\Component.h" />
-    <ClInclude Include="Code\Export_Function_System.h" />
+    <ClInclude Include="Code\Export_Function_Mgr_GraphicDevice.h" />
     <ClInclude Include="Code\GraphicDevice.h" />
     <ClInclude Include="Code\Layer.h" />
     <ClInclude Include="Code\Object.h" />
@@ -196,9 +196,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Code\Export_Function_System.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

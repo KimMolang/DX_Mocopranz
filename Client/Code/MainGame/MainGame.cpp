@@ -2,7 +2,7 @@
 #include "MainGame.h"
 
 #include "GraphicDevice.h"
-#include "Export_Function_System.h"
+#include "Export_Function_Mgr_GraphicDevice.h"
 
 extern HWND g_hWnd;
 
