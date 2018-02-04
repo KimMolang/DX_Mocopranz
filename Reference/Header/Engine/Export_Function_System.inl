@@ -1,4 +1,4 @@
-//GraphicDevice* GetGraphicDevice(void)
-//{
-//	return GraphicDevice::GetInstance();
-//}
+GraphicDevice* GetGraphicDevice(void)
+{
+	return GraphicDevice::GetInstance();
+}

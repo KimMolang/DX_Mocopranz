@@ -1,9 +1,9 @@
 #pragma once
 
-//namespace Engine
-//{
-//	class GraphicDevice;
-//}
+namespace Engine
+{
+	class GraphicDevice;
+}
 class MainGame
 {
 public:
@@ -12,6 +12,7 @@ public:
 
 private :
 	//std::shared_ptr<Engine::GraphicDevice>	m_pGraphicDevice;
+	Engine::GraphicDevice*	m_pGraphicDevice;
 
 public:
 	HRESULT		Init();

@@ -17,6 +17,8 @@
 #include <memory.h>
 #include <tchar.h>
 
+// Library
+#pragma  comment(lib, "System.lib")
 
 // TODO: reference additional headers your program requires here
 #include "../Header/Value_Common.h"
@@ -25,6 +27,4 @@
 #include "Engine_Include_Common.h"
 
 // Export Function -----------------------------
-#include "Export_Function_System.h"
-
-#pragma  comment(lib, "System.lib")
+//#include "Export_Function_System.h"

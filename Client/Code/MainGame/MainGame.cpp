@@ -2,6 +2,7 @@
 #include "MainGame.h"
 
 #include "GraphicDevice.h"
+#include "Export_Function_System.h"
 
 extern HWND g_hWnd;
 
@@ -19,8 +20,8 @@ MainGame::~MainGame()
 HRESULT MainGame::Init()
 {
 	//m_pGraphicDevice = std::make_shared<Engine::GraphicDevice>();
-	//m_pGraphicDevice = Engine::GetGraphicDevice();
-	//m_pGraphicDevice->Init( g_hWnd, CLIENT_WINDOW_SIZE_X, CLIENT_WINDOW_SIZE_Y );
+	m_pGraphicDevice = Engine::GetGraphicDevice();
+	m_pGraphicDevice->Init( g_hWnd, CLIENT_WINDOW_SIZE_X, CLIENT_WINDOW_SIZE_Y );
 
 	// (수정)
 	// 매니저는 싱글톤으로 사용 x
@@ -41,5 +42,5 @@ void MainGame::Render()
 
 void MainGame::Release()
 {
-	//::Safe_Release(m_pGraphicDevice);
+	::Safe_Release(m_pGraphicDevice);
 }
