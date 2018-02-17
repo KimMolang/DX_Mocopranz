@@ -4,7 +4,7 @@
 template<typename T>
 static void Safe_Delete(T& pointer)
 {
-	if (Temp)
+	if (pointer)
 	{
 		delete pointer;
 		pointer = nullptr;

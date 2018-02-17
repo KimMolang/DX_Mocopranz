@@ -3,7 +3,8 @@
 // STL -----------------------------
 #include <memory>
 #include <vector>
-#include <list>
+//#include <list>
+#include <forward_list>
 #include <map>
 #include <string>
 #include <algorithm>

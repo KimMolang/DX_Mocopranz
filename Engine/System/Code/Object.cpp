@@ -16,7 +16,7 @@ Object::~Object()
 	Release_Component();
 }
 
-const Component* Object::GetComponent(const Component::EType _eType)
+const Component* Object::GetComponent(const Component::EType& _eType)
 {
 	MAPCOMPONENT::iterator iter = m_mapComponent.find(_eType);
 

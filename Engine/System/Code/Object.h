@@ -23,7 +23,7 @@ public:
 	virtual ~Object(void) PURE;
 
 public:
-	const Component* GetComponent( const Component::EType _eType );
+	const Component* GetComponent( const Component::EType& _eType );
 	EState	GetObjState() { return m_eObjState; }
 protected:
 	void		SetObjState(const EState _eState) { m_eObjState = _eState; }
@@ -38,7 +38,7 @@ protected:
 
 protected:
 	virtual HRESULT	Init()			PURE;
-	virtual int		Update()		PURE;
+	virtual EState	Update()		PURE;
 	virtual void	Render()		PURE;
 	virtual void	Release()		PURE;
 
@@ -50,6 +50,8 @@ protected:
 
 protected:
 	class Transform*			m_pTransform;
+
+	friend class Layer;
 };
 
 
