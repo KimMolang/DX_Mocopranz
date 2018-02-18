@@ -24,12 +24,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{F052
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Header", "Header", "{92B68504-13FC-4CE5-9603-2D0A2EC04630}"
 	ProjectSection(SolutionItems) = preProject
+		Engine\Header\Engine_Define_Buffer_Index.h = Engine\Header\Engine_Define_Buffer_Index.h
 		Engine\Header\Engine_Define_Check.h = Engine\Header\Engine_Define_Check.h
 		Engine\Header\Engine_Define_Dll.h = Engine\Header\Engine_Define_Dll.h
 		Engine\Header\Engine_Define_Pattern.h = Engine\Header\Engine_Define_Pattern.h
 		Engine\Header\Engine_Function_Safe.h = Engine\Header\Engine_Function_Safe.h
 		Engine\Header\Engine_Include_Common.h = Engine\Header\Engine_Include_Common.h
 		Engine\Header\Engine_Struct_Arg.h = Engine\Header\Engine_Struct_Arg.h
+		Engine\Header\Engine_Struct_Buffer.h = Engine\Header\Engine_Struct_Buffer.h
 		Engine\Header\Engine_Value_Common.h = Engine\Header\Engine_Value_Common.h
 	EndProjectSection
 EndProject

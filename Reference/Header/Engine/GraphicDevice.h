@@ -13,13 +13,13 @@ public:
 	~GraphicDevice();
 
 public:
-	enum WinMode { WIN_MODE_FULL, WIN_MODE_WIN };
+	enum EWinMode { WIN_MODE_FULL, WIN_MODE_WIN };
 
 public:
 	HRESULT	Init(const HWND _hWnd
 		, const WORD& _wSizeX
 		, const WORD& _wSizeY
-		, const WinMode _eWinMode = WinMode::WIN_MODE_WIN);
+		, const EWinMode _eWinMode = EWinMode::WIN_MODE_WIN);
 private:
 	HRESULT		Init_Blend();
 public:

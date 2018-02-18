@@ -171,25 +171,39 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Camera.h" />
+    <ClInclude Include="Code\CameraDynamic.h" />
+    <ClInclude Include="Code\CameraNull.h" />
+    <ClInclude Include="Code\CameraStatic.h" />
     <ClInclude Include="Code\Component.h" />
+    <ClInclude Include="Code\Export_Function_Mgr.h" />
     <ClInclude Include="Code\Export_Function_Mgr_GraphicDevice.h" />
     <ClInclude Include="Code\GraphicDevice.h" />
+    <ClInclude Include="Code\KeyChecker.h" />
     <ClInclude Include="Code\Layer.h" />
     <ClInclude Include="Code\Object.h" />
     <ClInclude Include="Code\Resource.h" />
     <ClInclude Include="Code\Scene.h" />
+    <ClInclude Include="Code\Shader.h" />
     <ClInclude Include="Code\Texture.h" />
+    <ClInclude Include="Code\Timer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Camera.cpp" />
+    <ClCompile Include="Code\CameraDynamic.cpp" />
+    <ClCompile Include="Code\CameraStatic.cpp" />
     <ClCompile Include="Code\Component.cpp" />
     <ClCompile Include="Code\GraphicDevice.cpp" />
+    <ClCompile Include="Code\KeyChecker.cpp" />
     <ClCompile Include="Code\Layer.cpp" />
     <ClCompile Include="Code\Object.cpp" />
     <ClCompile Include="Code\Resource.cpp" />
     <ClCompile Include="Code\Scene.cpp" />
+    <ClCompile Include="Code\Shader.cpp" />
     <ClCompile Include="Code\Texture.cpp" />
+    <ClCompile Include="Code\Timer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

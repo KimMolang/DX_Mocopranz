@@ -49,6 +49,12 @@
     <Filter Include="소스 파일\99.Export">
       <UniqueIdentifier>{8c1b2f4d-7a17-451f-8d3c-115ab2f99192}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\03.Object\Cameara">
+      <UniqueIdentifier>{e54b5a38-3d3c-4109-92fd-6d45bb56250f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\00. Mgr">
+      <UniqueIdentifier>{ff4e339c-0a88-437d-b184-40033aadc559}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -81,6 +87,30 @@
     <ClInclude Include="Code\Export_Function_Mgr_GraphicDevice.h">
       <Filter>소스 파일\99.Export</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Camera.h">
+      <Filter>소스 파일\03.Object\Cameara</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\CameraDynamic.h">
+      <Filter>소스 파일\03.Object\Cameara</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\CameraNull.h">
+      <Filter>소스 파일\03.Object\Cameara</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\CameraStatic.h">
+      <Filter>소스 파일\03.Object\Cameara</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Timer.h">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Export_Function_Mgr.h">
+      <Filter>소스 파일\99.Export</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\KeyChecker.h">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Shader.h">
+      <Filter>소스 파일\04.Component\Resource\Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -106,6 +136,24 @@
     </ClCompile>
     <ClCompile Include="Code\Texture.cpp">
       <Filter>소스 파일\04.Component\Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Camera.cpp">
+      <Filter>소스 파일\03.Object\Cameara</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\CameraDynamic.cpp">
+      <Filter>소스 파일\03.Object\Cameara</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\CameraStatic.cpp">
+      <Filter>소스 파일\03.Object\Cameara</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Timer.cpp">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\KeyChecker.cpp">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Shader.cpp">
+      <Filter>소스 파일\04.Component\Resource\Shader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -23,7 +23,7 @@ GraphicDevice::~GraphicDevice()
 	Release();
 }
 
-HRESULT GraphicDevice::Init(const HWND _hWnd, const WORD& _wSizeX, const WORD& _wSizeY, const WinMode _eWinMode)
+HRESULT GraphicDevice::Init(const HWND _hWnd, const WORD& _wSizeX, const WORD& _wSizeY, const EWinMode _eWinMode)
 {
 	UINT	deviceFlags = 0;
 #if defined(DEBUG) || defined(_DEBUG)

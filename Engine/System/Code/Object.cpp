@@ -28,6 +28,7 @@ const Component* Object::GetComponent(const Component::EType& _eType)
 
 void Object::AddDefaultComponent()
 {
+	// (¼öÁ¤) Transform
 	// Transform ------------
 	//m_pPhysics = dynamic_cast<CPhysics*>(CPhysics::Create(m_pDevice));
 	//NULL_CHECK(m_pPhysics);
@@ -47,6 +48,13 @@ void Object::Release_Component()
 {
 	for_each(m_mapComponent.begin(), m_mapComponent.end(), Safe_Delete_map());
 	m_mapComponent.clear();
+}
+
+HRESULT Object::Init()
+{
+	m_eObjState = EState::STATE_ALIVE;
+
+	return S_OK;
 }
 
 

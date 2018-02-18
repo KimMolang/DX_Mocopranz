@@ -37,10 +37,10 @@ protected:
 	void	Release_Component();
 
 protected:
-	virtual HRESULT	Init()			PURE;
-	virtual EState	Update()		PURE;
-	virtual void	Render()		PURE;
-	virtual void	Release()		PURE;
+	virtual HRESULT			Init()			PURE;
+	virtual Object::EState	Update()		PURE;
+	virtual void			Render()		PURE;
+	virtual void			Release()		PURE;
 
 
 protected:

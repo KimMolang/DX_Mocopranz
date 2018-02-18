@@ -4,6 +4,9 @@
 #include "Layer.h"
 #include "Camera.h"
 
+#include "GraphicDevice.h"
+#include "Export_Function_Mgr_GraphicDevice.h"
+
 BEGIN(Engine)
 
 
@@ -38,9 +41,9 @@ void Scene::Render_Layer()
 			switch (i)
 			{
 			case ELayerType::LAYER_TYPE_BACK:
-				//m_pDevice->Blend_Begin();
+				GetGraphicDevice()->Blend_Begin();
 				m_pLayer[i]->Render_Obj();
-				//m_pDevice->Blend_End();
+				GetGraphicDevice()->Blend_End();
 				break;
 
 			case ELayerType::LAYER_TYPE_GAMELOGIC:
@@ -49,11 +52,13 @@ void Scene::Render_Layer()
 
 			case ELayerType::LAYER_TYPE_UI:
 				if (m_pMainCamera != nullptr) // (수정) No Check nullptr. replace it with null object
+				{
 					m_pMainCamera->Invalidate_Ortho();
+				}
 
-				//m_pDevice->Blend_Begin();
+				GetGraphicDevice()->Blend_Begin();
 				m_pLayer[i]->Render_Obj();
-				//m_pDevice->Blend_End();
+				GetGraphicDevice()->Blend_End();
 
 				if (m_pMainCamera != nullptr) // (수정) No Check nullptr. replace it with null object
 				{
@@ -61,7 +66,6 @@ void Scene::Render_Layer()
 					m_pMainCamera->Invalidate_Proj();
 				}
 				break;
-
 			}
 		}
 	}

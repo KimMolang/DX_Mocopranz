@@ -11,18 +11,6 @@ private:
 public:
 	~Layer();
 
-	// Scene 으로 이동
-//public:
-//	enum class EType
-//	{
-//		TYPE_BACK,
-//		TYPE_GAMELOGIC,
-//		TYPE_UI,
-//
-//		TYPE_MAX
-//	};
-
-
 public:
 	HRESULT			AddObj(Object* _pObj);
 
