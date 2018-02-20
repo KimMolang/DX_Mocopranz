@@ -183,6 +183,7 @@
     <ClInclude Include="Code\Layer.h" />
     <ClInclude Include="Code\Object.h" />
     <ClInclude Include="Code\Resource.h" />
+    <ClInclude Include="Code\ResourceMgr.h" />
     <ClInclude Include="Code\Scene.h" />
     <ClInclude Include="Code\Shader.h" />
     <ClInclude Include="Code\Texture.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="Code\Layer.cpp" />
     <ClCompile Include="Code\Object.cpp" />
     <ClCompile Include="Code\Resource.cpp" />
+    <ClCompile Include="Code\ResourceMgr.cpp" />
     <ClCompile Include="Code\Scene.cpp" />
     <ClCompile Include="Code\Shader.cpp" />
     <ClCompile Include="Code\Texture.cpp" />

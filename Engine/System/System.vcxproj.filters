@@ -111,6 +111,9 @@
     <ClInclude Include="Code\Shader.h">
       <Filter>소스 파일\04.Component\Resource\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="Code\ResourceMgr.h">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -154,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="Code\Shader.cpp">
       <Filter>소스 파일\04.Component\Resource\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\ResourceMgr.cpp">
+      <Filter>소스 파일\00. Mgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
