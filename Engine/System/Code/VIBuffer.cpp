@@ -2,7 +2,6 @@
 #include "VIBuffer.h"
 
 #include "GraphicDevice.h"
-#include "Export_Function_Mgr_GraphicDevice.h"
 
 BEGIN(Engine)
 
@@ -49,7 +48,7 @@ void VIBuffer::Render()
 	if (nullptr == m_pVtxBuffer)
 		return;
 
-	ID3D11DeviceContext* pDeviceContext = GetGraphicDevice()->GetDeviceContext();
+	ID3D11DeviceContext* pDeviceContext = GraphicDevice::GetInstance()->GetDeviceContext();
 	pDeviceContext->IASetVertexBuffers(0, 1, &m_pVtxBuffer, &m_nVtxStride, &m_nVtxOffset);
 	pDeviceContext->IASetIndexBuffer(m_pIdxBuffer, DXGI_FORMAT_R16_UINT, 0);
 	pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
@@ -67,7 +66,7 @@ void VIBuffer::CreateRasterizerState()
 	ZeroMemory(&tRasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
 	tRasterizerDesc.CullMode = D3D11_CULL_BACK;
 	tRasterizerDesc.FillMode = D3D11_FILL_WIREFRAME;
-	GetGraphicDevice()->GetDevice()->CreateRasterizerState(&tRasterizerDesc, &m_pRasterizerState);
+	GraphicDevice::GetInstance()->GetDevice()->CreateRasterizerState(&tRasterizerDesc, &m_pRasterizerState);
 }
 
 

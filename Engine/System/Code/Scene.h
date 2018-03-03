@@ -21,10 +21,6 @@ public:
 		LAYER_TYPE_MAX
 	};
 
-protected:
-	Layer*			m_pLayer[ELayerType::LAYER_TYPE_MAX];
-	Camera*			m_pMainCamera;
-
 
 public:
 	virtual HRESULT		Init()			PURE;
@@ -37,6 +33,11 @@ public:
 	void Render_Layer();
 private:
 	void Release_Layer();
+
+
+protected:
+	Layer *			m_pLayer[ELayerType::LAYER_TYPE_MAX];
+	Camera*			m_pMainCamera;
 };
 
 

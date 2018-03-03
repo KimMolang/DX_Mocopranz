@@ -2,7 +2,6 @@
 #include "Shader.h"
 
 #include "GraphicDevice.h"
-#include "Export_Function_Mgr_GraphicDevice.h"
 
 BEGIN(Engine)
 
@@ -23,7 +22,7 @@ Shader::~Shader()
 
 void Shader::Render()
 {
-	ID3D11DeviceContext* pDeviceContext = GetGraphicDevice()->GetDeviceContext();
+	ID3D11DeviceContext* pDeviceContext = GraphicDevice::GetInstance()->GetDeviceContext();
 
 	if (m_pVertexLayout)
 		pDeviceContext->IASetInputLayout(m_pVertexLayout);

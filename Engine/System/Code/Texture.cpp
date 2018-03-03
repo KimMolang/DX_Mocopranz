@@ -4,7 +4,6 @@
 #include "Engine_Define_Buffer_Index.h"
 
 #include "GraphicDevice.h"
-#include "Export_Function_Mgr_GraphicDevice.h"
 
 BEGIN(Engine)
 
@@ -36,7 +35,7 @@ HRESULT Texture::Load(std::wstring _wstrPath, const ETextureType& _eTextureType)
 void Texture::Load_Basic(std::wstring _wstrPath)
 {
 	D3DX11CreateShaderResourceViewFromFile(
-		GetGraphicDevice()->GetDevice(), _wstrPath.c_str(), NULL, NULL, &m_pTextures, NULL);
+		GraphicDevice::GetInstance()->GetDevice(), _wstrPath.c_str(), NULL, NULL, &m_pTextures, NULL);
 
 	ID3D11SamplerState* pSamplerState = NULL;
 	D3D11_SAMPLER_DESC tData;
@@ -49,7 +48,7 @@ void Texture::Load_Basic(std::wstring _wstrPath)
 	tData.ComparisonFunc = D3D11_COMPARISON_NEVER;
 	tData.MinLOD = 0;
 	tData.MaxLOD = 0;
-	GetGraphicDevice()->GetDevice()->CreateSamplerState(&tData, &m_pSamplerStates);
+	GraphicDevice::GetInstance()->GetDevice()->CreateSamplerState(&tData, &m_pSamplerStates);
 }
 
 void Texture::Load_DDS(std::wstring _wstrPath)
@@ -59,8 +58,8 @@ void Texture::Load_DDS(std::wstring _wstrPath)
 	ID3D11Texture2D* pTexture2D = NULL;
 
 	D3DX11CreateTextureFromFile(
-		GetGraphicDevice()->GetDevice(), _wstrPath.c_str(),
-		&tLoadInfo, NULL, (ID3D11Resource**)&pTexture2D, NULL);
+		GraphicDevice::GetInstance()->GetDevice(), _wstrPath.c_str()
+		,&tLoadInfo, NULL, (ID3D11Resource**)&pTexture2D, NULL);
 
 	D3D11_TEXTURE2D_DESC tTextureData;
 	pTexture2D->GetDesc(&tTextureData);
@@ -71,7 +70,7 @@ void Texture::Load_DDS(std::wstring _wstrPath)
 	tViewData.TextureCube.MipLevels = tTextureData.MipLevels;
 	tViewData.TextureCube.MostDetailedMip = 0;
 
-	GetGraphicDevice()->GetDevice()->
+	GraphicDevice::GetInstance()->GetDevice()->
 		CreateShaderResourceView(pTexture2D, &tViewData, &m_pTextures);
 
 	ID3D11SamplerState* pSamplerState = NULL;
@@ -85,7 +84,7 @@ void Texture::Load_DDS(std::wstring _wstrPath)
 	tSamplerData.ComparisonFunc = D3D11_COMPARISON_NEVER;
 	tSamplerData.MinLOD = 0;
 	tSamplerData.MaxLOD = D3D11_FLOAT32_MAX;
-	GetGraphicDevice()->GetDevice()->CreateSamplerState(&tSamplerData, &m_pSamplerStates);
+	GraphicDevice::GetInstance()->GetDevice()->CreateSamplerState(&tSamplerData, &m_pSamplerStates);
 }
 
 void Texture::Update()
@@ -95,8 +94,8 @@ void Texture::Update()
 
 void Texture::Render()
 {
-	GetGraphicDevice()->GetDeviceContext()->PSSetShaderResources(PS_SLOT_TEXTURE, 1, &m_pTextures);
-	GetGraphicDevice()->GetDeviceContext()->PSSetSamplers(PS_SLOT_SAMPLER_STATE, 1, &m_pSamplerStates);
+	GraphicDevice::GetInstance()->GetDeviceContext()->PSSetShaderResources(PS_SLOT_TEXTURE, 1, &m_pTextures);
+	GraphicDevice::GetInstance()->GetDeviceContext()->PSSetSamplers(PS_SLOT_SAMPLER_STATE, 1, &m_pSamplerStates);
 }
 
 void Texture::Release()

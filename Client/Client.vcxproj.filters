@@ -65,18 +65,6 @@
     <Filter Include="Source Files\99. Default">
       <UniqueIdentifier>{77197ccb-5e5c-4430-af8a-47e41d3cb025}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\00. Mgr\Timer">
-      <UniqueIdentifier>{c6b0ea5c-c130-412d-a05c-e66054b90d99}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\00. Mgr\KeyMgr">
-      <UniqueIdentifier>{89bb0eff-9d47-4556-9d5f-99409bc23e4b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\00. Mgr\SceneMgr">
-      <UniqueIdentifier>{4cb8c53a-a236-47c5-a6d0-6d2225f314b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\00. Mgr\Renderer">
-      <UniqueIdentifier>{7acb2b87-b158-43f7-abf3-37235bcb1da8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\04. Obj\Camera">
       <UniqueIdentifier>{810c8f4d-dcfe-49d0-9665-235462adc2c1}</UniqueIdentifier>
     </Filter>
@@ -115,12 +103,6 @@
     </Filter>
     <Filter Include="Source Files\04. Obj\Camera\Dynamic">
       <UniqueIdentifier>{cc863c83-b10a-40a7-b1cf-d31195667b19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\00. Mgr\ObjMgr">
-      <UniqueIdentifier>{0784360a-b2e5-47a2-b300-f0c6a66b8375}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\00. Mgr\ResourceMgr">
-      <UniqueIdentifier>{7a548c79-4928-48d8-9ebf-1217cfff0247}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\05. Component\01%29 Resource\Font">
       <UniqueIdentifier>{a844d946-53af-4885-be1e-e95c16084a68}</UniqueIdentifier>

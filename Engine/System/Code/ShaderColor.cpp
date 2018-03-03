@@ -2,7 +2,6 @@
 #include "ShaderColor.h"
 
 #include "GraphicDevice.h"
-#include "Export_Function_Mgr_GraphicDevice.h"
 
 BEGIN(Engine)
 
@@ -34,7 +33,7 @@ HRESULT ShaderColor::Init()
 #endif
 
 	ID3DBlob* pBlob = NULL, *pErrorBlob = NULL;
-	ID3D11Device* pDevice = GetGraphicDevice()->GetDevice();
+	ID3D11Device* pDevice = GraphicDevice::GetInstance()->GetDevice();
 
 	if (SUCCEEDED(D3DX11CompileFromFile(L"../bin/Resource/Fx/Shader_Color.fx", NULL, NULL,
 		"VS", "vs_4_0", swFlag, 0, NULL, &pBlob, &pErrorBlob, NULL)))

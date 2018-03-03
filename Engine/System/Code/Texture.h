@@ -5,7 +5,7 @@
 BEGIN(Engine)
 
 
-class Texture : public Resource
+class ENGINE_DLL Texture : public Resource
 {
 public :
 	enum ETextureType { TEXTURE_TYPE_BASIC, TEXTURE_TYPE_DDS };

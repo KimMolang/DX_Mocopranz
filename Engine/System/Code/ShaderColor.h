@@ -5,7 +5,7 @@
 BEGIN(Engine)
 
 
-class ShaderColor : public Shader
+class ENGINE_DLL ShaderColor : public Shader
 {
 public:
 	explicit ShaderColor();

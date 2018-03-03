@@ -80,7 +80,7 @@ struct Index32
 };
 
 
-class VIBuffer abstract : public Resource
+class ENGINE_DLL VIBuffer abstract : public Resource
 {
 protected:
 	explicit VIBuffer();

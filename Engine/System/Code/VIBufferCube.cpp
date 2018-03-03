@@ -2,7 +2,6 @@
 #include "VIBufferCube.h"
 
 #include "GraphicDevice.h"
-#include "Export_Function_Mgr_GraphicDevice.h"
 
 //#include "ResourceMgr.h"
 #include "Shader.h"
@@ -84,7 +83,7 @@ void VIBufferCube::Init_Vtx()
 	ZeroMemory(&tData, sizeof(D3D11_SUBRESOURCE_DATA));
 	tData.pSysMem = pVertex;
 	CHECK_FAILED_RETURN(
-		GetGraphicDevice()->GetDevice()->CreateBuffer(&tBufferDesc, &tData, &m_pVtxBuffer), );
+		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&tBufferDesc, &tData, &m_pVtxBuffer), );
 }
 
 void VIBufferCube::Init_Idx()
@@ -128,7 +127,7 @@ void VIBufferCube::Init_Idx()
 	ZeroMemory(&tData, sizeof(D3D11_SUBRESOURCE_DATA));
 	tData.pSysMem = pIdx;
 	CHECK_FAILED_RETURN(
-		GetGraphicDevice()->GetDevice()->CreateBuffer(&tBufferDesc, &tData, &m_pIdxBuffer), );
+		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&tBufferDesc, &tData, &m_pIdxBuffer), );
 }
 
 void VIBufferCube::Init_ColorShader()
@@ -144,7 +143,7 @@ void VIBufferCube::CreateRasterizerState()
 	ZeroMemory(&tRasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
 	tRasterizerDesc.CullMode = D3D11_CULL_NONE;
 	tRasterizerDesc.FillMode = D3D11_FILL_WIREFRAME;
-	GetGraphicDevice()->GetDevice()->CreateRasterizerState(&tRasterizerDesc, &m_pRasterizerState);
+	GraphicDevice::GetInstance()->GetDevice()->CreateRasterizerState(&tRasterizerDesc, &m_pRasterizerState);
 }
 
 void VIBufferCube::Update()

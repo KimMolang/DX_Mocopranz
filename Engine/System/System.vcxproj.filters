@@ -123,6 +123,18 @@
     <ClInclude Include="Code\ShaderColor.h">
       <Filter>소스 파일\04.Component\Resource\Shader</Filter>
     </ClInclude>
+    <ClInclude Include="Code\ObjectMgr.h">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\SceneMgr.h">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\SceneNull.h">
+      <Filter>소스 파일\01.Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Renderer.h">
+      <Filter>소스 파일\01.Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -178,6 +190,15 @@
     </ClCompile>
     <ClCompile Include="Code\ShaderColor.cpp">
       <Filter>소스 파일\04.Component\Resource\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\ObjectMgr.cpp">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\SceneMgr.cpp">
+      <Filter>소스 파일\00. Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Renderer.cpp">
+      <Filter>소스 파일\01.Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

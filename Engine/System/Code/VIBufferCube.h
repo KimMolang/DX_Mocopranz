@@ -6,7 +6,7 @@ BEGIN(Engine)
 
 
 class Shader;
-class VIBufferCube : public VIBuffer
+class ENGINE_DLL VIBufferCube : public VIBuffer
 {
 public:
 	explicit VIBufferCube();

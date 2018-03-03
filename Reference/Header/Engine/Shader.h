@@ -5,7 +5,7 @@
 BEGIN(Engine)
 
 
-class Shader abstract : public Resource
+class ENGINE_DLL Shader abstract : public Resource
 {
 protected:
 	explicit Shader();

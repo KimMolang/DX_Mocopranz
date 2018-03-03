@@ -5,7 +5,6 @@
 #include "Camera.h"
 
 #include "GraphicDevice.h"
-#include "Export_Function_Mgr_GraphicDevice.h"
 
 BEGIN(Engine)
 
@@ -41,9 +40,9 @@ void Scene::Render_Layer()
 			switch (i)
 			{
 			case ELayerType::LAYER_TYPE_BACK:
-				GetGraphicDevice()->Blend_Begin();
+				GraphicDevice::GetInstance()->Blend_Begin();
 				m_pLayer[i]->Render_Obj();
-				GetGraphicDevice()->Blend_End();
+				GraphicDevice::GetInstance()->Blend_End();
 				break;
 
 			case ELayerType::LAYER_TYPE_GAMELOGIC:
@@ -56,9 +55,9 @@ void Scene::Render_Layer()
 					m_pMainCamera->Invalidate_Ortho();
 				}
 
-				GetGraphicDevice()->Blend_Begin();
+				GraphicDevice::GetInstance()->Blend_Begin();
 				m_pLayer[i]->Render_Obj();
-				GetGraphicDevice()->Blend_End();
+				GraphicDevice::GetInstance()->Blend_End();
 
 				if (m_pMainCamera != nullptr) // (¼öÁ¤) No Check nullptr. replace it with null object
 				{

@@ -5,7 +5,6 @@
 #include "Engine_Struct_Buffer.h"
 
 #include "GraphicDevice.h"
-#include "Export_Function_Mgr_GraphicDevice.h"
 
 BEGIN(Engine)
 
@@ -50,7 +49,7 @@ void Camera::Init_ViewBuffer()
 	tBuffer.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	tBuffer.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	CHECK_FAILED_RETURN(
-		GetGraphicDevice()->GetDevice()->CreateBuffer(&tBuffer, NULL, &m_pViewBuffer), );
+		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&tBuffer, NULL, &m_pViewBuffer), );
 }
 
 void Camera::Init_ProjBuffer()
@@ -63,7 +62,7 @@ void Camera::Init_ProjBuffer()
 	tBuffer.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	tBuffer.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	CHECK_FAILED_RETURN(
-		GetGraphicDevice()->GetDevice()->CreateBuffer(&tBuffer, NULL, &m_pProjBuffer), );
+		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&tBuffer, NULL, &m_pProjBuffer), );
 }
 
 HRESULT Camera::Init()
@@ -92,7 +91,7 @@ void Camera::Init_Viewport() // (수정) (옵션) 해상도
 	m_tViewport.MaxDepth = 1.f;
 
 	
-	GetGraphicDevice()->GetDeviceContext()->RSSetViewports(1, &m_tViewport);
+	GraphicDevice::GetInstance()->GetDeviceContext()->RSSetViewports(1, &m_tViewport);
 
 	// (수정) (옵션) 해상도
 	D3DXMatrixOrthoLH(&m_matOrtho, (float)1280, (float)720, 0.f, 1.f);
@@ -104,13 +103,13 @@ void Camera::Invalidate_View()
 
 
 	D3D11_MAPPED_SUBRESOURCE tSubreResource;
-	GetGraphicDevice()->GetDeviceContext()->Map(m_pViewBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tSubreResource);
+	GraphicDevice::GetInstance()->GetDeviceContext()->Map(m_pViewBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tSubreResource);
 
 	Buffer_View* pMatView = (Buffer_View*)tSubreResource.pData;
 	D3DXMatrixTranspose(&pMatView->m_matView, &m_matView);
 
-	GetGraphicDevice()->GetDeviceContext()->Unmap(m_pViewBuffer, 0);
-	GetGraphicDevice()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_VIEW_MATRIX, 1, &m_pViewBuffer);
+	GraphicDevice::GetInstance()->GetDeviceContext()->Unmap(m_pViewBuffer, 0);
+	GraphicDevice::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_VIEW_MATRIX, 1, &m_pViewBuffer);
 }
 
 void Camera::Invalidate_Proj()
@@ -119,25 +118,25 @@ void Camera::Invalidate_Proj()
 
 
 	D3D11_MAPPED_SUBRESOURCE tSubreResource;
-	GetGraphicDevice()->GetDeviceContext()->Map(m_pProjBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tSubreResource);
+	GraphicDevice::GetInstance()->GetDeviceContext()->Map(m_pProjBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tSubreResource);
 
 	Buffer_Proj* pMatProj = (Buffer_Proj*)tSubreResource.pData;
 	D3DXMatrixTranspose(&pMatProj->m_matProj, &m_matProj);
 
-	GetGraphicDevice()->GetDeviceContext()->Unmap(m_pProjBuffer, 0);
-	GetGraphicDevice()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_PROJECTION_MATRIX, 1, &m_pProjBuffer);
+	GraphicDevice::GetInstance()->GetDeviceContext()->Unmap(m_pProjBuffer, 0);
+	GraphicDevice::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_PROJECTION_MATRIX, 1, &m_pProjBuffer);
 }
 
 void Camera::Invalidate_Ortho()
 {
 	D3D11_MAPPED_SUBRESOURCE tSubreResource;
-	GetGraphicDevice()->GetDeviceContext()->Map(m_pProjBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tSubreResource);
+	GraphicDevice::GetInstance()->GetDeviceContext()->Map(m_pProjBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tSubreResource);
 
 	Buffer_Proj* pMatProj = (Buffer_Proj*)tSubreResource.pData;
 	D3DXMatrixTranspose(&pMatProj->m_matProj, &m_matOrtho);
 
-	GetGraphicDevice()->GetDeviceContext()->Unmap(m_pProjBuffer, 0);
-	GetGraphicDevice()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_PROJECTION_MATRIX, 1, &m_pProjBuffer);
+	GraphicDevice::GetInstance()->GetDeviceContext()->Unmap(m_pProjBuffer, 0);
+	GraphicDevice::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_PROJECTION_MATRIX, 1, &m_pProjBuffer);
 }
 
 
