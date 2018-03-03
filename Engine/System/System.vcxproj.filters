@@ -28,9 +28,6 @@
     <Filter Include="소스 파일\04.Component\Resource">
       <UniqueIdentifier>{216126be-db2b-45fe-80bc-06c393a4ecbf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\04.Component\Resource\Buffer">
-      <UniqueIdentifier>{99b9d8d8-551b-45ff-a08b-8d2d4da74a77}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\04.Component\Resource\Shader">
       <UniqueIdentifier>{4ff332fc-1bc6-4c52-86fa-96fd0c00cc31}</UniqueIdentifier>
     </Filter>
@@ -54,6 +51,9 @@
     </Filter>
     <Filter Include="소스 파일\00. Mgr">
       <UniqueIdentifier>{ff4e339c-0a88-437d-b184-40033aadc559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Component\Resource\VIBuffer">
+      <UniqueIdentifier>{99b9d8d8-551b-45ff-a08b-8d2d4da74a77}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +114,12 @@
     <ClInclude Include="Code\ResourceMgr.h">
       <Filter>소스 파일\00. Mgr</Filter>
     </ClInclude>
+    <ClInclude Include="Code\VIBuffer.h">
+      <Filter>소스 파일\04.Component\Resource\VIBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\VIBufferCube.h">
+      <Filter>소스 파일\04.Component\Resource\VIBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -160,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="Code\ResourceMgr.cpp">
       <Filter>소스 파일\00. Mgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\VIBuffer.cpp">
+      <Filter>소스 파일\04.Component\Resource\VIBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\VIBufferCube.cpp">
+      <Filter>소스 파일\04.Component\Resource\VIBuffer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

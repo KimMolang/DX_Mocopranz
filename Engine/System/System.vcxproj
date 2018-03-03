@@ -188,6 +188,8 @@
     <ClInclude Include="Code\Shader.h" />
     <ClInclude Include="Code\Texture.h" />
     <ClInclude Include="Code\Timer.h" />
+    <ClInclude Include="Code\VIBuffer.h" />
+    <ClInclude Include="Code\VIBufferCube.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -206,6 +208,8 @@
     <ClCompile Include="Code\Shader.cpp" />
     <ClCompile Include="Code\Texture.cpp" />
     <ClCompile Include="Code\Timer.cpp" />
+    <ClCompile Include="Code\VIBuffer.cpp" />
+    <ClCompile Include="Code\VIBufferCube.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
