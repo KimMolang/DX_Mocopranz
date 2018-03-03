@@ -186,6 +186,7 @@
     <ClInclude Include="Code\ResourceMgr.h" />
     <ClInclude Include="Code\Scene.h" />
     <ClInclude Include="Code\Shader.h" />
+    <ClInclude Include="Code\ShaderColor.h" />
     <ClInclude Include="Code\Texture.h" />
     <ClInclude Include="Code\Timer.h" />
     <ClInclude Include="Code\VIBuffer.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="Code\ResourceMgr.cpp" />
     <ClCompile Include="Code\Scene.cpp" />
     <ClCompile Include="Code\Shader.cpp" />
+    <ClCompile Include="Code\ShaderColor.cpp" />
     <ClCompile Include="Code\Texture.cpp" />
     <ClCompile Include="Code\Timer.cpp" />
     <ClCompile Include="Code\VIBuffer.cpp" />

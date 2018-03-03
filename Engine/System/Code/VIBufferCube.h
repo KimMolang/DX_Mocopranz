@@ -5,12 +5,11 @@
 BEGIN(Engine)
 
 
-//class CColorShader;
+class Shader;
 class VIBufferCube : public VIBuffer
 {
-protected:
-	explicit VIBufferCube();
 public:
+	explicit VIBufferCube();
 	virtual ~VIBufferCube();
 
 
@@ -31,7 +30,7 @@ private:
 
 
 private:
-	//CColorShader * m_pColorShader;
+	Shader*			m_pShader;
 };
 
 

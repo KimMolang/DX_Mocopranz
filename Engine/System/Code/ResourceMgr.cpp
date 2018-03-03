@@ -1,12 +1,12 @@
 #include "stdafx.h"
 #include "ResourceMgr.h"
 
-//#include "ColorShader.h"
+#include "ShaderColor.h"
 //#include "TextureShader.h"
 //#include "SkyBoxShader.h"
 //#include "AniShader.h"
 //
-//#include "CubeBuffer.h"
+#include "VIBufferCube.h"
 //#include "PlanBuffer.h"
 //#include "SkyBoxBuffer.h"
 //#include "UIBuffer.h"
@@ -65,63 +65,65 @@ Resource* ResourceMgr::CloneResource(const EResourceAttribute _eResourceAtrri,
 	return iter->second->Clone();
 }
 
-HRESULT ResourceMgr::Add_Shader(const EResourceAttribute _eResourceAtrri,
-	const EShaderType _eShaderType,
-	const std::wstring& _wstrKey)
+HRESULT ResourceMgr::Add_Shader
+(
+	const EResourceAttribute _eResourceAtrri
+	, const EShaderType _eShaderType
+	, const std::wstring& _wstrKey
+)
 {
-	// (¼öÁ¤)
-	//std::map<std::wstring, Resource*>::iterator iter
-	//	= m_mapResource[_eResourceAtrri][RESOURCE_TYPE_SHADER].find(_wstrKey);
+	std::map<std::wstring, Resource*>::iterator iter
+		= m_mapResource[_eResourceAtrri][RESOURCE_TYPE_SHADER].find(_wstrKey);
 
-	//if (iter != m_mapResource[_eResourceAtrri][RESOURCE_TYPE_SHADER].end())
-	//	return S_OK;
+	if (iter != m_mapResource[_eResourceAtrri][RESOURCE_TYPE_SHADER].end())
+		return S_OK;
 
 
-	//Resource*		pResource = NULL;
+	Resource*		pResource = NULL;
 
-	//switch (_eShaderType)
-	//{
-	//case SHADER_TYPE_COLOR:	pResource = CColorShader::Create(_pDevice);		break;
+	switch (_eShaderType)
+	{
+	case SHADER_TYPE_COLOR:		pResource = new ShaderColor();		break;
 	//case SHADER_TYPE_TEXTURE:	pResource = TextureShader::Create(_pDevice);	break;
 	//case SHADER_TYPE_SKYBOX:	pResource = CSkyBoxShader::Create(_pDevice);	break;
 	//case SHADER_TYPE_ANI:		pResource = CAniShader::Create(_pDevice);	break;
-	//default:
-	//	return E_FAIL;
-	//}
+	default:
+		return E_FAIL;
+	}
 
-	//CHECK_NULLPTR_RETURN(pResource, E_FAIL);
+	CHECK_NULLPTR_RETURN(pResource, E_FAIL);
 
-	//m_mapResource[_eResourceAtrri][RESOURCE_TYPE_SHADER].insert(make_pair(_wstrKey, pResource));
+	m_mapResource[_eResourceAtrri][RESOURCE_TYPE_SHADER].insert(make_pair(_wstrKey, pResource));
 	return S_OK;
 }
 
 HRESULT ResourceMgr::Add_Buffer(const EResourceAttribute _eResourceAtrri,
-	const EBufferType _eBufferType,
+	const EVIBufferType _eBufferType,
 	const std::wstring& _wstrKey)
 {
-	//std::map<std::wstring, Resource*>::iterator iter
-	//	= m_mapResource[_eResourceAtrri][RESOURCE_TYPE_BUFFER].find(_wstrKey);
+	std::map<std::wstring, Resource*>::iterator iter
+		= m_mapResource[_eResourceAtrri][RESOURCE_TYPE_BUFFER].find(_wstrKey);
 
-	//if (iter != m_mapResource[_eResourceAtrri][RESOURCE_TYPE_BUFFER].end())
-	//	return S_OK;
+	if (iter != m_mapResource[_eResourceAtrri][RESOURCE_TYPE_BUFFER].end())
+		return S_OK;
 
 
-	//Resource*		pResource = NULL;
+	Resource*		pResource = NULL;
 
-	//switch (_eBufferType)
-	//{
-	//case BUFFER_TYPE_CUBE:	pResource = CCubeBuffer::Create(_pDevice);		break;
-	//case BUFFER_TYPE_PLAN: pResource = CPlanBuffer::Create(_pDevice);		break;
-	//case BUFFER_TYPE_SKYBOX: pResource = CSkyBoxBuffer::Create(_pDevice);	break;
-	//case BUFFER_TYPE_UI: pResource = CUIBuffer::Create(_pDevice);			break;
+	switch (_eBufferType)
+	{
+	case VIBUFFER_TYPE_CUBE:	pResource = new VIBufferCube();		break;
+	//case VIBUFFER_TYPE_PLAN: pResource = CPlanBuffer::Create(_pDevice);		break;
+	//case VIBUFFER_TYPE_SKYBOX: pResource = CSkyBoxBuffer::Create(_pDevice);	break;
+	//case VIBUFFER_TYPE_UI: pResource = CUIBuffer::Create(_pDevice);			break;
 
-	//default:
-	//	return E_FAIL;
-	//}
+	default:
+		return E_FAIL;
+	}
 
-	//CHECK_NULLPTR_RETURN(pResource, E_FAIL);
+	CHECK_NULLPTR_RETURN(pResource, E_FAIL);
 
-	//m_mapResource[_eResourceAtrri][RESOURCE_TYPE_BUFFER].insert(make_pair(_wstrKey, pResource));
+	m_mapResource[_eResourceAtrri][RESOURCE_TYPE_BUFFER].insert(make_pair(_wstrKey, pResource));
 	return S_OK;
 }
 

@@ -5,13 +5,13 @@
 #include "Export_Function_Mgr_GraphicDevice.h"
 
 //#include "ResourceMgr.h"
-//#include "ColorShader.h"
+#include "Shader.h"
 
 BEGIN(Engine)
 
 
 VIBufferCube::VIBufferCube()
-//	: m_pColorShader(nullptr)
+	: m_pShader(nullptr)
 {
 
 }
@@ -35,7 +35,9 @@ HRESULT VIBufferCube::Init()
 	Init_Vtx();
 	Init_Idx();
 	Init_ColorShader();
+
 	CreateRasterizerState();
+
 
 	return S_OK;
 }
@@ -133,7 +135,7 @@ void VIBufferCube::Init_ColorShader()
 {
 	//m_pColorShader = dynamic_cast<CColorShader*>(CResourceMgr::GetInstance()->CloneResource(
 	//	CResourceMgr::RESOURCE_ATTRI_STATIC, CResourceMgr::RESOURCE_TYPE_SHADER, L"Shader_Color"));
-	//nullptr_CHECK(m_pColorShader);
+	CHECK_NULLPTR(m_pShader);
 }
 
 void VIBufferCube::CreateRasterizerState()
@@ -152,7 +154,7 @@ void VIBufferCube::Update()
 
 void VIBufferCube::Render()
 {
-	//m_pColorShader->Render();
+	m_pShader->Render();
 	VIBuffer::Render();
 }
 
@@ -162,7 +164,7 @@ void VIBufferCube::Release()
 	{
 		::Safe_Release(m_pVtxBuffer);
 		::Safe_Release(m_pIdxBuffer);
-		//::Safe_Delete(m_pColorShader);
+		::Safe_Delete(m_pShader);
 		Resource::Release_RefCnt();
 	}
 	else --(*m_pRefCnt);

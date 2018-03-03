@@ -48,12 +48,12 @@ public:
 		SHADER_TYPE_SKYBOX,
 		SHADER_TYPE_ANI
 	};
-	enum EBufferType
+	enum EVIBufferType
 	{
-		BUFFER_TYPE_CUBE,
-		BUFFER_TYPE_PLAN,
-		BUFFER_TYPE_SKYBOX,
-		BUFFER_TYPE_UI
+		VIBUFFER_TYPE_CUBE,
+		VIBUFFER_TYPE_PLAN,
+		VIBUFFER_TYPE_SKYBOX,
+		VIBUFFER_TYPE_UI
 	};
 
 	enum EModelType { MODEL_TYPE_DYNAMIC, MODEL_TYPE_STATIC };
@@ -68,7 +68,7 @@ public:
 	HRESULT			Add_Shader(const EResourceAttribute _eResourceAtrri,
 		const EShaderType _eEShaderType, const std::wstring& _wstrKey);
 	HRESULT			Add_Buffer(const EResourceAttribute _eResourceAtrri,
-		const EBufferType _eEBufferType, const std::wstring& _wstrKey);
+		const EVIBufferType _eEBufferType, const std::wstring& _wstrKey);
 	HRESULT			Add_Texture(const EResourceAttribute _eResourceAtrri,
 		const Texture::ETextureType& _eTextureType, const std::wstring& _wstrKey, const std::wstring& _wstrPath);
 	HRESULT			Add_Model(EResourceAttribute _eResourceAtrri,

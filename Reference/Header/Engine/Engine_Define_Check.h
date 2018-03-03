@@ -24,7 +24,7 @@
 { if( ((HRESULT)(_hr)) < 0 ) { /*__asm{ int 3 };*/ return _return; }}
 
 #define CHECK_FAILED_MSG( _hr, _message )	\
-{ if( ((HRESULT)(_hr)) < 0 )  { MessageBox(nullptr, _message, L"System Message", MB_OK); /*__asm{ int 3 };*/ return; }}
+{ if( ((HRESULT)(_hr)) < 0 )  { MessageBox(nullptr, _message, L"System Message", MB_OK); /*__asm{ int 3 };*/ return E_FAIL; }}
 
 #define CHECK_FAILED_MSG_RETURN( _hr, _message, _return )	\
 { if( ((HRESULT)(_hr)) < 0 )  { MessageBox(nullptr, _message, L"System Message", MB_OK); /*__asm{ int 3 };*/ return _return; }}

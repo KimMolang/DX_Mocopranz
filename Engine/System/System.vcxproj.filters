@@ -120,6 +120,9 @@
     <ClInclude Include="Code\VIBufferCube.h">
       <Filter>소스 파일\04.Component\Resource\VIBuffer</Filter>
     </ClInclude>
+    <ClInclude Include="Code\ShaderColor.h">
+      <Filter>소스 파일\04.Component\Resource\Shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="Code\VIBufferCube.cpp">
       <Filter>소스 파일\04.Component\Resource\VIBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\ShaderColor.cpp">
+      <Filter>소스 파일\04.Component\Resource\Shader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
