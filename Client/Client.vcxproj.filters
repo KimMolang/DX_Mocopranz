@@ -10,6 +10,12 @@
     <ClCompile Include="Code\Basic\stdafx.cpp">
       <Filter>Source Files\99. Default</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Scene\SceneTown.cpp">
+      <Filter>Source Files\02. Scene\Town</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Mgr\SceneSetter.cpp">
+      <Filter>Source Files\00. Mgr\SceneSetter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Client\Code\Basic\Resource.h">
@@ -29,6 +35,12 @@
     </ClInclude>
     <ClInclude Include="Code\Header\stdafx.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Scene\SceneTown.h">
+      <Filter>Source Files\02. Scene\Town</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Mgr\SceneSetter.h">
+      <Filter>Source Files\00. Mgr\SceneSetter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +77,6 @@
     <Filter Include="Source Files\99. Default">
       <UniqueIdentifier>{77197ccb-5e5c-4430-af8a-47e41d3cb025}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\04. Obj\Camera">
-      <UniqueIdentifier>{810c8f4d-dcfe-49d0-9665-235462adc2c1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\05. Component\01%29 Resource">
       <UniqueIdentifier>{7be444a9-1b91-46cc-8c0f-1bf9a5dea4fc}</UniqueIdentifier>
     </Filter>
@@ -95,23 +104,35 @@
     <Filter Include="Source Files\05. Component\01%29 Resource\Shader\SkyBox">
       <UniqueIdentifier>{16f262c6-fbab-4dec-b64f-702ae181256c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\04. Obj\Camera\Dynamic">
-      <UniqueIdentifier>{cc863c83-b10a-40a7-b1cf-d31195667b19}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\05. Component\01%29 Resource\Font">
       <UniqueIdentifier>{a844d946-53af-4885-be1e-e95c16084a68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\04. Obj\Background">
-      <UniqueIdentifier>{cc5071e3-2d1a-4c13-b4a0-0e4c325e9b52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\04. Obj\Background\SkyBox">
-      <UniqueIdentifier>{cdc45656-7e87-4d0d-9e51-b2a867f56d16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\00. Mgr\LoadMgr">
-      <UniqueIdentifier>{8e38ca71-2aac-4970-ac82-ac0c3f95e9b8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files\Fx">
       <UniqueIdentifier>{14dd5978-40f2-4e42-bd5f-5d6e585b072c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\Back">
+      <UniqueIdentifier>{cc5071e3-2d1a-4c13-b4a0-0e4c325e9b52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\Back\SkyBox">
+      <UniqueIdentifier>{cdc45656-7e87-4d0d-9e51-b2a867f56d16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\GameLogic">
+      <UniqueIdentifier>{383f1ffa-2f04-4c46-b124-865585ac657b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\UI">
+      <UniqueIdentifier>{19d2d3f4-7da5-49fc-912e-7429f26290bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\GameLogic\Trigger">
+      <UniqueIdentifier>{80cda272-c5f8-441b-a59a-7e567ab30a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\GameLogic\Player">
+      <UniqueIdentifier>{af7d8fd9-8543-4628-a1f4-8adde58367e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\02. Scene\Town">
+      <UniqueIdentifier>{f3876b2d-4e6a-4a5a-a408-b58d90e0dff6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\SceneSetter">
+      <UniqueIdentifier>{8e38ca71-2aac-4970-ac82-ac0c3f95e9b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

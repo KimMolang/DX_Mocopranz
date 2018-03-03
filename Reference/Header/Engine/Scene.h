@@ -28,7 +28,7 @@ public:
 	virtual void		Render()		PURE;
 	virtual void		Release()		PURE;
 
-public:
+private:
 	void Update_Layer();
 	void Render_Layer();
 private:

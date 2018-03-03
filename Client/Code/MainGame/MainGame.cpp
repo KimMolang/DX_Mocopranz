@@ -9,6 +9,8 @@
 #include "SceneMgr.h"
 #include "Export_Function_Mgr.h"
 
+#include "../Mgr/SceneSetter.h"
+
 extern HINSTANCE	g_hInst;
 extern HWND			g_hWnd;
 
@@ -37,6 +39,9 @@ HRESULT MainGame::Init()
 	m_pTimer->Init();
 	m_pKeyChecker->Init(g_hInst, g_hWnd);
 	m_pSceneMgr->Init();
+
+	// Set First Scene
+	SceneSetter::GetInstance()->SetScene(SceneSetter::ESceneID::SCENE_ID_TOWN);
 
 
 	return S_OK;

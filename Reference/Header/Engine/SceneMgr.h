@@ -1,11 +1,5 @@
 #pragma once
 
-//#include "Loading.h"
-//#include "Title.h"
-//#include "Lobby.h"
-//#include "Room.h"
-//#include "InMap.h"
-
 BEGIN(Engine)
 
 
@@ -19,20 +13,7 @@ private:
 	SceneMgr();
 	~SceneMgr();
 
-public:
-	//enum ESceneID
-	//{
-	//	SCENE_ID_NONE,
-
-	//	SCENE_ID_TITLE,
-	//	//SCENE_ID_LOBBY,
-	//	//SCENE_ID_ROOM,
-	//	//SCENE_ID_INMAP
-	//};
-	// (수정) 씬은 라이브러리에서 안 만든다 명지야!
-
 private:
-	//ESceneID		m_eCurScene;
 	Scene*			m_pScene;
 	//bool			m_bSceneLoadingEnd;
 	// (수정) 오버워치처럼 중요한 것만 먼저 로딩하고 보여주고

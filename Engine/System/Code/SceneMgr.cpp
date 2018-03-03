@@ -6,18 +6,12 @@
 #include "ResourceMgr.h"
 
 #include "SceneNull.h"
-//#include "Loading.h"
-//#include "Title.h"
-//#include "Lobby.h"
-//#include "Room.h"
-//#include "InMap.h"
 
 BEGIN(Engine)
 IMPLEMENT_SINGLETON(SceneMgr)
 
 
 SceneMgr::SceneMgr()
-	//: m_eCurScene(SCENE_ID_NONE)
 	//, m_bSceneLoadingEnd(false)
 
 	: m_pRenderer(nullptr)
@@ -37,6 +31,7 @@ HRESULT SceneMgr::SetScene(Scene* _pScene)
 		::Safe_Delete(m_pScene);
 
 	m_pScene = (_pScene == nullptr) ? new SceneNull() : _pScene;
+	m_pScene->Init();
 
 
 	return S_OK;
@@ -86,6 +81,7 @@ HRESULT SceneMgr::SetScene(Scene* _pScene)
 HRESULT SceneMgr::Init()
 {
 	m_pRenderer = new Renderer();
+	m_pRenderer->Init();
 
 	return S_OK;
 }

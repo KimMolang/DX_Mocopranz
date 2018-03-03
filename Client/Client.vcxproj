@@ -180,6 +180,8 @@
     <ClInclude Include="Code\Header\stdafx.h" />
     <ClInclude Include="Code\Header\Value_Common.h" />
     <ClInclude Include="Code\MainGame\MainGame.h" />
+    <ClInclude Include="Code\Mgr\SceneSetter.h" />
+    <ClInclude Include="Code\Scene\SceneTown.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Basic\Client.cpp" />
@@ -190,6 +192,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Code\MainGame\MainGame.cpp" />
+    <ClCompile Include="Code\Mgr\SceneSetter.cpp" />
+    <ClCompile Include="Code\Scene\SceneTown.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Client\Code\Basic\Client.ico" />

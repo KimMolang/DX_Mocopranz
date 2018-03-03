@@ -22,6 +22,26 @@ Scene::~Scene()
 	Release_Layer();
 }
 
+HRESULT Scene::Init()
+{
+	return S_OK;
+}
+
+void Scene::Update()
+{
+	Update_Layer();
+}
+
+void Scene::Render()
+{
+	Render_Layer();
+}
+
+void Scene::Release()
+{
+
+}
+
 void Scene::Update_Layer()
 {
 	for (int i = 0; i < ELayerType::LAYER_TYPE_MAX; ++i)
