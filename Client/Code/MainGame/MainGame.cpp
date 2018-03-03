@@ -4,7 +4,13 @@
 #include "GraphicDevice.h"
 #include "Export_Function_Mgr_GraphicDevice.h"
 
-extern HWND g_hWnd;
+#include "Timer.h"
+#include "KeyChecker.h"
+#include "SceneMgr.h"
+#include "Export_Function_Mgr.h"
+
+extern HINSTANCE	g_hInst;
+extern HWND			g_hWnd;
 
 
 MainGame::MainGame()
@@ -19,28 +25,40 @@ MainGame::~MainGame()
 
 HRESULT MainGame::Init()
 {
+	// Init a GraphicDevice
 	//m_pGraphicDevice = std::make_shared<Engine::GraphicDevice>();
 	m_pGraphicDevice = Engine::GetGraphicDevice();
 	m_pGraphicDevice->Init( g_hWnd, CLIENT_WINDOW_SIZE_X, CLIENT_WINDOW_SIZE_Y );
 
-	// (수정)
-	// 매니저는 싱글톤으로 사용 x
-	// 매니저를 담는 싱글톤 하나를 생성하고
-	// 그 안에 하나씩 할당 받도록
+	// Init a Timer, KeyChecker, SceneMgr
+	m_pTimer		= Engine::GetTimer();
+	m_pKeyChecker	= Engine::GetKeyChecker();
+	m_pSceneMgr		= Engine::GetSceneMgr();
+	m_pTimer->Init();
+	m_pKeyChecker->Init(g_hInst, g_hWnd);
+	m_pSceneMgr->Init();
+
+
 	return S_OK;
 }
 
 void MainGame::Update()
 {
-	
+	m_pTimer->Update();
+	m_pKeyChecker->UpdateInputState();
+	m_pSceneMgr->Update();
 }
 
 void MainGame::Render()
 {
-	
+	m_pSceneMgr->Render();
 }
 
 void MainGame::Release()
 {
-	::Safe_Release(m_pGraphicDevice);
+	m_pSceneMgr->DestroyInstance();
+	m_pKeyChecker->DestroyInstance();
+	m_pTimer->DestroyInstance();
+
+	m_pGraphicDevice->DestroyInstance();
 }

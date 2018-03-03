@@ -5,6 +5,7 @@
 BEGIN(Engine)
 
 class GraphicDevice;
+class Scene;
 class Renderer
 {
 public:
@@ -12,11 +13,8 @@ public:
 	~Renderer(void);
 
 public:
-	void SetScene(Scene* _pScene) { m_pScene = _pScene; }
-
-public:
 	HRESULT	Init();
-	void	Render();
+	void	Render(Scene* _pScene);
 
 
 public:
@@ -25,7 +23,6 @@ public:
 
 private:
 	GraphicDevice *		m_pGraphicDevice;
-	Scene*				m_pScene;
 };
 
 

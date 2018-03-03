@@ -55,6 +55,9 @@
     <Filter Include="소스 파일\04.Component\Resource\VIBuffer">
       <UniqueIdentifier>{99b9d8d8-551b-45ff-a08b-8d2d4da74a77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01.Renderer">
+      <UniqueIdentifier>{02738afc-b64e-4c7b-84b7-d80b89a782f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -133,7 +136,7 @@
       <Filter>소스 파일\01.Scene</Filter>
     </ClInclude>
     <ClInclude Include="Code\Renderer.h">
-      <Filter>소스 파일\01.Scene</Filter>
+      <Filter>소스 파일\01.Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -198,7 +201,7 @@
       <Filter>소스 파일\00. Mgr</Filter>
     </ClCompile>
     <ClCompile Include="Code\Renderer.cpp">
-      <Filter>소스 파일\01.Scene</Filter>
+      <Filter>소스 파일\01.Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

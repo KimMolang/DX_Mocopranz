@@ -15,7 +15,6 @@ DWORD Renderer::m_dwFPSCnt = 0;
 
 Renderer::Renderer()
 	: m_pGraphicDevice( GraphicDevice::GetInstance() )
-	, m_pScene(nullptr)
 {
 
 }
@@ -30,7 +29,7 @@ HRESULT Renderer::Init()
 	return S_OK;
 }
 
-void Renderer::Render()
+void Renderer::Render(Scene* _pScene)
 {
 	m_fTimer += Timer::GetInstance()->GetTime();
 	++m_dwFPSCnt;
@@ -44,7 +43,7 @@ void Renderer::Render()
 
 
 	m_pGraphicDevice->Render_Begin();
-	m_pScene->Render();
+	_pScene->Render();
 	m_pGraphicDevice->Render_End();
 }
 

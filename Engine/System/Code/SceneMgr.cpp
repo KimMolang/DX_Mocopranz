@@ -98,7 +98,7 @@ void SceneMgr::Update()
 void SceneMgr::Render()
 {
 	if (m_pRenderer != nullptr)
-		m_pRenderer->Render();
+		m_pRenderer->Render(m_pScene);
 }
 
 void SceneMgr::Release()

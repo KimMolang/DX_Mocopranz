@@ -68,12 +68,6 @@
     <Filter Include="Source Files\04. Obj\Camera">
       <UniqueIdentifier>{810c8f4d-dcfe-49d0-9665-235462adc2c1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\02. Scene\Loading">
-      <UniqueIdentifier>{6557a2ae-081d-445d-aae1-75046421f7c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\02. Scene\InMap">
-      <UniqueIdentifier>{eee49182-72ce-4a46-ab29-81c9f7eae471}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\05. Component\01%29 Resource">
       <UniqueIdentifier>{7be444a9-1b91-46cc-8c0f-1bf9a5dea4fc}</UniqueIdentifier>
     </Filter>
