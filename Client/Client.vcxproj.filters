@@ -16,6 +16,9 @@
     <ClCompile Include="Code\Mgr\SceneSetter.cpp">
       <Filter>Source Files\00. Mgr\SceneSetter</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Obj\TestObject.cpp">
+      <Filter>Source Files\04. Obj\GameLogic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Client\Code\Basic\Resource.h">
@@ -41,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="Code\Mgr\SceneSetter.h">
       <Filter>Source Files\00. Mgr\SceneSetter</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Obj\TestObject.h">
+      <Filter>Source Files\04. Obj\GameLogic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +139,9 @@
     </Filter>
     <Filter Include="Source Files\00. Mgr\SceneSetter">
       <UniqueIdentifier>{8e38ca71-2aac-4970-ac82-ac0c3f95e9b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\04. Obj\Back\Decoration">
+      <UniqueIdentifier>{47acb0b7-c96b-49f8-b061-375d990cc62b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

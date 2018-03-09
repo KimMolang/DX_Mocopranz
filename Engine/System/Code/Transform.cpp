@@ -53,6 +53,9 @@ void Transform::SetWorldMatrix
 	m_vScale = _vScale;
 
 	Update_WorldMatrix();
+
+	D3DXVec3TransformNormal(&m_vDir, &DEFAULT_VALUE_LOOK_VECTOR, &m_matWorld);
+	D3DXVec3Normalize(&m_vDir, &m_vDir);
 }
 
 void Transform::Update_WorldMatrix()

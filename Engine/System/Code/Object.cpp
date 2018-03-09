@@ -17,6 +17,19 @@ Object::~Object()
 	Release_Component();
 }
 
+void Object::SetWorldMatrix
+(
+	const D3DXVECTOR3& _vPos /*= D3DXVECTOR3(0.0f, 0.0f, 0.0f)*/
+	, const D3DXVECTOR3& _vRadian /*= D3DXVECTOR3(0.0f, 0.0f, 0.0f)*/
+	, const D3DXVECTOR3& _vScale /*= D3DXVECTOR3(1.0f, 1.0f, 1.0f)*/
+)
+{
+	if (m_pTransform == nullptr)
+		return;
+
+	m_pTransform->SetWorldMatrix(_vPos, _vRadian, _vScale);
+}
+
 const Component* Object::GetComponent(const std::wstring& _wstrComponentKey)
 {
 	MAPCOMPONENT::iterator iter = m_mapComponent.find(_wstrComponentKey);
@@ -42,6 +55,15 @@ void Object::Update_Component()
 
 	for (; iter != iter_end; ++iter)
 		iter->second->Update();
+}
+
+void Object::Render_Component()
+{
+	MAPCOMPONENT::iterator iter = m_mapComponent.begin();
+	MAPCOMPONENT::iterator iter_end = m_mapComponent.end();
+
+	for (; iter != iter_end; ++iter)
+		iter->second->Render();
 }
 
 void Object::Release_Component()

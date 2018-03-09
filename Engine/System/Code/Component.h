@@ -11,7 +11,8 @@ public:
 	virtual ~Component(void) PURE;
 
 public:
-	virtual void Update(void) {};
+	virtual void Update(void) PURE;
+	virtual void Render(void) PURE;
 };
 
 

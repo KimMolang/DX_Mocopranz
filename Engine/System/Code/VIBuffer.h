@@ -99,6 +99,7 @@ public :
 	);
 
 public:
+	virtual void	Update() PURE;
 	virtual void	Render();
 protected:
 	virtual void	CreateRasterizerState();

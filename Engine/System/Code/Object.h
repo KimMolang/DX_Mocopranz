@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Component.h"
+#include "Transform.h"
 
 BEGIN(Engine)
 
@@ -28,6 +29,14 @@ public:
 protected:
 	void				SetObjState(const EState _eState) { m_eObjState = _eState; }
 
+public :
+	inline void SetWorldMatrix
+	(
+		const D3DXVECTOR3& _vPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f)
+		, const D3DXVECTOR3& _vRadian = D3DXVECTOR3(0.0f, 0.0f, 0.0f)
+		, const D3DXVECTOR3& _vScale = D3DXVECTOR3(1.0f, 1.0f, 1.0f)
+	);
+
 protected:
 	virtual HRESULT			Init()			PURE;
 	virtual Object::EState	Update()		PURE;
@@ -39,6 +48,7 @@ private:
 	void	AddDefaultComponent();
 protected:
 	void	Update_Component();
+	void	Render_Component();
 protected:
 	void	Release_Component();
 

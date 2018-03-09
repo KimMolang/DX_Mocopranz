@@ -15,6 +15,7 @@ public:
 public:
 	Resource*		Clone();
 	virtual void	Update()	PURE;
+	virtual void	Render()	PURE;
 protected:
 	virtual void	Release();
 
