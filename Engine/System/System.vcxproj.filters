@@ -138,6 +138,9 @@
     <ClInclude Include="Code\Renderer.h">
       <Filter>소스 파일\01.Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Transform.h">
+      <Filter>소스 파일\04.Component\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -202,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="Code\Renderer.cpp">
       <Filter>소스 파일\01.Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Transform.cpp">
+      <Filter>소스 파일\04.Component\Transform</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
