@@ -15,7 +15,7 @@ Texture::Texture()
 
 Texture::~Texture()
 {
-	Release();
+	
 }
 
 HRESULT Texture::Load(std::wstring _wstrPath, const ETextureType& _eTextureType)
@@ -100,13 +100,13 @@ void Texture::Render()
 
 void Texture::Release()
 {
-	if ((*m_pRefCnt) == 0)
+	Resource::Release();
+
+	if (m_pRefCnt == nullptr)
 	{
 		::Safe_Release(m_pTextures);
 		::Safe_Release(m_pSamplerStates);
-		Resource::Release_RefCnt();
 	}
-	else --(*m_pRefCnt);
 }
 
 

@@ -2,6 +2,9 @@
 
 #include "Resource.h"
 
+#include "Shader.h"
+#include "ResourceMgr.h"
+
 BEGIN(Engine)
 
 
@@ -88,10 +91,20 @@ public:
 	virtual ~VIBuffer()		PURE;
 
 
+public :
+	void	SetShader
+	(
+		const ResourceMgr::EResourceAttribute& _eResourceAtrri
+		, const std::wstring& _wstrKey
+	);
+
 public:
 	virtual void	Render();
 protected:
 	virtual void	CreateRasterizerState();
+
+protected:
+	virtual void	Release();
 
 
 protected:
@@ -109,6 +122,10 @@ protected: // Index
 	UINT				m_nIdxNum;
 	UINT				m_nIdxStart;
 	UINT				m_nIdxPlus;
+
+
+protected:
+	Shader*			m_pShader;
 };
 
 

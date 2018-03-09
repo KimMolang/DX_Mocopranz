@@ -5,7 +5,6 @@
 BEGIN(Engine)
 
 
-class Shader;
 class ENGINE_DLL VIBufferCube : public VIBuffer
 {
 public:
@@ -17,20 +16,14 @@ public:
 	virtual HRESULT			Init();
 	virtual void			Update();
 	virtual void			Render();
-private:
-	virtual void			Release();
 
 
 private:
 	void			Init_Vtx();
 	void			Init_Idx();
-	void			Init_ColorShader();
+	//void			Init_ColorShader();
 
 	virtual void	CreateRasterizerState();
-
-
-private:
-	Shader*			m_pShader;
 };
 
 

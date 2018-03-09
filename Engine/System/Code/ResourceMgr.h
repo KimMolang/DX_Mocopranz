@@ -60,22 +60,27 @@ public:
 
 
 public:
-	Resource*		FindResource(const EResourceAttribute _eResourceAtrri,
-		const EResourceType _eEResourceType, const std::wstring& _wstrKey);
-	Resource*		CloneResource(const EResourceAttribute _eResourceAtrri,
-		const EResourceType _eEResourceType, const std::wstring& _wstrKey);
+	HRESULT		AddResource
+	(
+		const EResourceAttribute& _eResourceAtrri
+		, const EResourceType& _eEResourceType
+		, const std::wstring& _wstrKey
+		, Resource* _pResource
+	);
 
-	HRESULT			Add_Shader(const EResourceAttribute _eResourceAtrri,
-		const EShaderType _eEShaderType, const std::wstring& _wstrKey);
-	HRESULT			Add_Buffer(const EResourceAttribute _eResourceAtrri,
-		const EVIBufferType _eEBufferType, const std::wstring& _wstrKey);
-	HRESULT			Add_Texture(const EResourceAttribute _eResourceAtrri,
-		const Texture::ETextureType& _eTextureType, const std::wstring& _wstrKey, const std::wstring& _wstrPath);
-	HRESULT			Add_Model(EResourceAttribute _eResourceAtrri,
-		const EModelType _eModelType, const std::wstring& _wstrKey,
-		const char* _pPath, std::vector<std::string> _vecAniName = std::vector<std::string>());
-	HRESULT			Add_Font(EResourceAttribute _eResourceAtrri,
-		const std::wstring& _wstrKey, const std::wstring& _wstrPath);
+	Resource*	FindResource
+	(
+		const EResourceAttribute& _eResourceAtrri
+		, const EResourceType& _eEResourceType
+		, const std::wstring& _wstrKey
+	);
+	Resource*	CloneResource
+	(
+		const EResourceAttribute& _eResourceAtrri
+		, const EResourceType& _eEResourceType
+		, const std::wstring& _wstrKey
+	);
+
 
 public:
 	void	Release_Dynamic();

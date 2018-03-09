@@ -12,7 +12,7 @@ Resource::Resource()
 
 Resource::~Resource()
 {
-
+	Release();
 }
 
 Resource* Resource::Clone()
@@ -20,6 +20,15 @@ Resource* Resource::Clone()
 	++(*m_pRefCnt);
 	return this;
 	//return new T(*this);
+}
+
+void Resource::Release()
+{
+	if ((*m_pRefCnt) == 0)
+	{
+		Release_RefCnt();
+	}
+	else --(*m_pRefCnt);
 }
 
 void Resource::Release_RefCnt()

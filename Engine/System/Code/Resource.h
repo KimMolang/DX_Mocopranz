@@ -15,15 +15,15 @@ public:
 public:
 	Resource*		Clone();
 	virtual void	Update()	PURE;
-private:
-	virtual void	Release()	PURE;
-
 protected:
+	virtual void	Release();
+
+private:
 	void Release_RefCnt();
 
 
 protected:
-	WORD*					m_pRefCnt;
+	WORD*			m_pRefCnt;
 };
 
 

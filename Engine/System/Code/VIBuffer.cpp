@@ -40,7 +40,22 @@ VIBuffer::VIBuffer()
 
 VIBuffer::~VIBuffer()
 {
+	
+}
 
+void VIBuffer::SetShader
+(
+	const ResourceMgr::EResourceAttribute& _eResourceAtrri
+	, const std::wstring& _wstrKey
+)
+{
+	Resource* pResourceCloned = ResourceMgr::GetInstance()->CloneResource(
+		_eResourceAtrri, ResourceMgr::EResourceType::RESOURCE_TYPE_SHADER, _wstrKey);
+
+	CHECK_NULLPTR(pResourceCloned);
+
+
+	m_pShader = dynamic_cast<Shader*>(pResourceCloned);
 }
 
 void VIBuffer::Render()
@@ -67,6 +82,17 @@ void VIBuffer::CreateRasterizerState()
 	tRasterizerDesc.CullMode = D3D11_CULL_BACK;
 	tRasterizerDesc.FillMode = D3D11_FILL_WIREFRAME;
 	GraphicDevice::GetInstance()->GetDevice()->CreateRasterizerState(&tRasterizerDesc, &m_pRasterizerState);
+}
+
+void VIBuffer::Release()
+{
+	Resource::Release();
+
+	if (m_pRefCnt == nullptr)
+	{
+		::Safe_Release(m_pVtxBuffer);
+		::Safe_Release(m_pIdxBuffer);
+	}
 }
 
 

@@ -34,14 +34,14 @@ void Shader::Render()
 
 void Shader::Release()
 {
-	if ((*m_pRefCnt) == 0)
+	Resource::Release();
+
+	if (m_pRefCnt == nullptr)
 	{
 		::Safe_Release(m_pVertexShader);
 		::Safe_Release(m_pVertexLayout);
 		::Safe_Release(m_pPixelShader);
-		Resource::Release_RefCnt();
 	}
-	else --(*m_pRefCnt);
 }
 
 

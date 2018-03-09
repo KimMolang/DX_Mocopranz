@@ -14,7 +14,7 @@ public:
 
 
 public:
-	virtual void	Render();
+	virtual void	Render() PURE;
 	void			Update() {};
 private:
 	void			Release();
