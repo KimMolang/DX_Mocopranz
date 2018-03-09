@@ -2,6 +2,7 @@
 #include "Object.h"
 
 #include "Component.h"
+#include "Transform.h"
 
 BEGIN(Engine)
 
@@ -16,23 +17,22 @@ Object::~Object()
 	Release_Component();
 }
 
-const Component* Object::GetComponent(const Component::EType& _eType)
+const Component* Object::GetComponent(const std::wstring& _wstrComponentKey)
 {
-	MAPCOMPONENT::iterator iter = m_mapComponent.find(_eType);
+	MAPCOMPONENT::iterator iter = m_mapComponent.find(_wstrComponentKey);
 
 	if (iter == m_mapComponent.end())
-		return NULL;
+		return nullptr;
 
 	return iter->second;
 }
 
 void Object::AddDefaultComponent()
 {
-	// (¼öÁ¤) Transform
 	// Transform ------------
-	//m_pPhysics = dynamic_cast<CPhysics*>(CPhysics::Create(m_pDevice));
-	//NULL_CHECK(m_pPhysics);
-	//m_mapComponent.insert(make_pair(L"Physics", m_pPhysics));
+	m_pTransform = new Transform();
+	m_mapComponent.insert(
+		std::make_pair(L"Transform", m_pTransform));
 }
 
 void Object::Update_Component()

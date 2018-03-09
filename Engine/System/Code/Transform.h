@@ -14,9 +14,7 @@ public:
 	explicit Transform();
 	virtual ~Transform();
 
-
 public:
-	void					Init();
 	virtual void			Update();
 	void					Render();
 private:

@@ -23,18 +23,10 @@ public:
 	virtual ~Object(void) PURE;
 
 public:
-	const Component* GetComponent( const Component::EType& _eType );
-	EState	GetObjState() { return m_eObjState; }
+	const Component*	GetComponent(const std::wstring& _wstrComponentKey);
+	EState				GetObjState() { return m_eObjState; }
 protected:
-	void		SetObjState(const EState _eState) { m_eObjState = _eState; }
-
-private:
-	void	AddDefaultComponent();
-
-protected:
-	void	Update_Component();
-protected:
-	void	Release_Component();
+	void				SetObjState(const EState _eState) { m_eObjState = _eState; }
 
 protected:
 	virtual HRESULT			Init()			PURE;
@@ -43,8 +35,16 @@ protected:
 	virtual void			Release()		PURE;
 
 
+private:
+	void	AddDefaultComponent();
 protected:
-	typedef std::map<Component::EType, Component*>	MAPCOMPONENT;
+	void	Update_Component();
+protected:
+	void	Release_Component();
+
+
+protected:
+	typedef std::map<std::wstring, Component*>	MAPCOMPONENT;
 	MAPCOMPONENT		m_mapComponent;
 	EState				m_eObjState;
 
