@@ -22,6 +22,8 @@ private:
 
 private:
 	std::forward_list<Object*>		m_listObject;
+
+	friend class Scene;
 };
 
 

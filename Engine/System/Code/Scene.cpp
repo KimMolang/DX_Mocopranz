@@ -5,6 +5,7 @@
 #include "Camera.h"
 
 #include "GraphicDevice.h"
+#include "ObjectMgr.h"
 
 BEGIN(Engine)
 
@@ -24,6 +25,15 @@ Scene::~Scene()
 
 HRESULT Scene::Init()
 {
+	m_pLayer[Engine::Scene::ELayerType::LAYER_TYPE_BACK]		= new Layer();
+	m_pLayer[Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC]	= new Layer();
+	m_pLayer[Engine::Scene::ELayerType::LAYER_TYPE_UI]			= new Layer();
+
+	ObjectMgr::GetInstance()->SetLayer(
+		m_pLayer[Engine::Scene::ELayerType::LAYER_TYPE_BACK],
+		m_pLayer[Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC],
+		m_pLayer[Engine::Scene::ELayerType::LAYER_TYPE_UI]);
+
 	return S_OK;
 }
 

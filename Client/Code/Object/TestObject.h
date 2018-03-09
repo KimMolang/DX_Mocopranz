@@ -3,14 +3,13 @@
 #include "Object.h"
 
 
-class TestObject abstract : public Engine::Object
+class TestObject : public Engine::Object
 {
-protected:
-	explicit TestObject();
 public:
+	explicit TestObject();
 	virtual ~TestObject();
 
-protected:
+public:
 	virtual HRESULT					Init();
 	virtual Engine::Object::EState	Update();
 	virtual void					Render();

@@ -44,7 +44,7 @@ HRESULT ResourceMgr::AddResource
 	std::map<std::wstring, Resource*>::iterator iter
 		= m_mapResource[_eResourceAtrri][_eEResourceType].find(_wstrKey);
 
-	if (iter != m_mapResource[_eResourceAtrri][RESOURCE_TYPE_SHADER].end())
+	if (iter != m_mapResource[_eResourceAtrri][_eEResourceType].end())
 		return E_FAIL;
 
 	CHECK_NULLPTR_RETURN(_pResource, E_FAIL);

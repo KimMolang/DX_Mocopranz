@@ -7,9 +7,8 @@ BEGIN(Engine)
 
 class ENGINE_DLL CameraDynamic : public Camera
 {
-protected:
-	explicit CameraDynamic();
 public:
+	explicit CameraDynamic();
 	virtual ~CameraDynamic();
 
 public:

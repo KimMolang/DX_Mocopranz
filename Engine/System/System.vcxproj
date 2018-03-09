@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -23,7 +23,7 @@
     <ProjectGuid>{E102A399-E4DE-4056-B1C4-9743AE5DC75C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>System</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -193,6 +193,7 @@
     <ClInclude Include="Code\ShaderColor.h" />
     <ClInclude Include="Code\Texture.h" />
     <ClInclude Include="Code\Timer.h" />
+    <ClInclude Include="Code\Transform.h" />
     <ClInclude Include="Code\VIBuffer.h" />
     <ClInclude Include="Code\VIBufferCube.h" />
     <ClInclude Include="stdafx.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="Code\ShaderColor.cpp" />
     <ClCompile Include="Code\Texture.cpp" />
     <ClCompile Include="Code\Timer.cpp" />
+    <ClCompile Include="Code\Transform.cpp" />
     <ClCompile Include="Code\VIBuffer.cpp" />
     <ClCompile Include="Code\VIBufferCube.cpp" />
     <ClCompile Include="stdafx.cpp">
