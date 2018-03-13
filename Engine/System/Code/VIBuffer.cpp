@@ -58,6 +58,12 @@ void VIBuffer::SetShader
 	m_pShader = dynamic_cast<Shader*>(pResourceCloned);
 }
 
+HRESULT VIBuffer::Init()
+{
+	SetShader(ResourceMgr::EResourceAttribute::RESOURCE_ATTRI_STATIC, L"Test_Shader_Color");
+	return S_OK;
+}
+
 void VIBuffer::Render()
 {
 	if (nullptr == m_pVtxBuffer)

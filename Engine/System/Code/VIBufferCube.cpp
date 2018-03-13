@@ -18,6 +18,8 @@ VIBufferCube::~VIBufferCube()
 
 HRESULT VIBufferCube::Init()
 {
+	VIBuffer::Init();
+
 	m_nVtxNum = 8;
 	m_nVtxStride = sizeof(VertexColor);
 	m_nVtxOffset = 0;
@@ -29,7 +31,6 @@ HRESULT VIBufferCube::Init()
 
 	Init_Vtx();
 	Init_Idx();
-	//Init_ColorShader();
 
 	CreateRasterizerState();
 
@@ -125,13 +126,6 @@ void VIBufferCube::Init_Idx()
 	CHECK_FAILED_RETURN(
 		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&tBufferDesc, &tData, &m_pIdxBuffer), );
 }
-
-//void VIBufferCube::Init_ColorShader()
-//{
-//	//m_pColorShader = dynamic_cast<CColorShader*>(CResourceMgr::GetInstance()->CloneResource(
-//	//	CResourceMgr::RESOURCE_ATTRI_STATIC, CResourceMgr::RESOURCE_TYPE_SHADER, L"Shader_Color"));
-//	CHECK_NULLPTR(m_pShader);
-//}
 
 void VIBufferCube::CreateRasterizerState()
 {

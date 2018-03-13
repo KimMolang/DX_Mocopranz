@@ -8,6 +8,7 @@
 #include "VIBufferCube.h"
 #include "../Object/TestObject.h"
 #include "CameraDynamic.h"
+#include "ShaderColor.h"
 
 SceneTown::SceneTown()
 {
@@ -23,11 +24,22 @@ HRESULT SceneTown::Init()
 
 
 	// for Test (수정)
+	Engine::ShaderColor* pShader = new Engine::ShaderColor();
+	pShader->Init(); // (수정) (이놈의 Init을 생성자에 넣어버릴까??)
+	Engine::GetResourceMgr()->AddResource(
+		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
+		, Engine::ResourceMgr::RESOURCE_TYPE_SHADER
+		, L"Test_Shader_Color"
+		, pShader);
+
+	Engine::VIBufferCube* pVIBufferCube = new Engine::VIBufferCube();
+	pVIBufferCube->Init(); // (수정) (이놈의 Init을 생성자에 넣어버릴까??)
 	Engine::GetResourceMgr()->AddResource(
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
 		, Engine::ResourceMgr::RESOURCE_TYPE_MODEL
 		, L"Test_Buffer_Cube"
-		, new Engine::VIBufferCube());
+		, pVIBufferCube);
+	
 
 	// TestObject
 	TestObject* pTestObject = new TestObject();

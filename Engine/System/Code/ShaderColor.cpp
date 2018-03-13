@@ -35,7 +35,7 @@ HRESULT ShaderColor::Init()
 	ID3DBlob* pBlob = NULL, *pErrorBlob = NULL;
 	ID3D11Device* pDevice = GraphicDevice::GetInstance()->GetDevice();
 
-	if (SUCCEEDED(D3DX11CompileFromFile(L"../bin/Resource/Fx/Shader_Color.fx", NULL, NULL,
+	if (SUCCEEDED(D3DX11CompileFromFile(L"./bin/Resource/Fx/Shader_Color.fx", NULL, NULL,
 		"VS", "vs_4_0", swFlag, 0, NULL, &pBlob, &pErrorBlob, NULL)))
 	{
 		pDevice->CreateVertexShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), NULL, &m_pVertexShader);
@@ -50,7 +50,7 @@ HRESULT ShaderColor::Init()
 	}
 
 	pBlob = pErrorBlob = NULL;
-	if (SUCCEEDED(D3DX11CompileFromFile(L"../bin/Resource/Fx/Shader_Color.fx", NULL, NULL,
+	if (SUCCEEDED(D3DX11CompileFromFile(L"./bin/Resource/Fx/Shader_Color.fx", NULL, NULL,
 		"PS", "ps_4_0", swFlag, 0, NULL, &pBlob, &pErrorBlob, NULL)))
 	{
 		pDevice->CreatePixelShader(pBlob->GetBufferPointer(), pBlob->GetBufferSize(), NULL, &m_pPixelShader);

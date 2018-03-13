@@ -23,7 +23,7 @@ HRESULT CameraDynamic::Init()
 {
 	Camera::Init();
 
-	m_fSpeed = 100.f;
+	m_fSpeed = 50.f;
 
 
 	return S_OK;

@@ -99,6 +99,7 @@ public :
 	);
 
 public:
+	virtual HRESULT	Init();
 	virtual void	Update() PURE;
 	virtual void	Render();
 protected:

@@ -21,7 +21,6 @@ public:
 private:
 	void			Init_Vtx();
 	void			Init_Idx();
-	//void			Init_ColorShader();
 
 	virtual void	CreateRasterizerState();
 };
