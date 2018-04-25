@@ -37,8 +37,9 @@ public :
 		, const D3DXVECTOR3& _vScale = D3DXVECTOR3(1.0f, 1.0f, 1.0f)
 	);
 
-protected:
+public :
 	virtual HRESULT			Init()			PURE;
+protected:
 	virtual Object::EState	Update()		PURE;
 	virtual void			Render()		PURE;
 	virtual void			Release()		PURE;

@@ -1,5 +1,6 @@
 #pragma once
 // **64bit 에서는 __asm 즉시 사용이 불가! http://girtowin.tistory.com/90
+// error C4235: 비표준 확장이 사용됨: 이 아키텍처에서는 '__asm' 키워드를 사용할 수 없습니다.
 
 
 // Check nullptr
@@ -38,7 +39,7 @@
 { if( _bool == true ) { MessageBox(nullptr, _message, L"System Message", MB_OK); /*__asm{ int 3 };*/ return; }}
 
 // assert
-#define ASSERT(expr, ...) if(!(expr)) __asm{ int 3 }
+//#define ASSERT(expr, ...) if(!(expr)) __asm{ int 3 }
 
 // Msg
 #define MSG_BOX( _message )	MessageBox(nullptr, _message, L"System Message", MB_OK)

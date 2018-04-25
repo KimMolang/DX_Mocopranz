@@ -19,6 +19,9 @@
     <ClCompile Include="Code\Object\TestObject.cpp">
       <Filter>Source Files\04. Object\GameLogic</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Mgr\ObjectFactory.cpp">
+      <Filter>Source Files\00. Mgr\ObjectFactory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Client\Code\Basic\Resource.h">
@@ -47,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="Code\Object\TestObject.h">
       <Filter>Source Files\04. Object\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Mgr\ObjectFactory.h">
+      <Filter>Source Files\00. Mgr\ObjectFactory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +148,9 @@
     </Filter>
     <Filter Include="Source Files\04. Object\UI">
       <UniqueIdentifier>{19d2d3f4-7da5-49fc-912e-7429f26290bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\ObjectFactory">
+      <UniqueIdentifier>{0ff391c5-22a7-4ea4-9080-f5719b4be61a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

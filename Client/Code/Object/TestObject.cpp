@@ -16,6 +16,8 @@ TestObject::~TestObject()
 
 HRESULT TestObject::Init()
 {
+	Engine::Object::Init();
+
 	// Model Buffer ---------------------
 	Engine::Resource* pResurceCloned = Engine::GetResourceMgr()->CloneResource(
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC, Engine::ResourceMgr::RESOURCE_TYPE_MODEL, L"Test_Buffer_Cube");

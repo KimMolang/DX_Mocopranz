@@ -6,9 +6,9 @@
 #include "ObjectMgr.h"
 #include "Export_Function_Mgr.h"
 #include "VIBufferCube.h"
-#include "../Object/TestObject.h"
-#include "CameraDynamic.h"
 #include "ShaderColor.h"
+
+#include "../Mgr/ObjectFactory.h"
 
 SceneTown::SceneTown()
 {
@@ -42,14 +42,14 @@ HRESULT SceneTown::Init()
 	
 
 	// TestObject
-	TestObject* pTestObject = new TestObject();
-	pTestObject->Init();
-	Engine::GetObjectMgr()->AddObj(Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC, pTestObject);
+	Engine::GetObjectMgr()->AddObj(
+		Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC
+		, ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_TEST) );
 
 	// Camera
-	Engine::CameraDynamic* pCamera = new Engine::CameraDynamic();
-	pCamera->Init();
-	Engine::GetObjectMgr()->AddObj(Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC, pCamera);
+	Engine::GetObjectMgr()->AddObj(
+		Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC
+		, ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_CAMERA_DYNAMIC));
 	
 
 	return S_OK;
