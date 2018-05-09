@@ -187,6 +187,7 @@
     <ClInclude Include="Code\Resource.h" />
     <ClInclude Include="Code\ResourceMgr.h" />
     <ClInclude Include="Code\Scene.h" />
+    <ClInclude Include="Code\SceneLoading.h" />
     <ClInclude Include="Code\SceneMgr.h" />
     <ClInclude Include="Code\SceneNull.h" />
     <ClInclude Include="Code\Shader.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="Code\Resource.cpp" />
     <ClCompile Include="Code\ResourceMgr.cpp" />
     <ClCompile Include="Code\Scene.cpp" />
+    <ClCompile Include="Code\SceneLoading.cpp" />
     <ClCompile Include="Code\SceneMgr.cpp" />
     <ClCompile Include="Code\Shader.cpp" />
     <ClCompile Include="Code\ShaderColor.cpp" />
