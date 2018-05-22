@@ -1,0 +1,5 @@
+table PlayerInfo{
+name:string;
+level:int;
+}
+root_type PlayerInfo;

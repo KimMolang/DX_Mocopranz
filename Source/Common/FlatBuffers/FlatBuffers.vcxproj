@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3C335FAA-E713-4AFD-BE60-308C286A1A00}</ProjectGuid>
+    <ProjectGuid>{1430F4C1-4F17-488D-9959-6A0B520252CB}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Protocols</RootNamespace>
+    <RootNamespace>FlatBuffers</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -69,15 +69,11 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(Platform)\$(Configuration)\</OutDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(Platform)\$(Configuration)\</OutDir>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -96,10 +92,9 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\..\Dependencies;</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>4800;4267</DisableSpecificWarnings>
       <AdditionalOptions>/Zm256 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -109,7 +104,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -133,11 +129,11 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>
       </SDLCheck>
+      <AdditionalIncludeDirectories>..\..\Dependencies;</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..\..\Dependencies;</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -146,31 +142,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="Test.pb.h" />
+    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="Test.pb.cc" />
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="Test.proto">
+    <CustomBuild Include="test.fbs">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <FileType>Document</FileType>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\Preprocessor\protocol\protoc.exe --cpp_out=. %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\Preprocessor\protocol\protoc.exe --cpp_out=. %(Identity)</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Identity) (ProtoBuf)</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Identity) (ProtoBuf)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).pb.cc;%(Filename).pb.h;%(Outputs)</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).pb.cc;%(Filename).pb.h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\Preprocessor\flatbuffers\flatc.exe --cpp %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\Preprocessor\flatbuffers\flatc.exe --cpp %(Identity)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Identity) (FlatBuffers)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Identity) (FlatBuffers)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).h;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).h;%(Outputs)</Outputs>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="test_generated.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

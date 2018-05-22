@@ -21,19 +21,10 @@
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Test.pb.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Test.pb.cc">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="Test.proto" />
   </ItemGroup>
 </Project>

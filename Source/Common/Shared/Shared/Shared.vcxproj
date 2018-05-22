@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3C335FAA-E713-4AFD-BE60-308C286A1A00}</ProjectGuid>
+    <ProjectGuid>{90268DCE-E263-4EC0-B388-1B39940DB455}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Protocols</RootNamespace>
+    <RootNamespace>Shared</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -69,12 +69,7 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(Platform)\$(Configuration)\</OutDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(Platform)\$(Configuration)\</OutDir>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -89,18 +84,11 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>
-      </SDLCheck>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\Dependencies;</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <DisableSpecificWarnings>4800;4267</DisableSpecificWarnings>
-      <AdditionalOptions>/Zm256 %(AdditionalOptions)</AdditionalOptions>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -125,19 +113,12 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
-      <Optimization>Full</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>
-      </SDLCheck>
-      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
-      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
-      <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..\..\Dependencies;</AdditionalIncludeDirectories>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -148,7 +129,6 @@
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Test.pb.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -157,20 +137,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Test.pb.cc" />
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="Test.proto">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <FileType>Document</FileType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\Preprocessor\protocol\protoc.exe --cpp_out=. %(Identity)</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\Preprocessor\protocol\protoc.exe --cpp_out=. %(Identity)</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Identity) (ProtoBuf)</Message>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Identity) (ProtoBuf)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).pb.cc;%(Filename).pb.h;%(Outputs)</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).pb.cc;%(Filename).pb.h;%(Outputs)</Outputs>
-    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
