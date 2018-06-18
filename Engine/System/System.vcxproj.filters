@@ -141,6 +141,15 @@
     <ClInclude Include="Code\Transform.h">
       <Filter>소스 파일\04.Component\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="Core\TSingleTon.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStream.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\SceneLoading.h">
+      <Filter>소스 파일\01.Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -208,6 +217,12 @@
     </ClCompile>
     <ClCompile Include="Code\Transform.cpp">
       <Filter>소스 파일\04.Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStream.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\SceneLoading.cpp">
+      <Filter>소스 파일\01.Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

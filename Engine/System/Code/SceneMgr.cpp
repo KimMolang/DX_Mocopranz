@@ -57,6 +57,13 @@ HRESULT SceneMgr::SetScene(Scene* _pScene)
 //	return S_OK;
 //}
 //
+
+// (고민)
+// 결국 이건 templet<class T> 로 하면 해결될 것인데
+// enum 값 처리를 어떻게 하냐임
+// 유니티에서는 0, 1, 2 값과 string 값으로 씬을 구별하던데
+// 흠
+
 //// 로딩이 끝나면 아래 함수가 불리고 m_pScene 에 씬을 할당한다.
 //HRESULT SceneMgr::SetSceneAftherLoading()
 //{

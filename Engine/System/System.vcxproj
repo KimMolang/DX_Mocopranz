@@ -23,32 +23,32 @@
     <ProjectGuid>{E102A399-E4DE-4056-B1C4-9743AE5DC75C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>System</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -187,6 +187,7 @@
     <ClInclude Include="Code\Resource.h" />
     <ClInclude Include="Code\ResourceMgr.h" />
     <ClInclude Include="Code\Scene.h" />
+    <ClInclude Include="Code\SceneLoading.h" />
     <ClInclude Include="Code\SceneMgr.h" />
     <ClInclude Include="Code\SceneNull.h" />
     <ClInclude Include="Code\Shader.h" />
@@ -215,6 +216,7 @@
     <ClCompile Include="Code\Resource.cpp" />
     <ClCompile Include="Code\ResourceMgr.cpp" />
     <ClCompile Include="Code\Scene.cpp" />
+    <ClCompile Include="Code\SceneLoading.cpp" />
     <ClCompile Include="Code\SceneMgr.cpp" />
     <ClCompile Include="Code\Shader.cpp" />
     <ClCompile Include="Code\ShaderColor.cpp" />
