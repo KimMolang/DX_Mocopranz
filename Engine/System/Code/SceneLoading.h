@@ -5,7 +5,7 @@
 BEGIN(Engine)
 
 
- class ENGINE_DLL SceneLoading abstract : public Scene
+class ENGINE_DLL SceneLoading abstract : public Scene
 {
 public :
 	enum class ELoadingState
@@ -24,6 +24,7 @@ public:
 
 public:
 	virtual HRESULT		Init();
+	virtual HRESULT		StartLoading();
 	virtual void		Update();
 	virtual void		Render();
 	virtual void		Release();

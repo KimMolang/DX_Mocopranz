@@ -2,6 +2,7 @@
 #include "SceneLoading.h"
 
 #include <process.h>
+#include "SceneMgr.h"
 
 BEGIN(Engine)
 
@@ -39,14 +40,21 @@ unsigned int SceneLoading::StartLoading(void * _pArg)
 
 HRESULT SceneLoading::Init()
 {
+	
+
+	return S_OK;
+}
+
+HRESULT SceneLoading::StartLoading()
+{
 	DoBeforeLoading();
+
 
 	InitializeCriticalSection(&m_csCriticalSection);
 	m_hThread = (HANDLE)_beginthreadex(nullptr, 0, StartLoading, this, 0, nullptr);
 
 	if (m_hThread == nullptr)
 		return E_FAIL;
-
 
 	return S_OK;
 }
@@ -63,7 +71,7 @@ void SceneLoading::Update()
 		DoAfterLoading();
 
 		m_eLoadingState = ELoadingState::LOADING_STATE_CHANGE_SCENE;
-		// You have to release this scene and then set new(next) scene.
+		SceneMgr::GetInstance()->UpdateSceneAfterLoadingEnd();
 	}
 }
 

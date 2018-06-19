@@ -43,10 +43,10 @@ Engine::Object* ObjectFactory::CreateObject(const EObjectID & _eObjectID)
 	return pTargetCreated;
 }
 
-template<class T>
-T* ObjectFactory::CreateObject()
-{
-	T* pTargetCreated = new T();
-	pTargetCreated->Init();
-	return pTargetCreated;
-}
+//template<typename T, typename>
+//T* ObjectFactory::CreateObject()
+//{
+//	T* pTargetCreated = new T();
+//	pTargetCreated->Init();
+//	return pTargetCreated;
+//}

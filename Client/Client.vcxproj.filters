@@ -13,14 +13,14 @@
     <ClCompile Include="Code\Scene\SceneTown.cpp">
       <Filter>Source Files\02. Scene\Town</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Mgr\SceneSetter.cpp">
-      <Filter>Source Files\00. Mgr\SceneSetter</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Object\TestObject.cpp">
       <Filter>Source Files\04. Object\GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="Code\Mgr\ObjectFactory.cpp">
       <Filter>Source Files\00. Mgr\ObjectFactory</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Mgr\SceneSetter.cpp">
+      <Filter>Source Files\00. Mgr\SceneSetter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -45,14 +45,14 @@
     <ClInclude Include="Code\Scene\SceneTown.h">
       <Filter>Source Files\02. Scene\Town</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Mgr\SceneSetter.h">
-      <Filter>Source Files\00. Mgr\SceneSetter</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Object\TestObject.h">
       <Filter>Source Files\04. Object\GameLogic</Filter>
     </ClInclude>
     <ClInclude Include="Code\Mgr\ObjectFactory.h">
       <Filter>Source Files\00. Mgr\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Mgr\SceneSetter.h">
+      <Filter>Source Files\00. Mgr\SceneSetter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +122,6 @@
     <Filter Include="Source Files\02. Scene\Town">
       <UniqueIdentifier>{f3876b2d-4e6a-4a5a-a408-b58d90e0dff6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\00. Mgr\SceneSetter">
-      <UniqueIdentifier>{8e38ca71-2aac-4970-ac82-ac0c3f95e9b8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\04. Object">
       <UniqueIdentifier>{627d03e7-cc35-44ed-9040-9ed96be49f95}</UniqueIdentifier>
     </Filter>
@@ -151,6 +148,9 @@
     </Filter>
     <Filter Include="Source Files\00. Mgr\ObjectFactory">
       <UniqueIdentifier>{0ff391c5-22a7-4ea4-9080-f5719b4be61a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\00. Mgr\SceneSetter">
+      <UniqueIdentifier>{b5f05ce2-edfe-4cf7-8c36-0b5d802a0eac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

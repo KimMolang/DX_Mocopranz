@@ -28,6 +28,8 @@ public :
 	class Engine::Object* CreateObject(const EObjectID& _eObjectID);
 
 	// 이건 위 주석 내용에 반하는 메소드
-	template<class T>
-	T* CreateObject();
+	//template<typename T, typename = typename std::enable_if<std::is_same<Engine::Object, T>::value>::type>
+	// is_same 이 부모클래스를 검사하진 않는다. 당연한 얘기겠지만
+	// 그렇다면 이건 사용하지 않겠다!!
+	//T* CreateObject();
 };

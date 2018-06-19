@@ -5,18 +5,22 @@
 
 #include "ResourceMgr.h"
 
-#include "SceneNull.h"
+//#include "SceneNull.h"
+#include "SceneLoading.h"
 
 BEGIN(Engine)
 IMPLEMENT_SINGLETON(SceneMgr)
 
 
 SceneMgr::SceneMgr()
-	//, m_bSceneLoadingEnd(false)
+	: m_pCurScene(nullptr)
 
-	: m_pRenderer(nullptr)
+	, m_pCurSceneLoading(nullptr)
+	, m_pNextSceneAfterLoading(nullptr)
+
+	, m_pRenderer(nullptr)
 {
-	m_pScene = new SceneNull();
+	//m_pCurScene = new SceneNull();
 }
 
 
@@ -25,62 +29,73 @@ SceneMgr::~SceneMgr()
 	Release();
 }
 
-HRESULT SceneMgr::SetScene(Scene* _pScene)
+HRESULT SceneMgr::SetScene(Scene* _pCurScene)
 {
-	if (m_pScene)
-		::Safe_Delete(m_pScene);
+	if (_pCurScene == nullptr)
+		return S_FALSE;
 
-	m_pScene = (_pScene == nullptr) ? new SceneNull() : _pScene;
-	m_pScene->Init();
+
+	ReleaseCurScene();
+
+
+	//m_pCurScene = (_pCurScene == nullptr) ? new SceneNull() : _pCurScene;
+	m_pCurScene = _pCurScene;
+	m_pCurScene->Init();
 
 
 	return S_OK;
 }
-//// 해당 함수를 부르면 m_eCurScene 값을 셋팅하고
-//// 로딩을 시작한다.
-//HRESULT SceneMgr::SetScene(const ESceneID& _eSceneID)
-//{
-//	if (m_pScene)
-//		::Safe_Delete(m_pScene);
-//
-//
-//	ResourceMgr::GetInstance()->Release_Dynamic();
-//	m_bSceneLoadingEnd = false;
-//
-//	m_eCurScene = _eSceneID;
-//	//m_pRenderer->SetScene(m_pScene);
-//
-//	//m_pScene = CLoading::Create(m_pDevice);
-//	CHECK_NULLPTR_RETURN(m_pScene, E_FAIL);
-//
-//
-//	return S_OK;
-//}
-//
 
-// (고민)
-// 결국 이건 templet<class T> 로 하면 해결될 것인데
-// enum 값 처리를 어떻게 하냐임
-// 유니티에서는 0, 1, 2 값과 string 값으로 씬을 구별하던데
-// 흠
+HRESULT SceneMgr::SetScene(SceneLoading* _pCurSceneLoading, Scene* _pNextSceneAfterLoading)
+{
+	if (_pCurSceneLoading == nullptr || _pNextSceneAfterLoading == nullptr)
+		return S_FALSE;
 
-//// 로딩이 끝나면 아래 함수가 불리고 m_pScene 에 씬을 할당한다.
+
+	ReleaseCurScene();
+
+
+	m_pCurSceneLoading			= _pCurSceneLoading;
+	m_pNextSceneAfterLoading	= _pNextSceneAfterLoading;
+
+	m_pCurSceneLoading->Init();
+	m_pCurSceneLoading->StartLoading();	// StartLoading
+
+
+	return S_OK;
+}
+
+void SceneMgr::UpdateSceneAfterLoadingEnd()
+{
+	SetScene(m_pNextSceneAfterLoading);
+	::Safe_Delete(m_pCurSceneLoading);
+}
+
+void SceneMgr::ReleaseCurScene()
+{
+	::Safe_Delete(m_pCurScene);
+
+	// (Need the Modify)
+	ResourceMgr::GetInstance()->Release_Dynamic();
+}
+
+//// 로딩이 끝나면 아래 함수가 불리고 m_pCurScene 에 씬을 할당한다.
 //HRESULT SceneMgr::SetSceneAftherLoading()
 //{
-//	if (m_pScene)
-//		::Safe_Delete(m_pScene);
+//	if (m_pCurScene)
+//		::Safe_Delete(m_pCurScene);
 //
 //	switch (m_eCurScene)
 //	{
-//	case SCENE_ID_TITLE:	m_pScene = new SceneNull();		break;
-//	//case SCENE_ID_LOBBY:	m_pScene = CLobby::Create(m_pDevice);	break;
-//	//case SCENE_ID_ROOM:		m_pScene = CRoom::Create(m_pDevice);	break;
-//	//case SCENE_ID_INMAP:	m_pScene = CInMap::Create(m_pDevice);	break;
-//	default:				m_pScene = new SceneNull();		break;
+//	case SCENE_ID_TITLE:	m_pCurScene = new SceneNull();		break;
+//	//case SCENE_ID_LOBBY:	m_pCurScene = CLobby::Create(m_pDevice);	break;
+//	//case SCENE_ID_ROOM:		m_pCurScene = CRoom::Create(m_pDevice);	break;
+//	//case SCENE_ID_INMAP:	m_pCurScene = CInMap::Create(m_pDevice);	break;
+//	default:				m_pCurScene = new SceneNull();		break;
 //	}
 //
-//	CHECK_NULLPTR_RETURN(m_pScene, E_FAIL);
-//	//m_pRenderer->SetScene(m_pScene);
+//	CHECK_NULLPTR_RETURN(m_pCurScene, E_FAIL);
+//	//m_pRenderer->SetScene(m_pCurScene);
 //
 //	return S_OK;
 //}
@@ -95,18 +110,18 @@ HRESULT SceneMgr::Init()
 
 void SceneMgr::Update()
 {
-	m_pScene->Update();
+	m_pCurScene->Update();
 }
 
 void SceneMgr::Render()
 {
 	if (m_pRenderer != nullptr)
-		m_pRenderer->Render(m_pScene);
+		m_pRenderer->Render(m_pCurScene);
 }
 
 void SceneMgr::Release()
 {
-	::Safe_Delete(m_pScene);
+	::Safe_Delete(m_pCurScene);
 	::Safe_Delete(m_pRenderer);
 }
 
