@@ -42,9 +42,14 @@ HRESULT SceneTown::Init()
 	
 
 	// TestObject
+	Engine::Object* pCreatedObj
+		= ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_TEST);
+	pCreatedObj->GetComponent
+
+	//pCreatedObj->Set
 	Engine::GetObjectMgr()->AddObj(
 		Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC
-		, ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_TEST) );
+		, pCreatedObj);
 
 	// Camera
 	Engine::GetObjectMgr()->AddObj(

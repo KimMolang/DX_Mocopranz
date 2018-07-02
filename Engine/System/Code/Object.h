@@ -25,9 +25,13 @@ public:
 
 public:
 	const Component*	GetComponent(const std::wstring& _wstrComponentKey);
-	EState				GetObjState() { return m_eObjState; }
+	template<typename T> const Component*	GetComponent();
+
+	//GET_AND_SET(D3DXVECTOR3, Pos, m_pTransform->m_vPos);
+
+	GET(Engine::Object::EState, ObjState, m_eObjState);
 protected:
-	void				SetObjState(const EState _eState) { m_eObjState = _eState; }
+	SET(Engine::Object::EState, ObjState, m_eObjState);
 
 public :
 	inline void SetWorldMatrix

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Object.h"
 
+#include <typeinfo>
+
 #include "Component.h"
 #include "Transform.h"
 
@@ -38,6 +40,17 @@ const Component* Object::GetComponent(const std::wstring& _wstrComponentKey)
 		return nullptr;
 
 	return iter->second;
+}
+
+template<typename T>
+const Component* Object::GetComponent()
+{
+	for each (auto iter in m_mapComponent)
+	{
+		//if (typeid(iter->second).Get() == typeid(T).Get())
+		if (typeid(iter->second) == typeid(T))
+			return iter->second;
+	}
 }
 
 void Object::AddDefaultComponent()

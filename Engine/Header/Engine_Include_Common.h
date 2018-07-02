@@ -55,6 +55,7 @@
 #include "Engine_Define_Check.h"
 #include "Engine_Define_Dll.h"
 #include "Engine_Define_Pattern.h"
+#include "Engine_Define_Others.h"
 
 #include "Engine_Function_Safe.h"
 
