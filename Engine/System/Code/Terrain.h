@@ -27,8 +27,8 @@ protected:
 	virtual void	Release();
 
 protected :
-	void	Init_Vtx();
-	void	Init_Idx();
+	HRESULT	Init_Vtx();
+	HRESULT	Init_Idx();
 
 protected:
 	struct VertexType
