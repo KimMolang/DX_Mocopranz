@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>System</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>Engine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -192,6 +193,7 @@
     <ClInclude Include="Code\SceneNull.h" />
     <ClInclude Include="Code\Shader.h" />
     <ClInclude Include="Code\ShaderColor.h" />
+    <ClInclude Include="Code\Terrain.h" />
     <ClInclude Include="Code\Texture.h" />
     <ClInclude Include="Code\Timer.h" />
     <ClInclude Include="Code\Transform.h" />
@@ -220,6 +222,7 @@
     <ClCompile Include="Code\SceneMgr.cpp" />
     <ClCompile Include="Code\Shader.cpp" />
     <ClCompile Include="Code\ShaderColor.cpp" />
+    <ClCompile Include="Code\Terrain.cpp" />
     <ClCompile Include="Code\Texture.cpp" />
     <ClCompile Include="Code\Timer.cpp" />
     <ClCompile Include="Code\Transform.cpp" />

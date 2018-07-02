@@ -58,6 +58,9 @@
     <Filter Include="소스 파일\01.Renderer">
       <UniqueIdentifier>{02738afc-b64e-4c7b-84b7-d80b89a782f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\04.Component\Resource\Terrain">
+      <UniqueIdentifier>{bc5667ef-c2ea-4741-968a-95d24f15cc79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -150,6 +153,9 @@
     <ClInclude Include="Code\SceneLoading.h">
       <Filter>소스 파일\01.Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Terrain.h">
+      <Filter>소스 파일\04.Component\Resource\Terrain</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -223,6 +229,9 @@
     </ClCompile>
     <ClCompile Include="Code\SceneLoading.cpp">
       <Filter>소스 파일\01.Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Terrain.cpp">
+      <Filter>소스 파일\04.Component\Resource\Terrain</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

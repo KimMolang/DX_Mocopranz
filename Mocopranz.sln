@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool_CheckShader", "Tool_Ch
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engine", "Engine", "{B819EC65-7AFD-45EA-9EAB-7C2D3A7C3398}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "System", "System", "{3636B88A-3239-4EDF-82D2-8D6692154C19}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code", "Code", "{3636B88A-3239-4EDF-82D2-8D6692154C19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{F052D872-4E2D-47AA-875A-CE6902F24DFE}"
 EndProject
@@ -36,7 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Header", "Header", "{92B685
 		Engine\Header\Engine_Value_Common.h = Engine\Header\Engine_Value_Common.h
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "System", "Engine\System\System.vcxproj", "{E102A399-E4DE-4056-B1C4-9743AE5DC75C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Engine", "Engine\System\System.vcxproj", "{E102A399-E4DE-4056-B1C4-9743AE5DC75C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Protocols", "Protocols", "{57755B47-2A33-4290-A6E5-767AC3CACA6B}"
 EndProject
