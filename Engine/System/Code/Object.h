@@ -27,8 +27,6 @@ public:
 	const Component*	GetComponent(const std::wstring& _wstrComponentKey);
 	template<typename T> const Component*	GetComponent();
 
-	//GET_AND_SET(D3DXVECTOR3, Pos, m_pTransform->m_vPos);
-
 	GET(Engine::Object::EState, ObjState, m_eObjState);
 protected:
 	SET(Engine::Object::EState, ObjState, m_eObjState);

@@ -8,6 +8,8 @@
 #include "VIBufferCube.h"
 #include "ShaderColor.h"
 
+#include "Object.h"
+
 #include "../Mgr/ObjectFactory.h"
 
 SceneTown::SceneTown()
@@ -44,9 +46,32 @@ HRESULT SceneTown::Init()
 	// TestObject
 	Engine::Object* pCreatedObj
 		= ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_TEST);
-	pCreatedObj->GetComponent
+	pCreatedObj->Init();
+	pCreatedObj->SetWorldMatrix(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	Engine::GetObjectMgr()->AddObj(
+		Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC
+		, pCreatedObj);
 
-	//pCreatedObj->Set
+	pCreatedObj
+		= ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_TEST);
+	pCreatedObj->Init();
+	pCreatedObj->SetWorldMatrix(D3DXVECTOR3(10.0f, 0.0f, 0.0f));
+	Engine::GetObjectMgr()->AddObj(
+		Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC
+		, pCreatedObj);
+
+	pCreatedObj
+		= ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_TEST);
+	pCreatedObj->Init();
+	pCreatedObj->SetWorldMatrix(D3DXVECTOR3(0.0f, 0.0f, 10.0f));
+	Engine::GetObjectMgr()->AddObj(
+		Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC
+		, pCreatedObj);
+
+	pCreatedObj
+		= ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_TEST);
+	pCreatedObj->Init();
+	pCreatedObj->SetWorldMatrix(D3DXVECTOR3(0.0f, 10.0f, 0.0f));
 	Engine::GetObjectMgr()->AddObj(
 		Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC
 		, pCreatedObj);
