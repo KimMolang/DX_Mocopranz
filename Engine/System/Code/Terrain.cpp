@@ -6,15 +6,10 @@ BEGIN(Engine)
 
 
 Terrain::Terrain()
-	: m_pVtxBuf(nullptr)
-	, m_pIdxBuf(nullptr)
+	: m_iWidth(0)
+	, m_iHeight(0)
 
 	, m_pHeightMapTypeInfoArray(nullptr)
-{
-
-}
-
-Terrain::Terrain(const Terrain &)
 {
 
 }
@@ -25,13 +20,23 @@ Terrain::~Terrain()
 	Release();
 }
 
-HRESULT Terrain::Init(const std::wstring& _wstrPath)
+Terrain* Terrain::Create(const int _iCntX, const int _iCntY
+	, const char* _Path)
 {
-	CHECK_FAILED_RETURN(LoadHeightMap(_wstrPath));
+	Terrain* pComponent = new Terrain();
+	if (FAILED(pComponent->Init(_iCntX, _iCntY, _Path)))
+		::Safe_Delete(pComponent);
+
+	return pComponent;
+}
+
+HRESULT Terrain::Init(const int _iCntX, const int _iCntY
+	, const char* _Path)
+{
+	CHECK_FAILED_RETURN(LoadHeightMap(_Path), E_FAIL);
 	NormalizeHeightMap();
 
-	CHECK_FAILED_RETURN(Init_Vtx());
-	CHECK_FAILED_RETURN(Init_Idx());
+	CHECK_FAILED_RETURN(Init_Buffer(_iCntX, _iCntY), E_FAIL);
 
 	return S_OK;
 }
@@ -49,12 +54,12 @@ void Terrain::Release()
 	::Safe_Delete_Array(m_pHeightMapTypeInfoArray);
 }
 
-HRESULT Terrain::LoadHeightMap(const std::wstring & _wstrPath)
+HRESULT Terrain::LoadHeightMap(const char* _Path)
 {
 	// Open the height map file in binary.
 	// Only-Read & Birary 모드로 높이맵 파일을 엽니다.
 	FILE* pFile = nullptr;
-	if (fopen_s(&pFile, _wstrPath.c_str, "rb") != 0)
+	if (fopen_s(&pFile, _Path, "rb") != 0)
 	{
 		return E_FAIL;
 	}
@@ -151,15 +156,11 @@ void Terrain::NormalizeHeightMap()
 	}
 }
 
-HRESULT Terrain::Init_Vtx()
+HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntY)
 {
-	// http://www.rastertek.com/tertut01.html
+	m_nVtxNum = (_iCntX + 1) * (_iCntY + 1);
 
-	return S_OK;
-}
 
-HRESULT Terrain::Init_Idx()
-{
 	return S_OK;
 }
 
