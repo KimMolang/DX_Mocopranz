@@ -12,6 +12,15 @@ const float CameraStatic::MAX_ZOOM_VALUE = 5.f;
 const float CameraStatic::MIN_ZOOM_VALUE = 2.f;
 
 
+CameraStatic* CameraStatic::Create()
+{
+	CameraStatic* pObject = new CameraStatic();
+	if (FAILED(pObject->Init()))
+		::Safe_Delete(pObject);
+
+	return pObject;
+}
+
 CameraStatic::CameraStatic()
 	: /*m_pTargetPhysics(NULL) // (¼öÁ¤) Transform
 

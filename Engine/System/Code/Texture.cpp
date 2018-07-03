@@ -8,6 +8,15 @@
 BEGIN(Engine)
 
 
+Texture * Texture::Create(std::wstring _wstrPath, const ETextureType & _eTextureType)
+{
+	Texture* pComponent = new Texture();
+	if (FAILED(pComponent->Load(_wstrPath, _eTextureType)))
+		::Safe_Delete(pComponent);
+
+	return pComponent;
+}
+
 Texture::Texture()
 {
 

@@ -56,7 +56,7 @@ const Component* Object::GetComponent()
 void Object::AddDefaultComponent()
 {
 	// Transform ------------
-	m_pTransform = new Transform();
+	m_pTransform = Transform::Create();
 	m_mapComponent.insert(
 		std::make_pair(L"Transform", m_pTransform));
 }

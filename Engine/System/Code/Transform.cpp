@@ -9,6 +9,11 @@
 BEGIN(Engine)
 
 
+Transform * Transform::Create()
+{
+	return new Transform();
+}
+
 Transform::Transform()
 	: m_pGraphicDevice(GraphicDevice::GetInstance())
 	, m_pWorldBuffer(nullptr)

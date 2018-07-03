@@ -32,8 +32,7 @@ Engine::Object* ObjectFactory::CreateObject(const EObjectID & _eObjectID)
 		break;
 
 	case EObjectID::OBJECT_ID_CAMERA_DYNAMIC :
-		pTargetCreated = new Engine::CameraDynamic();
-		pTargetCreated->Init();
+		pTargetCreated = Engine::CameraDynamic::Create();
 		break;
 
 	default :

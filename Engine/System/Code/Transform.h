@@ -10,8 +10,11 @@ class ENGINE_DLL Transform : public Component
 public:
 	enum class TransformType { STATIC, DYNAMIC };
 
-public:
+public :
+	static Transform* Create();
+private:
 	explicit Transform();
+public:
 	virtual ~Transform();
 
 public:

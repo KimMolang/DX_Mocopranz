@@ -8,6 +8,15 @@
 BEGIN(Engine)
 
 
+CameraDynamic* CameraDynamic::Create()
+{
+	CameraDynamic* pObject = new CameraDynamic();
+	if (FAILED(pObject->Init()))
+		::Safe_Delete(pObject);
+
+	return pObject;
+}
+
 CameraDynamic::CameraDynamic()
 	: m_fSpeed(0.f)
 {

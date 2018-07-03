@@ -16,7 +16,7 @@ public:
 		, const int _iCntY
 		, const char* _Path
 	);
-protected:
+private:
 	explicit Terrain();
 public:
 	virtual ~Terrain();

@@ -8,7 +8,10 @@ BEGIN(Engine)
 class ENGINE_DLL VIBufferCube : public VIBuffer
 {
 public:
+	static VIBufferCube* Create();
+private:
 	explicit VIBufferCube();
+public:
 	virtual ~VIBufferCube();
 
 
