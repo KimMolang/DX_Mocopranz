@@ -26,7 +26,7 @@ public :
 	//GET(int, IndexNum, m_iIndexNum);
 
 public:
-	virtual HRESULT	Init(const int _iCntX, const int _iCntY, const char* _Path);
+	virtual HRESULT	Init(const int _iCntX, const int _iCntZ, const char* _Path);
 	virtual void	Update();
 	virtual void	Render();
 protected:

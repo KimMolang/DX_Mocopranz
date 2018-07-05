@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "VIBuffer.h"
 
-#include "GraphicDevice.h"
 
 BEGIN(Engine)
 

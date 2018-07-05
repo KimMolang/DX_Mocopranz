@@ -5,6 +5,8 @@
 #include "Shader.h"
 #include "ResourceMgr.h"
 
+#include "GraphicDevice.h"
+
 BEGIN(Engine)
 
 
@@ -72,6 +74,7 @@ struct Index16
 {
 	WORD	_1, _2, _3;
 
+	Index16() : _1(0), _2(0), _3(0) {}
 	Index16(WORD _1, WORD _2, WORD _3) : _1(_1), _2(_2), _3(_3) {}
 };
 
@@ -79,6 +82,7 @@ struct Index32
 {
 	DWORD	_1, _2, _3;
 
+	Index32() : _1(0), _2(0), _3(0) {}
 	Index32(DWORD _1, DWORD _2, DWORD _3) : _1(_1), _2(_2), _3(_3) {}
 };
 

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Terrain.h"
 
-
 BEGIN(Engine)
 
 
@@ -156,9 +155,107 @@ void Terrain::NormalizeHeightMap()
 	}
 }
 
-HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntY)
+HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 {
-	m_nVtxNum = (_iCntX + 1) * (_iCntY + 1);
+	m_nVtxNum = (_iCntX + 1) * (_iCntZ + 1);
+	m_nVtxStride = sizeof(VertexColor);
+	m_nVtxOffset = 0;
+	m_nVtxStart = 1;
+
+	m_nIdxNum = m_nVtxNum * 2;
+	m_nIdxStart = 0;
+	m_nIdxPlus = 0;
+
+	/*
+	-----------------
+	|	|	|	|	|
+	-----------------
+	|	|	|	|	|
+	-----------------
+	|	|	|	|	|
+	-----------------
+	| \	|	|	|	|
+	.---.---.---.---.
+	*/
+
+	/*
+	iIndex	+ (_iCntX + 1) ---  iIndex + (_iCntX + 1) + 1
+							|\|
+					iIndex	---	 iIndex	+ 1
+	*/
+
+	VertexColor* pVertexColorInfoArray = new VertexColor[m_nVtxNum];
+	Index32* pIndexInfoArray = new Index32[m_nIdxNum];
+
+	for (int j = 0; j < _iCntZ + 1; ++j)
+	{
+		for (int i = 0; i < _iCntX + 1; ++i)
+		{
+			// Vertex
+			int iVrtIndex = (j * _iCntX) + i;
+
+			pVertexColorInfoArray[iVrtIndex].vPos
+				= D3DXVECTOR3((float)i, 0.0f, (float)j);
+			pVertexColorInfoArray[iVrtIndex].vColor
+				= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+
+			// Index
+			int iIdxIndex = iVrtIndex * 2;
+
+			pIndexInfoArray[iIdxIndex]._1 = iVrtIndex + (_iCntX + 1);
+			pIndexInfoArray[iIdxIndex]._2 = iVrtIndex + (_iCntX + 1) + 1;
+			pIndexInfoArray[iIdxIndex]._3 = iVrtIndex + 1;
+
+			pIndexInfoArray[iIdxIndex + 1]._1 = iVrtIndex + (_iCntX + 1);
+			pIndexInfoArray[iIdxIndex + 1]._2 = iVrtIndex + 1;
+			pIndexInfoArray[iIdxIndex + 1]._3 = iVrtIndex;
+		}
+	}
+
+	// Set up the description of the static vertex buffer.
+	D3D11_BUFFER_DESC bufferDesc;
+	ZeroMemory(&bufferDesc, sizeof(D3D11_BUFFER_DESC));
+	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	bufferDesc.ByteWidth = m_nVtxStride * m_nVtxNum;
+	bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bufferDesc.CPUAccessFlags = 0;
+	bufferDesc.MiscFlags = 0;
+	bufferDesc.StructureByteStride = 0;
+
+	// Give the subresource structure a pointer to the vertex data.
+	D3D11_SUBRESOURCE_DATA tData;
+	ZeroMemory(&tData, sizeof(D3D11_SUBRESOURCE_DATA));
+	tData.pSysMem = pVertexColorInfoArray;
+	tData.SysMemPitch = 0;
+	tData.SysMemSlicePitch = 0;
+
+	// Now create the vertex buffer.
+	CHECK_FAILED(
+		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&bufferDesc, &tData, &m_pVtxBuffer));
+
+
+	// Set up the description of the static index buffer.
+	ZeroMemory(&bufferDesc, sizeof(D3D11_BUFFER_DESC));
+	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	bufferDesc.ByteWidth = sizeof(Index32)* m_nIdxNum;
+	bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+	bufferDesc.CPUAccessFlags = 0;
+	bufferDesc.MiscFlags = 0;
+	bufferDesc.StructureByteStride = 0;
+
+	// Give the subresource structure a pointer to the index data.
+	ZeroMemory(&tData, sizeof(D3D11_SUBRESOURCE_DATA));
+	tData.pSysMem = pIndexInfoArray;
+	tData.SysMemPitch = 0;
+	tData.SysMemSlicePitch = 0;
+
+	// Create the index buffer.
+	CHECK_FAILED(
+		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&bufferDesc, &tData, &m_pIdxBuffer));
+
+	// Release the arrays now that the buffers have been created and loaded.
+	::Safe_Delete_Array(pVertexColorInfoArray);
+	::Safe_Delete_Array(pIndexInfoArray);
 
 
 	return S_OK;
