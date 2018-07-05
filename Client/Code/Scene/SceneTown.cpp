@@ -41,7 +41,7 @@ HRESULT SceneTown::Init()
 		, L"Test_Buffer_Cube"
 		, pVIBufferCube);
 
-	Engine::Terrain* pTerrain = Engine::Terrain::Create(3, 3);
+	Engine::Terrain* pTerrain = Engine::Terrain::Create(30, 30);
 	Engine::GetResourceMgr()->AddResource(
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
 		, Engine::ResourceMgr::RESOURCE_TYPE_BUFFER

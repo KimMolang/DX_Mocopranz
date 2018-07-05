@@ -84,6 +84,7 @@ void Terrain::CreateRasterizerState()
 
 void Terrain::Release()
 {
+	VIBuffer::Release();
 	::Safe_Delete_Array(m_pHeightMapTypeInfoArray);
 }
 
@@ -221,17 +222,36 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	VertexColor* pVertexColorInfoArray = new VertexColor[m_nVtxNum];
 	Index32* pIndexInfoArray = new Index32[m_nIdxNum];
 
+	int iTriIndex = 0;
 	for (int j = 0; j < _iCntZ; ++j)
 	{
 		for (int i = 0; i < _iCntX; ++i)
 		{
 			// Vertex
-			int iVrtIndex = (j * _iCntX) + i;
+			int iVtxIndex = (j * _iCntX) + i;
 
-			pVertexColorInfoArray[iVrtIndex].vPos
+			pVertexColorInfoArray[iVtxIndex].vPos
 				= D3DXVECTOR3((float)i, /*m_pHeightMapTypeInfoArray*/0.0f, (float)j);
-			pVertexColorInfoArray[iVrtIndex].vColor
+			pVertexColorInfoArray[iVtxIndex].vColor
 				= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+
+
+			if (i == _iCntX - 1 || j == _iCntZ - 1)
+				continue;
+
+			// Index
+			//int iIdxIndex = (j * (_iCntX - 1)) + i;
+			//int iTriIndex = (iIdxIndex * 2);
+
+			pIndexInfoArray[iTriIndex]._1 = iVtxIndex + _iCntX;
+			pIndexInfoArray[iTriIndex]._2 = iVtxIndex + _iCntX + 1;
+			pIndexInfoArray[iTriIndex]._3 = iVtxIndex + 1;
+			++iTriIndex;
+
+			pIndexInfoArray[iTriIndex /*+ 1*/]._1 = iVtxIndex + _iCntX;
+			pIndexInfoArray[iTriIndex /*+ 1*/]._2 = iVtxIndex + 1;
+			pIndexInfoArray[iTriIndex /*+ 1*/]._3 = iVtxIndex;
+			++iTriIndex;
 		}
 	}
 
@@ -257,27 +277,27 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&bufferDesc, &tData, &m_pVtxBuffer));
 
 
-	int iTriIndex = 0;
-	for (int j = 0; j < _iCntZ - 1; ++j)
-	{
-		for (int i = 0; i < _iCntX - 1; ++i)
-		{
-			// Index
-			int iVrtIndex = (j * _iCntX) + i;
-			//int iIdxIndex = (j * (_iCntX - 1)) + i;
-			//int iTriIndex = (iIdxIndex * 2);
+	//int iTriIndex = 0;
+	//for (int j = 0; j < _iCntZ - 1; ++j)
+	//{
+	//	for (int i = 0; i < _iCntX - 1; ++i)
+	//	{
+	//		// Index
+	//		int iVtxIndex = (j * _iCntX) + i;
+	//		//int iIdxIndex = (j * (_iCntX - 1)) + i;
+	//		//int iTriIndex = (iIdxIndex * 2);
 
-			pIndexInfoArray[iTriIndex]._1 = iVrtIndex + _iCntX;
-			pIndexInfoArray[iTriIndex]._2 = iVrtIndex + _iCntX + 1;
-			pIndexInfoArray[iTriIndex]._3 = iVrtIndex + 1;
-			++iTriIndex;
+	//		pIndexInfoArray[iTriIndex]._1 = iVtxIndex + _iCntX;
+	//		pIndexInfoArray[iTriIndex]._2 = iVtxIndex + _iCntX + 1;
+	//		pIndexInfoArray[iTriIndex]._3 = iVtxIndex + 1;
+	//		++iTriIndex;
 
-			pIndexInfoArray[iTriIndex /*+ 1*/]._1 = iVrtIndex + _iCntX;
-			pIndexInfoArray[iTriIndex /*+ 1*/]._2 = iVrtIndex + 1;
-			pIndexInfoArray[iTriIndex /*+ 1*/]._3 = iVrtIndex;
-			++iTriIndex;
-		}
-	}
+	//		pIndexInfoArray[iTriIndex /*+ 1*/]._1 = iVtxIndex + _iCntX;
+	//		pIndexInfoArray[iTriIndex /*+ 1*/]._2 = iVtxIndex + 1;
+	//		pIndexInfoArray[iTriIndex /*+ 1*/]._3 = iVtxIndex;
+	//		++iTriIndex;
+	//	}
+	//}
 
 
 	// Set up the description of the static index buffer.
