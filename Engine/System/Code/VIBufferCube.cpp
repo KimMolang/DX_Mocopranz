@@ -20,7 +20,7 @@ VIBufferCube::VIBufferCube()
 
 VIBufferCube::~VIBufferCube()
 {
-	Release();
+	
 }
 
 HRESULT VIBufferCube::Init()

@@ -39,7 +39,7 @@ VIBuffer::VIBuffer()
 
 VIBuffer::~VIBuffer()
 {
-	
+	Release();
 }
 
 void VIBuffer::SetShader

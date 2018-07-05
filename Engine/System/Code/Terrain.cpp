@@ -30,12 +30,17 @@ Terrain* Terrain::Create(const int _iCntX, const int _iCntY
 }
 
 HRESULT Terrain::Init(const int _iCntX, const int _iCntY
-	, const char* _Path)
+	, const char* _Path /*= nullptr*/)
 {
-	CHECK_FAILED_RETURN(LoadHeightMap(_Path), E_FAIL);
-	NormalizeHeightMap();
+	if (_Path)
+	{
+		CHECK_FAILED_RETURN(LoadHeightMap(_Path), E_FAIL);
+		NormalizeHeightMap();
+	}
 
 	CHECK_FAILED_RETURN(Init_Buffer(_iCntX, _iCntY), E_FAIL);
+
+	CreateRasterizerState();
 
 	return S_OK;
 }
@@ -46,6 +51,18 @@ void Terrain::Update()
 
 void Terrain::Render()
 {
+	if (nullptr == m_pVtxBuffer)
+		return;
+
+	ID3D11DeviceContext* pDeviceContext = GraphicDevice::GetInstance()->GetDeviceContext();
+	pDeviceContext->IASetVertexBuffers(0, 1, &m_pVtxBuffer, &m_nVtxStride, &m_nVtxOffset);
+	pDeviceContext->IASetIndexBuffer(m_pIdxBuffer, DXGI_FORMAT_R32_UINT, 0);
+	pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	if (m_pRasterizerState)
+		pDeviceContext->RSSetState(m_pRasterizerState);
+
+	pDeviceContext->DrawIndexed(m_nIdxNum, m_nIdxStart, m_nIdxPlus);
 }
 
 void Terrain::Release()
@@ -195,7 +212,7 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			int iVrtIndex = (j * _iCntX) + i;
 
 			pVertexColorInfoArray[iVrtIndex].vPos
-				= D3DXVECTOR3((float)i, 0.0f, (float)j);
+				= D3DXVECTOR3((float)i, /*m_pHeightMapTypeInfoArray*/0.0f, (float)j);
 			pVertexColorInfoArray[iVrtIndex].vColor
 				= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
 
