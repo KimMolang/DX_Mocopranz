@@ -19,8 +19,12 @@ Terrain::~Terrain()
 	Release();
 }
 
-Terrain* Terrain::Create(const int _iCntX, const int _iCntY
-	, const char* _Path)
+Terrain* Terrain::Create
+(
+	const int _iCntX
+	, const int _iCntY
+	, const char* _Path /*= nullptr*/
+)
 {
 	Terrain* pComponent = new Terrain();
 	if (FAILED(pComponent->Init(_iCntX, _iCntY, _Path)))
@@ -29,8 +33,12 @@ Terrain* Terrain::Create(const int _iCntX, const int _iCntY
 	return pComponent;
 }
 
-HRESULT Terrain::Init(const int _iCntX, const int _iCntY
-	, const char* _Path /*= nullptr*/)
+HRESULT Terrain::Init
+(
+	const int _iCntX
+	, const int _iCntY
+	, const char* _Path /*= nullptr*/
+)
 {
 	if (_Path)
 	{
@@ -179,7 +187,7 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	m_nVtxOffset = 0;
 	m_nVtxStart = 1;
 
-	m_nIdxNum = m_nVtxNum * 2;
+	m_nIdxNum = m_nVtxNum * 2 * 3;
 	m_nIdxStart = 0;
 	m_nIdxPlus = 0;
 
@@ -254,7 +262,7 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	// Set up the description of the static index buffer.
 	ZeroMemory(&bufferDesc, sizeof(D3D11_BUFFER_DESC));
 	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	bufferDesc.ByteWidth = sizeof(Index32)* m_nIdxNum;
+	bufferDesc.ByteWidth = sizeof(DWORD)* m_nIdxNum;
 	bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	bufferDesc.CPUAccessFlags = 0;
 	bufferDesc.MiscFlags = 0;

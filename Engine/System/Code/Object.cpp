@@ -92,5 +92,16 @@ HRESULT Object::Init()
 	return S_OK;
 }
 
+Object::EState Object::Update()
+{
+	Engine::Object::Update_Component();
+	return m_eObjState;
+}
+
+void Object::Render()
+{
+	Engine::Object::Render_Component();
+}
+
 
 END

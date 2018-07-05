@@ -7,6 +7,7 @@
 #include "Export_Function_Mgr.h"
 #include "VIBufferCube.h"
 #include "ShaderColor.h"
+#include "Terrain.h"
 
 #include "Object.h"
 
@@ -36,9 +37,16 @@ HRESULT SceneTown::Init()
 	Engine::VIBufferCube* pVIBufferCube = Engine::VIBufferCube::Create();
 	Engine::GetResourceMgr()->AddResource(
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
-		, Engine::ResourceMgr::RESOURCE_TYPE_MODEL
+		, Engine::ResourceMgr::RESOURCE_TYPE_BUFFER
 		, L"Test_Buffer_Cube"
 		, pVIBufferCube);
+
+	Engine::Terrain* pTerrain = Engine::Terrain::Create(10, 10);
+	Engine::GetResourceMgr()->AddResource(
+		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
+		, Engine::ResourceMgr::RESOURCE_TYPE_BUFFER
+		, L"Test_Buffer_Terrain"
+		, pTerrain);
 	
 
 	// TestObject
@@ -68,6 +76,13 @@ HRESULT SceneTown::Init()
 	pCreatedObj->SetWorldMatrix(D3DXVECTOR3(0.0f, 10.0f, 0.0f));
 	Engine::GetObjectMgr()->AddObj(
 		Engine::Scene::ELayerType::LAYER_TYPE_GAMELOGIC
+		, pCreatedObj);
+
+	// Terrain
+	pCreatedObj
+		= ObjectFactory::GetInstance()->CreateObject(ObjectFactory::EObjectID::OBJECT_ID_TERRAIN);
+	Engine::GetObjectMgr()->AddObj(
+		Engine::Scene::ELayerType::LAYER_TYPE_BACK
 		, pCreatedObj);
 
 	// Camera

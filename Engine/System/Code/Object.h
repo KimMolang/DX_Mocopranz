@@ -42,8 +42,8 @@ public :
 public :
 	virtual HRESULT			Init()			PURE;
 protected:
-	virtual Object::EState	Update()		PURE;
-	virtual void			Render()		PURE;
+	virtual Object::EState	Update();
+	virtual void			Render();
 	virtual void			Release()		PURE;
 
 

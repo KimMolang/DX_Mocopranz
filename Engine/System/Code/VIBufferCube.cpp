@@ -32,7 +32,7 @@ HRESULT VIBufferCube::Init()
 	m_nVtxOffset = 0;
 	m_nVtxStart = 1;
 
-	m_nIdxNum = 12;
+	m_nIdxNum = 36;
 	m_nIdxStart = 0;
 	m_nIdxPlus = 0;
 
@@ -94,8 +94,8 @@ void VIBufferCube::Init_Idx()
 {
 	Index16 pIdx[] =
 	{
-		// Front
-		{ Index16(0, 1, 2) },
+	// Front
+	{ Index16(0, 1, 2) },
 	{ Index16(0, 2, 3) },
 
 	// Right
@@ -123,7 +123,7 @@ void VIBufferCube::Init_Idx()
 	D3D11_BUFFER_DESC tBufferDesc;
 	ZeroMemory(&tBufferDesc, sizeof(D3D11_BUFFER_DESC));
 	tBufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	tBufferDesc.ByteWidth = sizeof(Index16)* m_nIdxNum;
+	tBufferDesc.ByteWidth = sizeof(WORD)* m_nIdxNum;
 	tBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	tBufferDesc.CPUAccessFlags = 0;
 

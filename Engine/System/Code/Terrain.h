@@ -14,7 +14,7 @@ public:
 	(
 		const int _iCntX
 		, const int _iCntY
-		, const char* _Path
+		, const char* _Path = nullptr
 	);
 private:
 	explicit Terrain();

@@ -4,8 +4,11 @@
 #include "Engine_Define_Check.h"
 
 #include "Object.h"
+
 #include "../Object/TestObject.h"
+
 #include "CameraDynamic.h"
+#include "../Object/TestTerrain.h"
 
 IMPLEMENT_SINGLETON(ObjectFactory)
 
@@ -33,6 +36,11 @@ Engine::Object* ObjectFactory::CreateObject(const EObjectID & _eObjectID)
 
 	case EObjectID::OBJECT_ID_CAMERA_DYNAMIC :
 		pTargetCreated = Engine::CameraDynamic::Create();
+		break;
+
+	case EObjectID::OBJECT_ID_TERRAIN :
+		pTargetCreated = new TestTerrain();
+		pTargetCreated->Init();
 		break;
 
 	default :

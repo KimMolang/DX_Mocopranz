@@ -183,6 +183,7 @@
     <ClInclude Include="Code\Mgr\ObjectFactory.h" />
     <ClInclude Include="Code\Mgr\SceneSetter.h" />
     <ClInclude Include="Code\Object\TestObject.h" />
+    <ClInclude Include="Code\Object\TestTerrain.h" />
     <ClInclude Include="Code\Scene\SceneTown.h" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +198,7 @@
     <ClCompile Include="Code\Mgr\ObjectFactory.cpp" />
     <ClCompile Include="Code\Mgr\SceneSetter.cpp" />
     <ClCompile Include="Code\Object\TestObject.cpp" />
+    <ClCompile Include="Code\Object\TestTerrain.cpp" />
     <ClCompile Include="Code\Scene\SceneTown.cpp" />
   </ItemGroup>
   <ItemGroup>

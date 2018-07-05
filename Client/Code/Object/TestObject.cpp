@@ -20,7 +20,7 @@ HRESULT TestObject::Init()
 
 	// Model Buffer ---------------------
 	Engine::Resource* pResurceCloned = Engine::GetResourceMgr()->CloneResource(
-		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC, Engine::ResourceMgr::RESOURCE_TYPE_MODEL, L"Test_Buffer_Cube");
+		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC, Engine::ResourceMgr::RESOURCE_TYPE_BUFFER, L"Test_Buffer_Cube");
 	CHECK_NULLPTR_RETURN(pResurceCloned, E_FAIL);
 
 	m_mapComponent.insert(std::make_pair(L"Buffer", pResurceCloned));
@@ -30,13 +30,12 @@ HRESULT TestObject::Init()
 
 Engine::Object::EState TestObject::Update()
 {
-	Engine::Object::Update_Component();
-	return m_eObjState;
+	return Engine::Object::Update();
 }
 
 void TestObject::Render()
 {
-	Engine::Object::Render_Component();
+	Engine::Object::Render();
 }
 
 void TestObject::Release()

@@ -22,6 +22,9 @@
     <ClCompile Include="Code\Mgr\SceneSetter.cpp">
       <Filter>Source Files\00. Mgr\SceneSetter</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Object\TestTerrain.cpp">
+      <Filter>Source Files\04. Object\Back</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Client\Code\Basic\Resource.h">
@@ -53,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="Code\Mgr\SceneSetter.h">
       <Filter>Source Files\00. Mgr\SceneSetter</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Object\TestTerrain.h">
+      <Filter>Source Files\04. Object\Back</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -130,9 +136,6 @@
     </Filter>
     <Filter Include="Source Files\04. Object\Back\SkyBox">
       <UniqueIdentifier>{cdc45656-7e87-4d0d-9e51-b2a867f56d16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\04. Object\Back\Decoration">
-      <UniqueIdentifier>{47acb0b7-c96b-49f8-b061-375d990cc62b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\04. Object\GameLogic">
       <UniqueIdentifier>{383f1ffa-2f04-4c46-b124-865585ac657b}</UniqueIdentifier>
