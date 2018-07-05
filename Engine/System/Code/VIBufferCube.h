@@ -24,8 +24,6 @@ public:
 private:
 	void			Init_Vtx();
 	void			Init_Idx();
-
-	virtual void	CreateRasterizerState();
 };
 
 

@@ -182,7 +182,7 @@ void Terrain::NormalizeHeightMap()
 
 HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 {
-	m_nVtxNum = (_iCntX + 1) * (_iCntZ + 1);
+	m_nVtxNum = _iCntX * _iCntZ;
 	m_nVtxStride = sizeof(VertexColor);
 	m_nVtxOffset = 0;
 	m_nVtxStart = 1;
@@ -212,9 +212,9 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	VertexColor* pVertexColorInfoArray = new VertexColor[m_nVtxNum];
 	Index32* pIndexInfoArray = new Index32[m_nIdxNum];
 
-	for (int j = 0; j < _iCntZ + 1; ++j)
+	for (int j = 0; j < _iCntZ; ++j)
 	{
-		for (int i = 0; i < _iCntX + 1; ++i)
+		for (int i = 0; i < _iCntX; ++i)
 		{
 			// Vertex
 			int iVrtIndex = (j * _iCntX) + i;
@@ -224,14 +224,18 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			pVertexColorInfoArray[iVrtIndex].vColor
 				= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
 
+			if (j == _iCntZ - 1 || i == _iCntX - 1)
+				continue;
+
+
 			// Index
 			int iIdxIndex = iVrtIndex * 2;
 
-			pIndexInfoArray[iIdxIndex]._1 = iVrtIndex + (_iCntX + 1);
-			pIndexInfoArray[iIdxIndex]._2 = iVrtIndex + (_iCntX + 1) + 1;
+			pIndexInfoArray[iIdxIndex]._1 = iVrtIndex + _iCntX;
+			pIndexInfoArray[iIdxIndex]._2 = iVrtIndex + _iCntX + 1;
 			pIndexInfoArray[iIdxIndex]._3 = iVrtIndex + 1;
 
-			pIndexInfoArray[iIdxIndex + 1]._1 = iVrtIndex + (_iCntX + 1);
+			pIndexInfoArray[iIdxIndex + 1]._1 = iVrtIndex + _iCntX;
 			pIndexInfoArray[iIdxIndex + 1]._2 = iVrtIndex + 1;
 			pIndexInfoArray[iIdxIndex + 1]._3 = iVrtIndex;
 		}

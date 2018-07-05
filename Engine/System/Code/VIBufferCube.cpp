@@ -39,7 +39,7 @@ HRESULT VIBufferCube::Init()
 	Init_Vtx();
 	Init_Idx();
 
-	CreateRasterizerState();
+	VIBuffer::CreateRasterizerState();
 
 
 	return S_OK;
@@ -132,15 +132,6 @@ void VIBufferCube::Init_Idx()
 	tData.pSysMem = pIdx;
 	CHECK_FAILED_RETURN(
 		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&tBufferDesc, &tData, &m_pIdxBuffer), );
-}
-
-void VIBufferCube::CreateRasterizerState()
-{
-	D3D11_RASTERIZER_DESC tRasterizerDesc;
-	ZeroMemory(&tRasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
-	tRasterizerDesc.CullMode = D3D11_CULL_NONE;
-	tRasterizerDesc.FillMode = D3D11_FILL_WIREFRAME;
-	GraphicDevice::GetInstance()->GetDevice()->CreateRasterizerState(&tRasterizerDesc, &m_pRasterizerState);
 }
 
 void VIBufferCube::Update()
