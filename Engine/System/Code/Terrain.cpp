@@ -241,7 +241,7 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			if (m_pHeightMapTypeInfoArray)
 			{
 				iHeght = m_pHeightMapTypeInfoArray[(int)
-					((m_iHeight / iBoxNumZ) * j) + ((m_iWidth / iBoxNumX) * i)].y;
+					(((m_iHeight / iBoxNumZ) * j) * m_iWidth) + ((m_iWidth / iBoxNumX) * i)].y;
 			}
 
 			pVertexColorInfoArray[iVtxIndex].vPos
