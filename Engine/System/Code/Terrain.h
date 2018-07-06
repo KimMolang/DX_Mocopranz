@@ -16,6 +16,7 @@ public:
 		, const int _iCntY
 		, const char* _Path = nullptr
 	);
+	CLONE(Terrain);
 private:
 	explicit Terrain();
 public:

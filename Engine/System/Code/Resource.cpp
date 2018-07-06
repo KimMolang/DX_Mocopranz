@@ -15,13 +15,6 @@ Resource::~Resource()
 	Release();
 }
 
-Resource* Resource::Clone()
-{
-	++(*m_pRefCnt);
-	return this;
-	//return new T(*this);
-}
-
 void Resource::Release()
 {
 	if ((*m_pRefCnt) == 0)

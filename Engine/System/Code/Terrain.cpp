@@ -42,11 +42,13 @@ HRESULT Terrain::Init
 {
 	if (_Path)
 	{
-		CHECK_FAILED_RETURN(LoadHeightMap(_Path), E_FAIL);
+		CHECK_FAILED_MSG_RETURN(LoadHeightMap(_Path)
+			, L"Failed Function of VITerrain::LoadHeightMap", E_FAIL);
 		NormalizeHeightMap();
 	}
 
-	CHECK_FAILED_RETURN(Init_Buffer(_iCntX, _iCntY), E_FAIL);
+	CHECK_FAILED_MSG_RETURN(Init_Buffer(_iCntX, _iCntY)
+		, L"Failed Function of VITerrainInit_Buffer", E_FAIL);
 
 	CreateRasterizerState();
 
@@ -84,8 +86,10 @@ void Terrain::CreateRasterizerState()
 
 void Terrain::Release()
 {
-	VIBuffer::Release();
-	::Safe_Delete_Array(m_pHeightMapTypeInfoArray);
+	if (m_pRefCnt == nullptr)
+	{
+		::Safe_Delete_Array(m_pHeightMapTypeInfoArray);
+	}
 }
 
 HRESULT Terrain::LoadHeightMap(const char* _Path)
@@ -192,12 +196,15 @@ void Terrain::NormalizeHeightMap()
 
 HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 {
+	const int iBoxNumX = (_iCntX - 1);
+	const int iBoxNumZ = (_iCntZ - 1);
+
 	m_nVtxNum = _iCntX * _iCntZ;
 	m_nVtxStride = sizeof(VertexColor);
 	m_nVtxOffset = 0;
 	m_nVtxStart = 1;
 
-	m_nIdxNum = (_iCntX - 1) * (_iCntZ - 1) * 6; // * 2(TriNum) * 3(VertexNum);
+	m_nIdxNum = iBoxNumX * iBoxNumZ * 6; // * 2(TriNum) * 3(VertexNum);
 	m_nIdxStart = 0;
 	m_nIdxPlus = 0;
 
@@ -230,13 +237,20 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			// Vertex
 			int iVtxIndex = (j * _iCntX) + i;
 
+			float iHeght = 0.0f;
+			if (m_pHeightMapTypeInfoArray)
+			{
+				iHeght = m_pHeightMapTypeInfoArray[(int)
+					((m_iHeight / iBoxNumZ) * j) + ((m_iWidth / iBoxNumX) * i)].y;
+			}
+
 			pVertexColorInfoArray[iVtxIndex].vPos
-				= D3DXVECTOR3((float)i, /*m_pHeightMapTypeInfoArray*/0.0f, (float)j);
+				= D3DXVECTOR3((float)i, iHeght, (float)j);
 			pVertexColorInfoArray[iVtxIndex].vColor
 				= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
 
 
-			if (i == _iCntX - 1 || j == _iCntZ - 1)
+			if (j == iBoxNumZ || i == iBoxNumX)
 				continue;
 
 			// Index
@@ -254,6 +268,7 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			++iTriIndex;
 		}
 	}
+
 
 	// Set up the description of the static vertex buffer.
 	D3D11_BUFFER_DESC bufferDesc;

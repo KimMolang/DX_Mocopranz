@@ -41,7 +41,8 @@ HRESULT SceneTown::Init()
 		, L"Test_Buffer_Cube"
 		, pVIBufferCube);
 
-	Engine::Terrain* pTerrain = Engine::Terrain::Create(30, 30);
+	Engine::Terrain* pTerrain = Engine::Terrain::Create(30, 30
+		, "M:\\Projects\\DX_Projects\\DX_Mocopranz\\Client\\bin\\Resource\\Map\\mountains.bmp");
 	Engine::GetResourceMgr()->AddResource(
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
 		, Engine::ResourceMgr::RESOURCE_TYPE_BUFFER

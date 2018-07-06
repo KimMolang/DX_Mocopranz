@@ -4,6 +4,12 @@
 
 BEGIN(Engine)
 
+#define CLONE(TYPE)			\
+virtual TYPE* Clone()		\
+{							\
+	++(*m_pRefCnt);			\
+	return new TYPE(*this);	\
+}
 
 class ENGINE_DLL Resource abstract : public Component
 {
@@ -13,7 +19,7 @@ public:
 	virtual ~Resource() PURE;
 
 public:
-	Resource*		Clone();
+	virtual Resource* Clone()	PURE;
 	virtual void	Update()	PURE;
 	virtual void	Render()	PURE;
 protected:

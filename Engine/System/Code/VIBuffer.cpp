@@ -90,8 +90,6 @@ void VIBuffer::CreateRasterizerState()
 
 void VIBuffer::Release()
 {
-	Resource::Release();
-
 	if (m_pRefCnt == nullptr)
 	{
 		::Safe_Release(m_pVtxBuffer);

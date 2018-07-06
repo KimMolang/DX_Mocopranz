@@ -23,7 +23,7 @@ HRESULT TestTerrain::Init()
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC, Engine::ResourceMgr::RESOURCE_TYPE_BUFFER, L"Test_Buffer_Terrain");
 	CHECK_NULLPTR_RETURN(pResurceCloned, E_FAIL);
 
-	m_mapComponent.insert(std::make_pair(L"Buffer", pResurceCloned));
+	m_mapComponent.insert(std::make_pair(L"Buffer_Terrain", pResurceCloned));
 
 	return S_OK;
 }

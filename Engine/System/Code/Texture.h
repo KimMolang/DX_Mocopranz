@@ -16,6 +16,7 @@ public :
 		std::wstring _wtrPath
 		, const ETextureType& _eTextureType
 	);
+	CLONE(Texture);
 private:
 	Texture();
 public:
