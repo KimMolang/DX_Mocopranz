@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "Terrain.h"
+#include "VIBufferTerrain.h"
 
 BEGIN(Engine)
 
 
-Terrain::Terrain()
+VIBufferTerrain::VIBufferTerrain()
 	: m_iWidth(0)
 	, m_iHeight(0)
 
@@ -13,33 +13,35 @@ Terrain::Terrain()
 
 }
 
-
-Terrain::~Terrain()
+VIBufferTerrain::~VIBufferTerrain()
 {
 	Release();
 }
 
-Terrain* Terrain::Create
+VIBufferTerrain* VIBufferTerrain::Create
 (
 	const int _iCntX
 	, const int _iCntY
 	, const char* _Path /*= nullptr*/
 )
 {
-	Terrain* pComponent = new Terrain();
+	VIBufferTerrain* pComponent = new VIBufferTerrain();
 	if (FAILED(pComponent->Init(_iCntX, _iCntY, _Path)))
 		::Safe_Delete(pComponent);
 
 	return pComponent;
 }
 
-HRESULT Terrain::Init
+HRESULT VIBufferTerrain::Init
 (
 	const int _iCntX
 	, const int _iCntY
 	, const char* _Path /*= nullptr*/
 )
 {
+	//VIBuffer::Init();
+	SetShader(ResourceMgr::EResourceAttribute::RESOURCE_ATTRI_STATIC, L"Test_Shader_Terrain"); 
+
 	if (_Path)
 	{
 		CHECK_FAILED_MSG_RETURN(LoadHeightMap(_Path)
@@ -55,14 +57,18 @@ HRESULT Terrain::Init
 	return S_OK;
 }
 
-void Terrain::Update()
+void VIBufferTerrain::Update()
 {
 }
 
-void Terrain::Render()
+void VIBufferTerrain::Render()
 {
 	if (nullptr == m_pVtxBuffer)
 		return;
+
+
+	if (m_pShader)
+		m_pShader->Render();
 
 	ID3D11DeviceContext* pDeviceContext = GraphicDevice::GetInstance()->GetDeviceContext();
 	pDeviceContext->IASetVertexBuffers(0, 1, &m_pVtxBuffer, &m_nVtxStride, &m_nVtxOffset);
@@ -75,7 +81,7 @@ void Terrain::Render()
 	pDeviceContext->DrawIndexed(m_nIdxNum, m_nIdxStart, m_nIdxPlus);
 }
 
-void Terrain::CreateRasterizerState()
+void VIBufferTerrain::CreateRasterizerState()
 {
 	D3D11_RASTERIZER_DESC tRasterizerDesc;
 	ZeroMemory(&tRasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
@@ -84,7 +90,7 @@ void Terrain::CreateRasterizerState()
 	GraphicDevice::GetInstance()->GetDevice()->CreateRasterizerState(&tRasterizerDesc, &m_pRasterizerState);
 }
 
-void Terrain::Release()
+void VIBufferTerrain::Release()
 {
 	if (m_pRefCnt == nullptr)
 	{
@@ -92,7 +98,7 @@ void Terrain::Release()
 	}
 }
 
-HRESULT Terrain::LoadHeightMap(const char* _Path)
+HRESULT VIBufferTerrain::LoadHeightMap(const char* _Path)
 {
 	// Open the height map file in binary.
 	// Only-Read & Birary 모드로 높이맵 파일을 엽니다.
@@ -176,7 +182,7 @@ HRESULT Terrain::LoadHeightMap(const char* _Path)
 	return S_OK;
 }
 
-void Terrain::NormalizeHeightMap()
+void VIBufferTerrain::NormalizeHeightMap()
 {
 	// The next new function is NormalizeHeightMap.
 	// All it does is it goes through the terrain
@@ -194,13 +200,13 @@ void Terrain::NormalizeHeightMap()
 	}
 }
 
-HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
+HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 {
 	const int iBoxNumX = (_iCntX - 1);
 	const int iBoxNumZ = (_iCntZ - 1);
 
 	m_nVtxNum = _iCntX * _iCntZ;
-	m_nVtxStride = sizeof(VertexColor);
+	m_nVtxStride = sizeof(VertexTexture);
 	m_nVtxOffset = 0;
 	m_nVtxStart = 1;
 
@@ -226,10 +232,10 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 					iIndex	---	 iIndex	+ 1
 	*/
 
-	VertexColor* pVertexColorInfoArray = new VertexColor[m_nVtxNum];
+	VertexTexture* pVertexInfoArray = new VertexTexture[m_nVtxNum];
 	Index32* pIndexInfoArray = new Index32[m_nIdxNum];
 
-	int iTriIndex = 0;
+
 	for (int j = 0; j < _iCntZ; ++j)
 	{
 		for (int i = 0; i < _iCntX; ++i)
@@ -244,28 +250,15 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 					(((m_iHeight / iBoxNumZ) * j) * m_iWidth) + ((m_iWidth / iBoxNumX) * i)].y;
 			}
 
-			pVertexColorInfoArray[iVtxIndex].vPos
+			pVertexInfoArray[iVtxIndex].vPos
 				= D3DXVECTOR3((float)i, iHeght, (float)j);
-			pVertexColorInfoArray[iVtxIndex].vColor
-				= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+			pVertexInfoArray[iVtxIndex].vNormal
+				= D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
+			float fx = (float)i / (float)iBoxNumX;
+			float fz = 1.0f - ((float)j / (float)iBoxNumZ);
 
-			if (j == iBoxNumZ || i == iBoxNumX)
-				continue;
-
-			// Index
-			//int iIdxIndex = (j * (_iCntX - 1)) + i;
-			//int iTriIndex = (iIdxIndex * 2);
-
-			pIndexInfoArray[iTriIndex]._1 = iVtxIndex + _iCntX;
-			pIndexInfoArray[iTriIndex]._2 = iVtxIndex + _iCntX + 1;
-			pIndexInfoArray[iTriIndex]._3 = iVtxIndex + 1;
-			++iTriIndex;
-
-			pIndexInfoArray[iTriIndex /*+ 1*/]._1 = iVtxIndex + _iCntX;
-			pIndexInfoArray[iTriIndex /*+ 1*/]._2 = iVtxIndex + 1;
-			pIndexInfoArray[iTriIndex /*+ 1*/]._3 = iVtxIndex;
-			++iTriIndex;
+			pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fx, fz);
 		}
 	}
 
@@ -283,7 +276,7 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	// Give the subresource structure a pointer to the vertex data.
 	D3D11_SUBRESOURCE_DATA tData;
 	ZeroMemory(&tData, sizeof(D3D11_SUBRESOURCE_DATA));
-	tData.pSysMem = pVertexColorInfoArray;
+	tData.pSysMem = pVertexInfoArray;
 	tData.SysMemPitch = 0;
 	tData.SysMemSlicePitch = 0;
 
@@ -292,27 +285,51 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&bufferDesc, &tData, &m_pVtxBuffer));
 
 
-	//int iTriIndex = 0;
-	//for (int j = 0; j < _iCntZ - 1; ++j)
-	//{
-	//	for (int i = 0; i < _iCntX - 1; ++i)
-	//	{
-	//		// Index
-	//		int iVtxIndex = (j * _iCntX) + i;
-	//		//int iIdxIndex = (j * (_iCntX - 1)) + i;
-	//		//int iTriIndex = (iIdxIndex * 2);
+	int iTriCnt = 0;
+	for (int j = 0; j < _iCntZ - 1; ++j)
+	{
+		for (int i = 0; i < _iCntX - 1; ++i)
+		{
+			// Index
+			int iVtxIndex = (j * _iCntX) + i;
+			//int iIdxIndex = (j * (_iCntX - 1)) + i;
+			//int iTriCnt = (iIdxIndex * 2);
 
-	//		pIndexInfoArray[iTriIndex]._1 = iVtxIndex + _iCntX;
-	//		pIndexInfoArray[iTriIndex]._2 = iVtxIndex + _iCntX + 1;
-	//		pIndexInfoArray[iTriIndex]._3 = iVtxIndex + 1;
-	//		++iTriIndex;
+			pIndexInfoArray[iTriCnt]._1 = iVtxIndex + _iCntX;
+			pIndexInfoArray[iTriCnt]._2 = iVtxIndex + _iCntX + 1;
+			pIndexInfoArray[iTriCnt]._3 = iVtxIndex + 1;
 
-	//		pIndexInfoArray[iTriIndex /*+ 1*/]._1 = iVtxIndex + _iCntX;
-	//		pIndexInfoArray[iTriIndex /*+ 1*/]._2 = iVtxIndex + 1;
-	//		pIndexInfoArray[iTriIndex /*+ 1*/]._3 = iVtxIndex;
-	//		++iTriIndex;
-	//	}
-	//}
+			D3DXVECTOR3	vDest, vSour, vNormal;
+			vDest = pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos
+				- pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vPos;
+			vSour = pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vPos
+				- pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos;
+			D3DXVec3Cross(&vNormal, &vDest, &vSour);
+
+			pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vNormal += vNormal;
+			pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vNormal += vNormal;
+			pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vNormal += vNormal;
+
+			++iTriCnt;
+
+			//
+			pIndexInfoArray[iTriCnt /*+ 1*/]._1 = iVtxIndex + _iCntX;
+			pIndexInfoArray[iTriCnt /*+ 1*/]._2 = iVtxIndex + 1;
+			pIndexInfoArray[iTriCnt /*+ 1*/]._3 = iVtxIndex;
+
+			vDest = pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos
+				- pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vPos;
+			vSour = pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vPos
+				- pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos;
+			D3DXVec3Cross(&vNormal, &vDest, &vSour);
+
+			pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vNormal += vNormal;
+			pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vNormal += vNormal;
+			pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vNormal += vNormal;
+
+			++iTriCnt;
+		}
+	}
 
 
 	// Set up the description of the static index buffer.
@@ -335,7 +352,7 @@ HRESULT Terrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&bufferDesc, &tData, &m_pIdxBuffer));
 
 	// Release the arrays now that the buffers have been created and loaded.
-	::Safe_Delete_Array(pVertexColorInfoArray);
+	::Safe_Delete_Array(pVertexInfoArray);
 	::Safe_Delete_Array(pIndexInfoArray);
 
 

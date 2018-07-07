@@ -68,6 +68,9 @@ void VIBuffer::Render()
 	if (nullptr == m_pVtxBuffer)
 		return;
 
+	if (m_pShader)
+		m_pShader->Render();
+
 	ID3D11DeviceContext* pDeviceContext = GraphicDevice::GetInstance()->GetDeviceContext();
 	pDeviceContext->IASetVertexBuffers(0, 1, &m_pVtxBuffer, &m_nVtxStride, &m_nVtxOffset);
 	pDeviceContext->IASetIndexBuffer(m_pIdxBuffer, DXGI_FORMAT_R16_UINT, 0);

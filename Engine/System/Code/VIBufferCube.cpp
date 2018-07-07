@@ -139,11 +139,5 @@ void VIBufferCube::Update()
 
 }
 
-void VIBufferCube::Render()
-{
-	m_pShader->Render();
-	VIBuffer::Render();
-}
-
 
 END

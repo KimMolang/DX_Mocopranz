@@ -1,12 +1,19 @@
 //
 // terrain_vs.hlsl
 
-
-cbuffer MatrixBuffer
+cbuffer ViewMatrixBuffer : register(b0)
 {
-	matrix matrixWorld;
-	matrix matrixView;
-	matrix matrixProjection;
+	matrix matrixView : packoffset(c0);
+}
+
+cbuffer ProjMatrixBuffer : register(b1)
+{
+	matrix matrixProjection : packoffset(c0);
+}
+
+cbuffer WorldMatrixBuffer : register(b2)
+{
+	matrix matrixWorld : packoffset(c0);
 }
 
 // https://www.slideshare.net/SukwooLee4/ss-87133392

@@ -7,20 +7,20 @@ BEGIN(Engine)
 
 class Camera;
 class Layer;
-class ENGINE_DLL Terrain : public VIBuffer
+class ENGINE_DLL VIBufferTerrain : public VIBuffer
 {
 public:
-	static Terrain* Create
+	static VIBufferTerrain* Create
 	(
 		const int _iCntX
 		, const int _iCntY
 		, const char* _Path = nullptr
 	);
-	CLONE(Terrain);
+	CLONE(VIBufferTerrain);
 private:
-	explicit Terrain();
+	explicit VIBufferTerrain();
 public:
-	virtual ~Terrain();
+	virtual ~VIBufferTerrain();
 
 
 public :
