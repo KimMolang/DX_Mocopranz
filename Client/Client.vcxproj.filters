@@ -122,9 +122,6 @@
     <Filter Include="Source Files\05. Component\01%29 Resource\Font">
       <UniqueIdentifier>{a844d946-53af-4885-be1e-e95c16084a68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Fx">
-      <UniqueIdentifier>{14dd5978-40f2-4e42-bd5f-5d6e585b072c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\02. Scene\Town">
       <UniqueIdentifier>{f3876b2d-4e6a-4a5a-a408-b58d90e0dff6}</UniqueIdentifier>
     </Filter>

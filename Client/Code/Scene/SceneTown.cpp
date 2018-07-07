@@ -5,9 +5,12 @@
 #include "ResourceMgr.h"
 #include "ObjectMgr.h"
 #include "Export_Function_Mgr.h"
+
 #include "VIBufferCube.h"
 #include "ShaderColor.h"
-#include "Terrain.h"
+
+#include "VIBufferTerrain.h"
+#include "ShaderTerrain.h"
 
 #include "Object.h"
 
@@ -34,6 +37,13 @@ HRESULT SceneTown::Init()
 		, L"Test_Shader_Color"
 		, pShader);
 
+	Engine::ShaderTerrain* pShaderTerrain = Engine::ShaderTerrain::Create();
+	Engine::GetResourceMgr()->AddResource(
+		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
+		, Engine::ResourceMgr::RESOURCE_TYPE_SHADER
+		, L"Test_Shader_Terrain"
+		, pShaderTerrain);
+
 	Engine::VIBufferCube* pVIBufferCube = Engine::VIBufferCube::Create();
 	Engine::GetResourceMgr()->AddResource(
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
@@ -41,8 +51,8 @@ HRESULT SceneTown::Init()
 		, L"Test_Buffer_Cube"
 		, pVIBufferCube);
 
-	Engine::Terrain* pTerrain = Engine::Terrain::Create(256, 256
-		, "M:\\Projects\\DX_Projects\\DX_Mocopranz\\Client\\bin\\Resource\\Map\\mountains.bmp");
+	Engine::VIBufferTerrain* pTerrain = Engine::VIBufferTerrain::Create(256, 256
+		, ".\\bin\\Resource\\Map\\mountains.bmp");
 	Engine::GetResourceMgr()->AddResource(
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
 		, Engine::ResourceMgr::RESOURCE_TYPE_BUFFER
