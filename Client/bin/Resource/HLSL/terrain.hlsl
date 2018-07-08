@@ -21,13 +21,13 @@ cbuffer WorldMatrixBuffer : register(b2)
 // https://www.slideshare.net/SukwooLee4/ss-87133392
 cbuffer LightBuffer : register(b3)
 {
-	float4 colorAmbient;	// Ambient : 간접광.
-	float4 colorDiffuse;	// Diffuse : 난반사. 객체의 표면에 부딪힌 후 전방향으로 흩어지는 빛
+	float4 colorAmbient : packoffset(c0);	// Ambient : 간접광.
+	float4 colorDiffuse : packoffset(c1);	// Diffuse : 난반사. 객체의 표면에 부딪힌 후 전방향으로 흩어지는 빛
 	//float4 colorSpecular;	// Specular : 정반사.
 	//float4 colorEmissive.	// Emissive : 발광.
-	float3 dirLight;
+	float3 dirLight : packoffset(c2);
 
-	float padding;
+	float padding : packoffset(c3);
 };
 
 struct Vertex_In
@@ -78,7 +78,6 @@ float4 PS(Pixel_In input) : SV_Target
 		= shaderTexture.Sample(samplerState, input.tex);
 
 	color = saturate(color) * colorTexture;
-
 
 	return color;
 }

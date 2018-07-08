@@ -79,13 +79,14 @@ void VIBufferTerrain::Render()
 
 		// (Need the Modify)
 		LightBuffer* pLightData = (LightBuffer*)tSubreResource.pData;
-		pLightData->colorEmbient	= D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f);
-		pLightData->colorDiffuse	= D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f);
-		pLightData->dirLight		= D3DXVECTOR3(0.0f, -1.0f, 0.0f);
-		pLightData->padding			= 0.0f;
+		pLightData->colorEmbient	= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+		pLightData->colorDiffuse	= D3DXVECTOR4(0.0f, 0.5f, 0.5f, 1.0f);
+		pLightData->dirLight		= D3DXVECTOR3(0.1f, -0.8f, 0.1f);
+		pLightData->padding			= 1.0f;
 
 		GraphicDevice::GetInstance()->GetDeviceContext()->Unmap(m_pLightBuffer, 0);
-		GraphicDevice::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_LIGHT_VALUE, 1, &m_pLightBuffer);
+		//GraphicDevice::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_LIGHT_VALUE, 1, &m_pLightBuffer);
+		GraphicDevice::GetInstance()->GetDeviceContext()->PSSetConstantBuffers(VS_SLOT_LIGHT_VALUE, 1, &m_pLightBuffer);
 	}
 	
 
@@ -108,7 +109,7 @@ void VIBufferTerrain::CreateRasterizerState()
 	D3D11_RASTERIZER_DESC tRasterizerDesc;
 	ZeroMemory(&tRasterizerDesc, sizeof(D3D11_RASTERIZER_DESC));
 	tRasterizerDesc.CullMode = D3D11_CULL_NONE;
-	tRasterizerDesc.FillMode = D3D11_FILL_WIREFRAME;
+	tRasterizerDesc.FillMode = D3D11_FILL_SOLID;
 	GraphicDevice::GetInstance()->GetDevice()->CreateRasterizerState(&tRasterizerDesc, &m_pRasterizerState);
 }
 
