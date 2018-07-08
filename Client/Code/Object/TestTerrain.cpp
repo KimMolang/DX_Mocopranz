@@ -18,12 +18,12 @@ HRESULT TestTerrain::Init()
 {
 	Engine::Object::Init();
 
-	//// Texture ------------
-	//m_pTexture = Engine::GetResourceMgr()->CloneResource(
-	//	Engine::ResourceMgr::RESOURCE_ATTRI_STATIC, Engine::ResourceMgr::RESOURCE_TYPE_TEXTURE, L"Test_Texture_Terrain");
-	//CHECK_NULLPTR_RETURN(m_pBuffer, E_FAIL);
+	// Texture ------------
+	m_pTexture = Engine::GetResourceMgr()->CloneResource(
+		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC, Engine::ResourceMgr::RESOURCE_TYPE_TEXTURE, L"Test_Texture_Terrain");
+	CHECK_NULLPTR_RETURN(m_pTexture, E_FAIL);
 
-	//m_mapComponent.insert(std::make_pair(L"Texture_Terrain", m_pBuffer));
+	m_mapComponent.insert(std::make_pair(L"Texture_Terrain", m_pTexture));
 
 
 	// Model Buffer ---------------------
@@ -45,7 +45,7 @@ Engine::Object::EState TestTerrain::Update()
 void TestTerrain::Render()
 {
 	m_pTransform->Render();
-	//m_pTexture->Render();
+	m_pTexture->Render();
 	m_pBuffer->Render();
 
 	//Engine::Object::Render_Component();
