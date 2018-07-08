@@ -86,6 +86,15 @@ struct Index32
 	Index32(DWORD _1, DWORD _2, DWORD _3) : _1(_1), _2(_2), _3(_3) {}
 };
 
+struct LightBuffer
+{
+	D3DXVECTOR4 colorEmbient;
+	D3DXVECTOR4 colorDiffuse;
+	D3DXVECTOR3 dirLight;
+
+	float padding;
+};
+
 
 class ENGINE_DLL VIBuffer abstract : public Resource
 {

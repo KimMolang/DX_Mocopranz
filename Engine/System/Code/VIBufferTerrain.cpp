@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "VIBufferTerrain.h"
 
+#include "Engine_Define_Buffer_Index.h"
+
 BEGIN(Engine)
 
 
@@ -9,6 +11,8 @@ VIBufferTerrain::VIBufferTerrain()
 	, m_iHeight(0)
 
 	, m_pHeightMapTypeInfoArray(nullptr)
+
+	, m_pLightBuffer(nullptr)
 {
 
 }
@@ -67,6 +71,24 @@ void VIBufferTerrain::Render()
 		return;
 
 
+	// Light
+	if (m_pLightBuffer)
+	{
+		D3D11_MAPPED_SUBRESOURCE tSubreResource;
+		GraphicDevice::GetInstance()->GetDeviceContext()->Map(m_pLightBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tSubreResource);
+
+		// (Need the Modify)
+		LightBuffer* pLightData = (LightBuffer*)tSubreResource.pData;
+		pLightData->colorEmbient	= D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f);
+		pLightData->colorDiffuse	= D3DXVECTOR4(0.5f, 0.5f, 0.5f, 1.0f);
+		pLightData->dirLight		= D3DXVECTOR3(0.0f, -1.0f, 0.0f);
+		pLightData->padding			= 0.0f;
+
+		GraphicDevice::GetInstance()->GetDeviceContext()->Unmap(m_pLightBuffer, 0);
+		GraphicDevice::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_LIGHT_VALUE, 1, &m_pLightBuffer);
+	}
+	
+
 	if (m_pShader)
 		m_pShader->Render();
 
@@ -95,6 +117,7 @@ void VIBufferTerrain::Release()
 	if (m_pRefCnt == nullptr)
 	{
 		::Safe_Delete_Array(m_pHeightMapTypeInfoArray);
+		::Safe_Release(m_pLightBuffer);
 	}
 }
 
@@ -354,6 +377,20 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	// Release the arrays now that the buffers have been created and loaded.
 	::Safe_Delete_Array(pVertexInfoArray);
 	::Safe_Delete_Array(pIndexInfoArray);
+
+
+	// Setup the description of the light dynamic constant buffer that is in the pixel shader.
+	// Note that ByteWidth always needs to be a multiple of 16 if using D3D11_BIND_CONSTANT_BUFFER or CreateBuffer will fail.
+	D3D11_BUFFER_DESC lightBufferDesc;
+	lightBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	lightBufferDesc.ByteWidth = sizeof(LightBuffer);
+	lightBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+	lightBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	lightBufferDesc.MiscFlags = 0;
+	lightBufferDesc.StructureByteStride = 0; 
+
+	CHECK_FAILED(
+		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&lightBufferDesc, nullptr, &m_pLightBuffer));
 
 
 	return S_OK;

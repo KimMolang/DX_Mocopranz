@@ -12,6 +12,8 @@
 #include "VIBufferTerrain.h"
 #include "ShaderTerrain.h"
 
+#include "Texture.h"
+
 #include "Object.h"
 
 #include "../Mgr/ObjectFactory.h"
@@ -50,6 +52,15 @@ HRESULT SceneTown::Init()
 		, Engine::ResourceMgr::RESOURCE_TYPE_BUFFER
 		, L"Test_Buffer_Cube"
 		, pVIBufferCube);
+
+	Engine::Texture* pTerrainTexture = Engine::Texture::Create(
+		L".\\bin\\Resource\\Map\\lightdirt.dds"
+		, Engine::Texture::TEXTURE_TYPE_BASIC);
+	Engine::GetResourceMgr()->AddResource(
+		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
+		, Engine::ResourceMgr::RESOURCE_TYPE_TEXTURE
+		, L"Test_Texture_Terrain"
+		, pTerrainTexture);
 
 	Engine::VIBufferTerrain* pTerrain = Engine::VIBufferTerrain::Create(256, 256
 		, ".\\bin\\Resource\\Map\\mountains.bmp");

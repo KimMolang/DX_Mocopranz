@@ -52,6 +52,9 @@ protected:
 	int		m_iHeight;
 
 	HeightMapType* m_pHeightMapTypeInfoArray;
+
+protected:
+	ID3D11Buffer*		m_pLightBuffer;
 };
 
 

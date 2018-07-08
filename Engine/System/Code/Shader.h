@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Resource.h"
+#include "GraphicDevice.h"
 
 BEGIN(Engine)
 
@@ -18,6 +19,9 @@ public:
 	virtual void	Update() {};
 private:
 	void			Release();
+
+protected:
+	void OutputShaderErrorMessage(ID3D10Blob* _pErrorBlob, char* _fileName);
 
 
 protected:

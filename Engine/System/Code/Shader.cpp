@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Shader.h"
 
-#include "GraphicDevice.h"
+#include <fstream>
 
 BEGIN(Engine)
 
@@ -42,6 +42,25 @@ void Shader::Release()
 		::Safe_Release(m_pVertexLayout);
 		::Safe_Release(m_pPixelShader);
 	}
+}
+
+void Shader::OutputShaderErrorMessage(ID3D10Blob* _pErrorBlob, char* _fileName)
+{
+	// Get a pointer to the error message text buffer.
+	char* compileErrors = (char*)(_pErrorBlob->GetBufferPointer());
+	SIZE_T bufferSize = _pErrorBlob->GetBufferSize();
+
+	std::ofstream fout;
+	fout.open(_fileName);
+
+	// Write out the error message.
+	for (int i = 0; i<bufferSize; ++i)
+	{
+		fout << compileErrors[i];
+	}
+
+	// Close the file.
+	fout.close();
 }
 
 

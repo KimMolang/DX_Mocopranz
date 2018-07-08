@@ -1,6 +1,8 @@
 //
 // terrain_vs.hlsl
-
+//
+// register : https://docs.microsoft.com/ko-kr/windows/desktop/direct3dhlsl/dx-graphics-hlsl-variable-register
+// What are registers in HLSL for? : https://gamedev.stackexchange.com/questions/55319/what-are-registers-in-hlsl-for
 cbuffer ViewMatrixBuffer : register(b0)
 {
 	matrix matrixView : packoffset(c0);
@@ -17,7 +19,7 @@ cbuffer WorldMatrixBuffer : register(b2)
 }
 
 // https://www.slideshare.net/SukwooLee4/ss-87133392
-cbuffer LightBuffer
+cbuffer LightBuffer : register(b3)
 {
 	float4 colorAmbient;	// Ambient : °£Á¢±¤.
 	float4 colorDiffuse;	// Diffuse : ³­¹Ý»ç. °´Ã¼ÀÇ Ç¥¸é¿¡ ºÎµúÈù ÈÄ Àü¹æÇâÀ¸·Î Èð¾îÁö´Â ºû
@@ -32,14 +34,14 @@ struct Vertex_In
 {
 	float4 position : POSITION;
 	float3 normal : NORMAL;
-	//float4 color : COLOR;
+	float2 tex : TEXCOORD0;
 };
 
 struct Pixel_In
 {
 	float4 position : SV_POSITION;
 	float3 normal : NORMAL;
-	//float4 color : COLOR;
+	float2 tex : TEXCOORD0;
 };
 
 Pixel_In VS(Vertex_In input)
@@ -51,22 +53,31 @@ Pixel_In VS(Vertex_In input)
 
 	output.position = mul(input.position, matAll);
 	output.normal = input.normal;
-	//output.color = input.color;
+	output.tex = input.tex;
+
+
+	return output;
 }
 
-SamplerState samplerState;
+
+Texture2D shaderTexture : register(t0);
+SamplerState samplerState : register(s0);
+
 float4 PS(Pixel_In input) : SV_Target
 {
-	float3 dirLight = -dirLight;
-	float3 lightIntensity = saturate(dot(input.normal, dirLight));
+	float lightIntensity = saturate(dot(input.normal, -dirLight));
 	float4 color = colorAmbient;
-
+	
 	if (lightIntensity > 0.0f)
 	{
 		color += (colorDiffuse * lightIntensity);
 	}
 
-	color = saturate(color);
+
+	float4 colorTexture
+		= shaderTexture.Sample(samplerState, input.tex);
+
+	color = saturate(color) * colorTexture;
 
 
 	return color;
