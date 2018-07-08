@@ -16,6 +16,7 @@
 *.db-shm
 *.db-wal
 /Reference/Header/Engine
-/Client/bin/{out}/x64/Debug/*.dll
-/Client/bin/{out}/x64/Release/*.dll
 *.dll
+/Client/bin/{out}/x64/Debug/System.dll
+/Client/bin/{out}/x64/Release/System.dll
+/Reference/Library/Engine/x64/System.lib
