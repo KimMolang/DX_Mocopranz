@@ -15,8 +15,6 @@
 *.ilk
 *.db-shm
 *.db-wal
-/Reference/Header/Engine
 *.dll
-/Client/bin/{out}/x64/Debug/System.dll
-/Client/bin/{out}/x64/Release/System.dll
+/Reference/Header/Engine
 /Reference/Library/Engine/x64/System.lib
