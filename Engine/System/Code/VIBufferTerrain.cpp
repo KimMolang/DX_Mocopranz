@@ -78,11 +78,17 @@ void VIBufferTerrain::Render()
 		GraphicDevice::GetInstance()->GetDeviceContext()->Map(m_pLightBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &tSubreResource);
 
 		// (Need the Modify)
+		// Need the Light Object
 		LightBuffer* pLightData = (LightBuffer*)tSubreResource.pData;
-		pLightData->colorEmbient	= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
-		pLightData->colorDiffuse	= D3DXVECTOR4(0.0f, 0.5f, 0.5f, 1.0f);
-		pLightData->dirLight		= D3DXVECTOR3(0.1f, -0.8f, 0.1f);
-		pLightData->padding			= 1.0f;
+		pLightData->colorEmbient	= D3DXVECTOR4(0.7f, 0.1f, 0.3f, 1.0f);
+		pLightData->colorDiffuse	= D3DXVECTOR4(1.0f, 1.0f, 1.0f, 1.0f);
+
+		D3DXVECTOR3 dirLight
+			= D3DXVECTOR3(-5.0f, -1.0f, 0.0f);
+		D3DXVec3Normalize(&dirLight, &dirLight);
+
+		pLightData->dirLight		= dirLight;
+		pLightData->padding			= 0.0f;
 
 		GraphicDevice::GetInstance()->GetDeviceContext()->Unmap(m_pLightBuffer, 0);
 		//GraphicDevice::GetInstance()->GetDeviceContext()->VSSetConstantBuffers(VS_SLOT_LIGHT_VALUE, 1, &m_pLightBuffer);
@@ -219,7 +225,8 @@ void VIBufferTerrain::NormalizeHeightMap()
 	{
 		for (int i = 0; i < m_iWidth; ++i)
 		{
-			m_pHeightMapTypeInfoArray[(m_iHeight * j) + 1].y /= 15.0f;
+			// (Need To Modify)
+			m_pHeightMapTypeInfoArray[(m_iHeight * j) + i].y /= 15.0f;
 		}
 	}
 }
@@ -279,34 +286,13 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			pVertexInfoArray[iVtxIndex].vNormal
 				= D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
+			// (Need To Modify)
 			float fx = (float)i / (float)iBoxNumX;
 			float fz = 1.0f - ((float)j / (float)iBoxNumZ);
 
 			pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fx, fz);
 		}
 	}
-
-
-	// Set up the description of the static vertex buffer.
-	D3D11_BUFFER_DESC bufferDesc;
-	ZeroMemory(&bufferDesc, sizeof(D3D11_BUFFER_DESC));
-	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
-	bufferDesc.ByteWidth = m_nVtxStride * m_nVtxNum;
-	bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-	bufferDesc.CPUAccessFlags = 0;
-	bufferDesc.MiscFlags = 0;
-	bufferDesc.StructureByteStride = 0;
-
-	// Give the subresource structure a pointer to the vertex data.
-	D3D11_SUBRESOURCE_DATA tData;
-	ZeroMemory(&tData, sizeof(D3D11_SUBRESOURCE_DATA));
-	tData.pSysMem = pVertexInfoArray;
-	tData.SysMemPitch = 0;
-	tData.SysMemSlicePitch = 0;
-
-	// Now create the vertex buffer.
-	CHECK_FAILED(
-		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&bufferDesc, &tData, &m_pVtxBuffer));
 
 
 	int iTriCnt = 0;
@@ -355,6 +341,33 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 		}
 	}
 
+	// Do this in VS & PS
+	//for (UINT i = 0; i < m_nVtxNum; ++i)
+	//{
+	//	//D3DXVec3Normalize(&pVertexInfoArray[i].vNormal, &pVertexInfoArray[i].vNormal);
+	//}
+
+
+	// Set up the description of the static vertex buffer.
+	D3D11_BUFFER_DESC bufferDesc;
+	ZeroMemory(&bufferDesc, sizeof(D3D11_BUFFER_DESC));
+	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	bufferDesc.ByteWidth = m_nVtxStride * m_nVtxNum;
+	bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	bufferDesc.CPUAccessFlags = 0;
+	bufferDesc.MiscFlags = 0;
+	bufferDesc.StructureByteStride = 0;
+
+	// Give the subresource structure a pointer to the vertex data.
+	D3D11_SUBRESOURCE_DATA tData;
+	ZeroMemory(&tData, sizeof(D3D11_SUBRESOURCE_DATA));
+	tData.pSysMem = pVertexInfoArray;
+	tData.SysMemPitch = 0;
+	tData.SysMemSlicePitch = 0;
+
+	// Now create the vertex buffer.
+	CHECK_FAILED(
+		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&bufferDesc, &tData, &m_pVtxBuffer));
 
 	// Set up the description of the static index buffer.
 	ZeroMemory(&bufferDesc, sizeof(D3D11_BUFFER_DESC));

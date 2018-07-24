@@ -52,7 +52,10 @@ Pixel_In VS(Vertex_In input)
 	matAll = mul(matAll, matrixProjection);
 
 	output.position = mul(input.position, matAll);
+
 	output.normal = input.normal;
+	output.normal = normalize(output.normal);
+
 	output.tex = input.tex;
 
 
@@ -65,7 +68,7 @@ SamplerState samplerState : register(s0);
 
 float4 PS(Pixel_In input) : SV_Target
 {
-	float lightIntensity = saturate(dot(input.normal, -dirLight));
+	float lightIntensity = saturate(dot(input.normal, (dirLight * -1)));
 	float4 color = colorAmbient;
 	
 	if (lightIntensity > 0.0f)
@@ -78,6 +81,11 @@ float4 PS(Pixel_In input) : SV_Target
 		= shaderTexture.Sample(samplerState, input.tex);
 
 	color = saturate(color) * colorTexture;
+
+	// for test
+	//color.x = input.normal.x;
+	//color.y = input.normal.y;
+	//color.z = input.normal.z;
 
 	return color;
 }

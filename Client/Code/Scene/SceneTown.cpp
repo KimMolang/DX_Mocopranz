@@ -62,7 +62,7 @@ HRESULT SceneTown::Init()
 		, L"Test_Texture_Terrain"
 		, pTerrainTexture);
 
-	Engine::VIBufferTerrain* pTerrain = Engine::VIBufferTerrain::Create(256, 256
+	Engine::VIBufferTerrain* pTerrain = Engine::VIBufferTerrain::Create(128, 128
 		, ".\\bin\\Resource\\Map\\mountains.bmp");
 	Engine::GetResourceMgr()->AddResource(
 		Engine::ResourceMgr::RESOURCE_ATTRI_STATIC
