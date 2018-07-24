@@ -266,6 +266,8 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	VertexTexture* pVertexInfoArray = new VertexTexture[m_nVtxNum];
 	Index32* pIndexInfoArray = new Index32[m_nIdxNum];
 
+	const int TEXTURE_REPEAT_U = 10;
+	const int TEXTURE_REPEAT_V = 10;
 
 	for (int j = 0; j < _iCntZ; ++j)
 	{
@@ -286,9 +288,14 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			pVertexInfoArray[iVtxIndex].vNormal
 				= D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
-			// (Need To Modify)
+			//// (Need To Modify)
 			float fx = (float)i / (float)iBoxNumX;
 			float fz = 1.0f - ((float)j / (float)iBoxNumZ);
+			//fU += (fIncrementValueU * iHeght);
+			//fV += (fIncrementValueU * iHeght);
+
+			fx *= TEXTURE_REPEAT_U;
+			fz *= TEXTURE_REPEAT_V;
 
 			pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fx, fz);
 		}
