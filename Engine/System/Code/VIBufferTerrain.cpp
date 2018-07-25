@@ -276,23 +276,21 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			// Vertex
 			int iVtxIndex = (j * _iCntX) + i;
 
-			float iHeght = 0.0f;
+			float fHeght = 0.0f;
 			if (m_pHeightMapTypeInfoArray)
 			{
-				iHeght = m_pHeightMapTypeInfoArray[(int)
+				fHeght = m_pHeightMapTypeInfoArray[(int)
 					(((m_iHeight / iBoxNumZ) * j) * m_iWidth) + ((m_iWidth / iBoxNumX) * i)].y;
 			}
 
 			pVertexInfoArray[iVtxIndex].vPos
-				= D3DXVECTOR3((float)i, iHeght, (float)j);
+				= D3DXVECTOR3((float)i, fHeght, (float)j);
 			pVertexInfoArray[iVtxIndex].vNormal
 				= D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 			//// (Need To Modify)
-			float fx = (float)i / (float)iBoxNumX;
-			float fz = 1.0f - ((float)j / (float)iBoxNumZ);
-			//fU += (fIncrementValueU * iHeght);
-			//fV += (fIncrementValueU * iHeght);
+			float fx = ((float)i / (float)iBoxNumX) + (fHeght/ m_iWidth);
+			float fz = (1.0f - ((float)j / (float)iBoxNumZ)) + (fHeght/m_iHeight);
 
 			fx *= TEXTURE_REPEAT_U;
 			fz *= TEXTURE_REPEAT_V;
