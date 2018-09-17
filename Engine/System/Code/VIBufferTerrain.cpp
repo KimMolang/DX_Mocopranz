@@ -266,8 +266,11 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	VertexTexture* pVertexInfoArray = new VertexTexture[m_nVtxNum];
 	Index32* pIndexInfoArray = new Index32[m_nIdxNum];
 
-	const int TEXTURE_REPEAT_U = 10;
-	const int TEXTURE_REPEAT_V = 10;
+	const float TEXTURE_ADD_VALUE_U = 1.0f/iBoxNumX;
+	const float TEXTURE_ADD_VALUE_V = 1.0f/iBoxNumZ;
+
+	float fTextureU = 0.0f;
+	float fTextureV = 1.0f;
 
 	for (int j = 0; j < _iCntZ; ++j)
 	{
@@ -289,14 +292,33 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 				= D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 			//// (Need To Modify)
-			float fx = ((float)i / (float)iBoxNumX) + (fHeght/ m_iWidth);
-			float fz = (1.0f - ((float)j / (float)iBoxNumZ)) + (fHeght/m_iHeight);
+			//float xx = (float)i / (float)iBoxNumX;
+			//float zz = (1.0f - ((float)j / (float)iBoxNumZ));
 
-			fx *= TEXTURE_REPEAT_U;
-			fz *= TEXTURE_REPEAT_V;
+			fTextureU += (TEXTURE_ADD_VALUE_U /*+ fHeght*/);
 
-			pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fx, fz);
+			if (fTextureU > 1.0f)
+				fTextureU = 0.0f;
+
+			//float fDifferenceValue = 0.0f;
+			//if (iVtxIndex >= _iCntX)
+			//{
+			//	fDifferenceValue = (fHeght - pVertexInfoArray[iVtxIndex - _iCntX].vPos.y);
+			//	if (fDifferenceValue < 0.0f) fDifferenceValue *= -1.0f;
+
+			//	fTextureV -= fDifferenceValue;
+
+			//	if (fTextureU < 0.0f)
+			//		fTextureU = 1.0f;
+			//}
+
+			pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fTextureU, fTextureV);
 		}
+
+		fTextureV -= TEXTURE_ADD_VALUE_V;
+
+		if (fTextureU < 0.0f)
+			fTextureU = 1.0f;
 	}
 
 
