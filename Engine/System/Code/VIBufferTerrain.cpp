@@ -295,24 +295,21 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			//float xx = (float)i / (float)iBoxNumX;
 			//float zz = (1.0f - ((float)j / (float)iBoxNumZ));
 
-			fTextureU += (TEXTURE_ADD_VALUE_U /*+ fHeght*/);
+			fTextureU += (TEXTURE_ADD_VALUE_U + (fHeght));
 
 			if (fTextureU > 1.0f)
 				fTextureU = 0.0f;
 
-			//float fDifferenceValue = 0.0f;
-			//if (iVtxIndex >= _iCntX)
-			//{
-			//	fDifferenceValue = (fHeght - pVertexInfoArray[iVtxIndex - _iCntX].vPos.y);
-			//	if (fDifferenceValue < 0.0f) fDifferenceValue *= -1.0f;
+			float fV = fTextureV;
+			if ( j >= 1 )
+			{
+				fV = (fHeght - pVertexInfoArray[iVtxIndex - _iCntX].vPos.y);
+				if (fV < 0.0f) fV *= -1.0f;
 
-			//	fTextureV -= fDifferenceValue;
+				fV = (fTextureV - fV);
+			}
 
-			//	if (fTextureU < 0.0f)
-			//		fTextureU = 1.0f;
-			//}
-
-			pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fTextureU, fTextureV);
+			pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fTextureU, fV);
 		}
 
 		fTextureV -= TEXTURE_ADD_VALUE_V;
