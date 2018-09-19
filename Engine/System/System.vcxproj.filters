@@ -61,6 +61,9 @@
     <Filter Include="소스 파일\04.Component\Resource\VIBuffer\Terrain">
       <UniqueIdentifier>{bc5667ef-c2ea-4741-968a-95d24f15cc79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\98.Others">
+      <UniqueIdentifier>{cb8cf599-b075-4213-bb89-873334ab8a14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -159,6 +162,12 @@
     <ClInclude Include="Code\VIBufferTerrain.h">
       <Filter>소스 파일\04.Component\Resource\VIBuffer\Terrain</Filter>
     </ClInclude>
+    <ClInclude Include="Code\QuadTree.h">
+      <Filter>소스 파일\98.Others</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Frustum.h">
+      <Filter>소스 파일\98.Others</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -238,6 +247,12 @@
     </ClCompile>
     <ClCompile Include="Code\VIBufferTerrain.cpp">
       <Filter>소스 파일\04.Component\Resource\VIBuffer\Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\QuadTree.cpp">
+      <Filter>소스 파일\98.Others</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Frustum.cpp">
+      <Filter>소스 파일\98.Others</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -10,6 +10,7 @@ BEGIN(Engine)
 
 QuadTree::QuadTree()
 {
+
 }
 
 QuadTree::QuadTree(const QuadTree & other)
@@ -22,6 +23,7 @@ QuadTree::~QuadTree()
 
 void QuadTree::Initialize(VIBufferTerrain * _pTerrain)
 {
+	float centerX = 0.0f;
 }
 
 void QuadTree::Render(Frustum * pFrustum)
