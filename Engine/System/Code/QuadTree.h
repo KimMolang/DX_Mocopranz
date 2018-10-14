@@ -8,7 +8,6 @@ const int MAX_TRIANGLES = 10000;
 class VIBufferTerrain;
 //class ShaderTerrain;
 class Frustum; // ÀýµÎÃ¼
-
 class ENGINE_DLL QuadTree
 {
 public:
