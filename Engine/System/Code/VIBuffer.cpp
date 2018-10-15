@@ -42,24 +42,24 @@ VIBuffer::~VIBuffer()
 	Release();
 }
 
-void VIBuffer::SetShader
-(
-	const ResourceMgr::EResourceAttribute& _eResourceAtrri
-	, const std::wstring& _wstrKey
-)
-{
-	Resource* pResourceCloned = ResourceMgr::GetInstance()->CloneResource(
-		_eResourceAtrri, ResourceMgr::EResourceType::RESOURCE_TYPE_SHADER, _wstrKey);
-
-	CHECK_NULLPTR(pResourceCloned);
-
-
-	m_pShader = dynamic_cast<Shader*>(pResourceCloned);
-}
+//void VIBuffer::SetShader
+//(
+//	const ResourceMgr::EResourceAttribute& _eResourceAtrri
+//	, const std::wstring& _wstrKey
+//)
+//{
+//	Resource* pResourceCloned = ResourceMgr::GetInstance()->CloneResource(
+//		_eResourceAtrri, ResourceMgr::EResourceType::RESOURCE_TYPE_SHADER, _wstrKey);
+//
+//	CHECK_NULLPTR(pResourceCloned);
+//
+//
+//	m_pShader = dynamic_cast<Shader*>(pResourceCloned);
+//}
 
 HRESULT VIBuffer::Init()
 {
-	SetShader(ResourceMgr::EResourceAttribute::RESOURCE_ATTRI_STATIC, L"Test_Shader_Color");
+	//SetShader(ResourceMgr::EResourceAttribute::RESOURCE_ATTRI_STATIC, L"Test_Shader_Color");
 	return S_OK;
 }
 
@@ -68,8 +68,8 @@ void VIBuffer::Render()
 	if (nullptr == m_pVtxBuffer)
 		return;
 
-	if (m_pShader)
-		m_pShader->Render();
+	//if (m_pShader)
+	//	m_pShader->Render();
 
 	ID3D11DeviceContext* pDeviceContext = GraphicDevice::GetInstance()->GetDeviceContext();
 	pDeviceContext->IASetVertexBuffers(0, 1, &m_pVtxBuffer, &m_nVtxStride, &m_nVtxOffset);

@@ -44,7 +44,7 @@ HRESULT VIBufferTerrain::Init
 )
 {
 	//VIBuffer::Init();
-	SetShader(ResourceMgr::EResourceAttribute::RESOURCE_ATTRI_STATIC, L"Test_Shader_Terrain"); 
+	//SetShader(ResourceMgr::EResourceAttribute::RESOURCE_ATTRI_STATIC, L"Test_Shader_Terrain"); 
 
 	if (_Path)
 	{
@@ -96,8 +96,8 @@ void VIBufferTerrain::Render()
 	}
 	
 
-	if (m_pShader)
-		m_pShader->Render();
+	//if (m_pShader)
+	//	m_pShader->Render();
 
 	ID3D11DeviceContext* pDeviceContext = GraphicDevice::GetInstance()->GetDeviceContext();
 	pDeviceContext->IASetVertexBuffers(0, 1, &m_pVtxBuffer, &m_nVtxStride, &m_nVtxOffset);

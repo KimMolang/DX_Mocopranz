@@ -105,11 +105,11 @@ public:
 
 
 public :
-	void	SetShader
-	(
-		const ResourceMgr::EResourceAttribute& _eResourceAtrri
-		, const std::wstring& _wstrKey
-	);
+	//void	SetShader
+	//(
+	//	const ResourceMgr::EResourceAttribute& _eResourceAtrri
+	//	, const std::wstring& _wstrKey
+	//);
 
 public:
 	virtual HRESULT	Init();
