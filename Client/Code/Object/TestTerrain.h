@@ -21,5 +21,6 @@ public:
 
 private :
 	class Engine::Resource*		m_pTexture;
+	class Engine::Resource*		m_pShader;
 	class Engine::Resource*		m_pBuffer;
 };
