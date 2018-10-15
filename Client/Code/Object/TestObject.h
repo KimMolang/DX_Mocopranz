@@ -4,7 +4,7 @@
 
 namespace Engine
 {
-	class Resource;
+	class Component;
 }
 
 class TestObject : public Engine::Object
@@ -20,6 +20,7 @@ public:
 	virtual void					Release();
 
 private :
-	class Engine::Resource*		m_pShader;
-	class Engine::Resource*		m_pBuffer;
+	// ComponentNull 사용 가능합니다
+	class Engine::Component*		m_pShader;
+	class Engine::Component*		m_pBuffer;
 };

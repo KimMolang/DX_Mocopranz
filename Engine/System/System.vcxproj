@@ -176,6 +176,7 @@
     <ClInclude Include="Code\CameraDynamic.h" />
     <ClInclude Include="Code\CameraNull.h" />
     <ClInclude Include="Code\CameraStatic.h" />
+    <ClInclude Include="Code\Component Null.h" />
     <ClInclude Include="Code\Component.h" />
     <ClInclude Include="Code\Export_Function_Mgr.h" />
     <ClInclude Include="Code\Export_Function_Mgr_GraphicDevice.h" />

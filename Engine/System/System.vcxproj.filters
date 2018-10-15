@@ -168,6 +168,9 @@
     <ClInclude Include="Code\Frustum.h">
       <Filter>소스 파일\98.Others</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Component Null.h">
+      <Filter>소스 파일\04.Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
