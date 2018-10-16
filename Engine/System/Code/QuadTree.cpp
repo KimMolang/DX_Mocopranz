@@ -9,6 +9,8 @@ BEGIN(Engine)
 
 
 QuadTree::QuadTree()
+	: m_pVertexList(nullptr)
+	, m_pParentNode(nullptr)
 {
 
 }
@@ -23,7 +25,8 @@ QuadTree::~QuadTree()
 
 void QuadTree::Initialize(VIBufferTerrain * _pTerrain)
 {
-	float centerX = 0.0f;
+	const int TOTAL_VERTEX_NUM = _pTerrain->GetVtxNum();
+	m_iTriangleCount = TOTAL_VERTEX_NUM / 3; // ...?
 }
 
 void QuadTree::Render(Frustum * pFrustum)

@@ -3,9 +3,9 @@
 BEGIN(Engine)
 
 
+
 const int MAX_TRIANGLES = 10000;
 
-class VIBufferTerrain;
 //class ShaderTerrain;
 class Frustum; // ÀýµÎÃ¼
 class ENGINE_DLL QuadTree
@@ -47,6 +47,7 @@ private :
 
 private:
 	int m_iTriangleCount, m_iDrawCount;
+	VertexTexture* m_pVertexList;
 	NodeType* m_pParentNode;
 };
 

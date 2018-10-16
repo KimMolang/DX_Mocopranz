@@ -24,7 +24,7 @@ public:
 
 
 public :
-	//GET(int, IndexNum, m_iIndexNum);
+	GET(int, VtxNum, m_nVtxNum);
 
 public:
 	virtual HRESULT	Init(const int _iCntX, const int _iCntZ, const char* _Path = nullptr);
