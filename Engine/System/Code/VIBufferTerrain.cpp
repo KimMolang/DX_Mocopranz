@@ -182,7 +182,7 @@ HRESULT VIBufferTerrain::LoadHeightMap(const char* _Path)
 	// Create the structure to hold the height map data.
 	// 높이 맵 데이터를 저장할 구조체를 만듧니다.
 	m_pHeightMapTypeInfoArray
-		= new HeightMapType[m_iWidth * m_iHeight];
+		= new D3DXVECTOR3[m_iWidth * m_iHeight];
 
 	// Initialize the position in the image data buffer.
 	int k = 0;
@@ -263,16 +263,11 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 					iIndex	---	 iIndex	+ 1
 	*/
 
-	VertexTexture* pVertexInfoArray = new VertexTexture[m_nVtxNum];
 	Index32* pIndexInfoArray = new Index32[m_nIdxNum];
+	m_pVertexInfoArray = new VertexTexture[m_nVtxNum];
 
 	const int TEXTURE_REPEAT_U = 3;
 	const int TEXTURE_REPEAT_V = 3;
-	const float TEXTURE_ADD_VALUE_U = (1.0f/iBoxNumX) * TEXTURE_REPEAT_U;
-	const float TEXTURE_ADD_VALUE_V = (1.0f/iBoxNumZ) * TEXTURE_REPEAT_V;
-
-	float fTextureU = 0.0f;
-	float fTextureV = 1.0f;
 
 	for (int j = 0; j < _iCntZ; ++j)
 	{
@@ -288,24 +283,21 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 					(((m_iHeight / iBoxNumZ) * j) * m_iWidth) + ((m_iWidth / iBoxNumX) * i)].y;
 			}
 
-			pVertexInfoArray[iVtxIndex].vPos
+			m_pVertexInfoArray[iVtxIndex].vPos
 				= D3DXVECTOR3((float)i, fHeght, (float)j);
-			pVertexInfoArray[iVtxIndex].vNormal
+			m_pVertexInfoArray[iVtxIndex].vNormal
 				= D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 
-			fTextureU += (TEXTURE_ADD_VALUE_U);
+			float fTextureU = (float)i / (float)iBoxNumX;
+			float fTextureV = 1.0f - ((float)j / (float)iBoxNumZ);
 
-			if (fTextureU > 1.0f)
-				fTextureU = 0.0f;
+			fTextureU *= TEXTURE_REPEAT_U;
+			fTextureV *= TEXTURE_REPEAT_V;
 
-			pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fTextureU, fTextureV);//, fV);
+
+			m_pVertexInfoArray[iVtxIndex].vTextureUV = D3DXVECTOR2(fTextureU, fTextureV);
 		}
-
-		fTextureV -= TEXTURE_ADD_VALUE_V;
-
-		if (fTextureV < 0.0f)
-			fTextureV = 1.0f;
 	}
 
 
@@ -324,15 +316,15 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			pIndexInfoArray[iTriCnt]._3 = iVtxIndex + 1;
 
 			D3DXVECTOR3	vDest, vSour, vNormal;
-			vDest = pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos
-				- pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vPos;
-			vSour = pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vPos
-				- pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos;
+			vDest = m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos
+				- m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vPos;
+			vSour = m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vPos
+				- m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos;
 			D3DXVec3Cross(&vNormal, &vDest, &vSour);
 
-			pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vNormal += vNormal;
-			pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vNormal += vNormal;
-			pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vNormal += vNormal;
+			m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vNormal += vNormal;
+			m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vNormal += vNormal;
+			m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vNormal += vNormal;
 
 			++iTriCnt;
 
@@ -341,15 +333,15 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			pIndexInfoArray[iTriCnt /*+ 1*/]._2 = iVtxIndex + 1;
 			pIndexInfoArray[iTriCnt /*+ 1*/]._3 = iVtxIndex;
 
-			vDest = pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos
-				- pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vPos;
-			vSour = pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vPos
-				- pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos;
+			vDest = m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos
+				- m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vPos;
+			vSour = m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vPos
+				- m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vPos;
 			D3DXVec3Cross(&vNormal, &vDest, &vSour);
 
-			pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vNormal += vNormal;
-			pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vNormal += vNormal;
-			pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vNormal += vNormal;
+			m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._1].vNormal += vNormal;
+			m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._2].vNormal += vNormal;
+			m_pVertexInfoArray[pIndexInfoArray[iTriCnt]._3].vNormal += vNormal;
 
 			++iTriCnt;
 		}
@@ -375,7 +367,7 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	// Give the subresource structure a pointer to the vertex data.
 	D3D11_SUBRESOURCE_DATA tData;
 	ZeroMemory(&tData, sizeof(D3D11_SUBRESOURCE_DATA));
-	tData.pSysMem = pVertexInfoArray;
+	tData.pSysMem = m_pVertexInfoArray;
 	tData.SysMemPitch = 0;
 	tData.SysMemSlicePitch = 0;
 
@@ -403,7 +395,7 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 		GraphicDevice::GetInstance()->GetDevice()->CreateBuffer(&bufferDesc, &tData, &m_pIdxBuffer));
 
 	// Release the arrays now that the buffers have been created and loaded.
-	::Safe_Delete_Array(pVertexInfoArray);
+	//::Safe_Delete_Array(pVertexInfoArray); // -> m_pVertexInfoArray
 	::Safe_Delete_Array(pIndexInfoArray);
 
 

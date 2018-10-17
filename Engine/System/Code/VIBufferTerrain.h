@@ -24,7 +24,11 @@ public:
 
 
 public :
-	GET(int, VtxNum, m_nVtxNum);
+	void CopyVertexInfoArray(void* _pArray)
+	{
+		memcpy(_pArray, m_pVertexInfoArray, sizeof(VertexTexture) * m_nVtxNum);
+	}
+
 
 public:
 	virtual HRESULT	Init(const int _iCntX, const int _iCntZ, const char* _Path = nullptr);
@@ -42,16 +46,13 @@ protected :
 	HRESULT	Init_Buffer(const int _iCntX, const int _iCntY);
 
 protected:
-	struct HeightMapType
-	{
-		float x, y, z;
-	};
-
-protected:
 	int		m_iWidth;
 	int		m_iHeight;
 
-	HeightMapType* m_pHeightMapTypeInfoArray;
+	D3DXVECTOR3* m_pHeightMapTypeInfoArray;
+
+protected :
+	VertexTexture * m_pVertexInfoArray;
 
 protected:
 	ID3D11Buffer*		m_pLightBuffer;
