@@ -141,16 +141,17 @@ int QuadTree::CountRectangles(int childrendIndex, float positionX, float positio
 
 	int count = 0;
 
-	width = ceilf(width);
-	depth = ceilf(depth);
+	int iCntZ = ceilf(width);
+	int iCntX = ceilf(depth);
 
-	// **
-	for (int i = 0; i < 0; ++i) // Sould I check all the triangles every time..?
+	// I have to set the start value and end value of j and i!!!!
+	// It depents on the childrendIndex!!
+	for (int j = 0; j < iCntZ; ++j)
 	{
-		//if (IsRectangleContained(i, positionX, positionZ, width, depth))
-		//{
-		//	++count;
-		//}
+		for (int i = 0; i < iCntX; ++i)
+		{
+
+		}
 	}
 
 	return count;
