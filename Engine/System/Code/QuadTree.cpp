@@ -32,11 +32,12 @@ void QuadTree::Initialize(VIBufferTerrain * _pTerrain)
 	_pTerrain->CopyVertexInfoArray(m_pVertexList);
 
 	float fWidth = _pTerrain->GetTerrainWidth();
+	float fDepth = _pTerrain->GetTerrainDepth();
 	float fCenterX = fWidth / 2.0f;
-	float fCenderZ = _pTerrain->GetTerrainDepth() / 2.0f;
+	float fCenderZ = fDepth / 2.0f;
 
 	m_pParentNode = new NodeType();
-	CreateTreeNode(m_pParentNode, fCenterX, fCenderZ, fWidth);
+	CreateTreeNode(m_pParentNode, fCenterX, fCenderZ, fWidth, fDepth);
 
 	m_pVertexList = nullptr;
 }
@@ -66,15 +67,16 @@ void QuadTree::Release()
 	}
 }
 
-void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, float width)
+void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, float width, float depth)
 {
 	node->fPosX = positionX;
 	node->fPosZ = positionZ;
 	node->width = width;
+	node->width = depth;
 
 	node->iRectanglesCount = 0;
 
-	int numRectangles = CountRectangles(positionX, positionZ, width);
+	int numRectangles = CountRectangles(-1, positionX, positionZ, width, depth);
 
 	// Case 1: If there are no triangles in this node then this part of the tree is complete.
 	if (numRectangles == 0)
@@ -88,6 +90,7 @@ void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, 
 	if (numRectangles > MAX_RECTANGLES)
 	{
 		float childrenWidth = (width / 2.0f);
+		float childrenDepth = (depth / 2.0f);
 
 		for (int i = 0; i < 4; ++i)
 		{
@@ -99,7 +102,7 @@ void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, 
 			float childPositionX = positionX + offsetX;
 			float childPositionZ = positionZ + offsetZ;
 			
-			int count = CountRectangles(childPositionX, childPositionZ, childrenWidth);
+			int count = CountRectangles(i, childPositionX, childPositionZ, childrenWidth, childrenDepth);
 
 			if (count > 0)
 			{
@@ -107,7 +110,7 @@ void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, 
 				node->nodes[i] = new NodeType;
 
 				// Extend the tree starting from this new child node now.
-				CreateTreeNode(node->nodes[i], childPositionX, childPositionZ, childrenWidth);
+				CreateTreeNode(node->nodes[i], childPositionX, childPositionZ, childrenWidth, childrenDepth);
 			}
 		}
 
@@ -125,29 +128,25 @@ void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, 
 	// **
 }
 
-int QuadTree::CountRectangles(float positionX, float positionZ, float width)
+int QuadTree::CountRectangles(int childrendIndex, float positionX, float positionZ, float width, float depth)
 {
+	if (childrendIndex == -1)
+	{
+		// Top of parents!!
+	}
+
 	int count = 0;
 
 	// **
 	for (int i = 0; i < 0; ++i) // Sould I check all the triangles every time..?
 	{
-		if (IsRectangleContained(i, positionX, positionZ, width))
-		{
-			++count;
-		}
+		//if (IsRectangleContained(i, positionX, positionZ, width, depth))
+		//{
+		//	++count;
+		//}
 	}
 
 	return count;
-}
-
-bool QuadTree::IsRectangleContained(int index, float positionX, float positionZ, float width)
-{
-	float radius = width / 2.0f;
-
-	int vertexIndex = index * 3;
-
-	return false;
 }
 
 void QuadTree::ReleaseNode(NodeType * node)

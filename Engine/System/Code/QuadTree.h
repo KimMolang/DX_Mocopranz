@@ -28,7 +28,7 @@ private:
 	struct NodeType
 	{
 		float fPosX, fPosY, fPosZ;
-		float width;
+		float width, depth;
 		int iRectanglesCount;
 
 		ID3D11Buffer* pVertexBuffer, *pIndexBuffer;
@@ -36,7 +36,7 @@ private:
 
 		NodeType()
 			: fPosX(0.0f), fPosY(0.0f), fPosZ(0.0f)
-			, width (0.0f)
+			, width(0.0f), depth(0.0f)
 			, iRectanglesCount(0)
 			, pVertexBuffer(nullptr), pIndexBuffer(nullptr)
 		{
@@ -45,9 +45,8 @@ private:
 	};
 
 private :
-	void CreateTreeNode(NodeType* node, float positionX, float positionZ, float width);
-	int CountRectangles(float positionX, float positionZ, float width);
-	bool IsRectangleContained(int index, float positionX, float positionZ, float width);
+	void CreateTreeNode(NodeType* node, float positionX, float positionZ, float width, float depth);
+	int CountRectangles(int childrendIndex, float positionX, float positionZ, float width, float depth);
 	void ReleaseNode(NodeType*);
 	void RenderNode(NodeType*, Frustum*);
 
