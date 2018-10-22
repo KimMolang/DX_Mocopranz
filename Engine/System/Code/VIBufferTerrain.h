@@ -39,6 +39,11 @@ protected:
 protected:
 	virtual void	Release();
 
+public :
+	inline float GetTerrainWidth() { return (float)m_iBoxNumX * (float)m_iBoxSizeX; }
+	inline float GetTerrainDepth() { return (float)m_iBoxNumZ * (float)m_iBoxSizeZ; }
+
+
 protected :
 	HRESULT LoadHeightMap(const char* _Path);
 	void	NormalizeHeightMap();

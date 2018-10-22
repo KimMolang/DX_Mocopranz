@@ -41,7 +41,7 @@ private:
 	};
 
 private :
-	void CalculateMeshDimensions(int vertexCount, float& centerX, float& centerZ, float& meshWidth);
+	//void CalculateMeshDimensions(int vertexCount, float& centerX, float& centerZ, float& meshWidth);
 	void CreateTreeNode(NodeType* node, float positionX, float positionZ, float width);
 	int CountTriangles(float positionX, float positionZ, float width);
 	bool IsTriangleContained(int index, float positionX, float positionZ, float width);
@@ -49,7 +49,8 @@ private :
 	void RenderNode(NodeType*, Frustum*);
 
 private:
-	int m_iTriangleCount, m_iDrawCount;
+	//int m_iTriangleCount
+	int m_iDrawCount;
 	struct VertexTexture* m_pVertexList;
 	NodeType* m_pParentNode;
 };

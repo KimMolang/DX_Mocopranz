@@ -26,13 +26,16 @@ QuadTree::~QuadTree()
 void QuadTree::Initialize(VIBufferTerrain * _pTerrain)
 {
 	const int TOTAL_VERTEX_NUM = _pTerrain->GetVtxNum();
-	m_iTriangleCount = TOTAL_VERTEX_NUM * 2;
+	//m_iTriangleCount = TOTAL_VERTEX_NUM * 2;
 
 	m_pVertexList = new VertexTexture[TOTAL_VERTEX_NUM];
 	_pTerrain->CopyVertexInfoArray(m_pVertexList);
-	
-	float fCenterX, fCenderZ, fWidth;
-	CalculateMeshDimensions(TOTAL_VERTEX_NUM, fCenterX, fCenderZ, fWidth);
+
+	float fWidth = _pTerrain->GetTerrainWidth();
+	float fCenterX = fWidth / 2.0f;
+	float fCenderZ = _pTerrain->GetTerrainDepth() / 2.0f;
+
+	//CalculateMeshDimensions(TOTAL_VERTEX_NUM, fCenterX, fCenderZ, fWidth);
 
 	m_pParentNode = new NodeType();
 	CreateTreeNode(m_pParentNode, fCenterX, fCenderZ, fWidth);
@@ -65,46 +68,45 @@ void QuadTree::Release()
 	}
 }
 
-void QuadTree::CalculateMeshDimensions(int vertexCount, float& centerX, float& centerZ, float& meshWidth)
-{
-	for (int i = 0; i < vertexCount; ++i)
-	{
-		centerX += m_pVertexList[i].vPos.x;
-		centerZ += m_pVertexList[i].vPos.z;
-	}
-
-	// the mid-point of the mesh.
-	centerX = centerX / (float)vertexCount;
-	centerZ = centerZ / (float)vertexCount;
-
-	float maxWidth = 0.0f;
-	float maxDepth = 0.0f;
-
-	float minWidth = fabsf(m_pVertexList[0].vPos.x - centerX);
-	float minDepth = fabsf(m_pVertexList[0].vPos.z - centerZ);
-
-
-	// Go through all the vertices and find the maximum and minimum width and depth of the mesh.
-	for (int i = 0; i < vertexCount; ++i)
-	{
-		float width = fabsf(m_pVertexList[i].vPos.x - centerX);
-		float depth = fabsf(m_pVertexList[i].vPos.z - centerZ);
-
-		if (width > maxWidth) { maxWidth = width; }
-		if (depth > maxDepth) { maxDepth = depth; }
-		if (width < minWidth) { minWidth = width; }
-		if (depth < minDepth) { minDepth = depth; }
-	}
-
-	// Find the absolute maximum value between the min and max depth and width.
-	float maxX = (float)max(fabs(minWidth), fabs(maxWidth));
-	float maxZ = (float)max(fabs(minDepth), fabs(maxDepth));
-
-	meshWidth = max(maxX, maxZ) * 2.0f; // radius * 2.0f;
-
-	// How come I should do that?
-	// I think I don't have to do.
-}
+// How come I should do that?
+// I think I don't have to do.
+//void QuadTree::CalculateMeshDimensions(int vertexCount, float& centerX, float& centerZ, float& meshWidth)
+//{
+//	for (int i = 0; i < vertexCount; ++i)
+//	{
+//		centerX += m_pVertexList[i].vPos.x;
+//		centerZ += m_pVertexList[i].vPos.z;
+//	}
+//
+//	// the mid-point of the mesh.
+//	centerX = centerX / (float)vertexCount;
+//	centerZ = centerZ / (float)vertexCount;
+//
+//	float maxWidth = 0.0f;
+//	float maxDepth = 0.0f;
+//
+//	float minWidth = fabsf(m_pVertexList[0].vPos.x - centerX);
+//	float minDepth = fabsf(m_pVertexList[0].vPos.z - centerZ);
+//
+//
+//	// Go through all the vertices and find the maximum and minimum width and depth of the mesh.
+//	for (int i = 0; i < vertexCount; ++i)
+//	{
+//		float width = fabsf(m_pVertexList[i].vPos.x - centerX);
+//		float depth = fabsf(m_pVertexList[i].vPos.z - centerZ);
+//
+//		if (width > maxWidth) { maxWidth = width; }
+//		if (depth > maxDepth) { maxDepth = depth; }
+//		if (width < minWidth) { minWidth = width; }
+//		if (depth < minDepth) { minDepth = depth; }
+//	}
+//
+//	// Find the absolute maximum value between the min and max depth and width.
+//	float maxX = (float)max(fabs(minWidth), fabs(maxWidth));
+//	float maxZ = (float)max(fabs(minDepth), fabs(maxDepth));
+//
+//	meshWidth = max(maxX, maxZ) * 2.0f; // radius * 2.0f;
+//}
 
 void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, float width)
 {

@@ -3,10 +3,10 @@
 
 // Get & Set
 #define GET(DATATYPE, ARGNAME, MYDATANAME)				\
-const DATATYPE& Get##ARGNAME() { return MYDATANAME; }
+inline const DATATYPE& Get##ARGNAME() { return MYDATANAME; }
 
 #define SET(DATATYPE, ARGNAME, MYDATANAME)				\
-void Set##ARGNAME( const DATATYPE& _data ) { MYDATANAME = _data; }	
+inline void Set##ARGNAME( const DATATYPE& _data ) { MYDATANAME = _data; }	
 
 #define GET_AND_SET(DATATYPE, ARGNAME, MYDATANAME)		\
 GET(DATATYPE, ARGNAME, MYDATANAME)						\
