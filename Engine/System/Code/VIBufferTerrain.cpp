@@ -7,10 +7,14 @@ BEGIN(Engine)
 
 
 VIBufferTerrain::VIBufferTerrain()
-	: m_iWidth(0)
-	, m_iHeight(0)
+	: m_iHeighMapImgWidth(0)
+	, m_iHeighMapImgHeight(0)
 
 	, m_pHeightMapTypeInfoArray(nullptr)
+	, m_iBoxSizeX(1)
+	, m_iBoxSizeZ(1)
+	, m_iBoxNumX(0)
+	, m_iBoxNumZ(0)
 
 	, m_pLightBuffer(nullptr)
 {
@@ -153,11 +157,11 @@ HRESULT VIBufferTerrain::LoadHeightMap(const char* _Path)
 	}
 
 	// Save the dimensions of the terrain.
-	m_iWidth = bitmapInfoHeader.biWidth;
-	m_iHeight = bitmapInfoHeader.biHeight;
+	m_iHeighMapImgWidth = bitmapInfoHeader.biWidth;
+	m_iHeighMapImgHeight = bitmapInfoHeader.biHeight;
 
 	// Calculate the size of the bitmap image data.
-	int iImageSize = m_iWidth * m_iHeight * 3; // 3 : Components num -> RGB
+	int iImageSize = m_iHeighMapImgWidth * m_iHeighMapImgHeight * 3; // 3 : Components num -> RGB
 
 	// Allocate memory for the bitmap image data.
 	unsigned __int8* pBitMapImageDataArray
@@ -182,18 +186,18 @@ HRESULT VIBufferTerrain::LoadHeightMap(const char* _Path)
 	// Create the structure to hold the height map data.
 	// 높이 맵 데이터를 저장할 구조체를 만듧니다.
 	m_pHeightMapTypeInfoArray
-		= new D3DXVECTOR3[m_iWidth * m_iHeight];
+		= new D3DXVECTOR3[m_iHeighMapImgWidth * m_iHeighMapImgHeight];
 
 	// Initialize the position in the image data buffer.
 	int k = 0;
 
-	for (int j = 0; j < m_iHeight; ++j)
+	for (int j = 0; j < m_iHeighMapImgHeight; ++j)
 	{
-		for (int i = 0; i < m_iWidth; ++i)
+		for (int i = 0; i < m_iHeighMapImgWidth; ++i)
 		{
 			unsigned __int8 height = pBitMapImageDataArray[k];
 
-			int iIndex = (m_iHeight * j) + i;
+			int iIndex = (m_iHeighMapImgHeight * j) + i;
 
 			m_pHeightMapTypeInfoArray[iIndex].x = (float)i;
 			m_pHeightMapTypeInfoArray[iIndex].y = (float)height;
@@ -221,27 +225,27 @@ void VIBufferTerrain::NormalizeHeightMap()
 	// Generally its better just to do this work
 	// on the height map before loading it in.
 
-	for (int j = 0; j < m_iHeight; ++j)
+	for (int j = 0; j < m_iHeighMapImgHeight; ++j)
 	{
-		for (int i = 0; i < m_iWidth; ++i)
+		for (int i = 0; i < m_iHeighMapImgWidth; ++i)
 		{
 			// (Need To Modify)
-			m_pHeightMapTypeInfoArray[(m_iHeight * j) + i].y /= 15.0f;
+			m_pHeightMapTypeInfoArray[(m_iHeighMapImgHeight * j) + i].y /= 15.0f;
 		}
 	}
 }
 
 HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 {
-	const int iBoxNumX = (_iCntX - 1);
-	const int iBoxNumZ = (_iCntZ - 1);
+	m_iBoxNumX = (_iCntX - 1);
+	m_iBoxNumZ = (_iCntZ - 1);
 
 	m_nVtxNum = _iCntX * _iCntZ;
 	m_nVtxStride = sizeof(VertexTexture);
 	m_nVtxOffset = 0;
 	m_nVtxStart = 1;
 
-	m_nIdxNum = iBoxNumX * iBoxNumZ * 6; // * 2(TriNum) * 3(VertexNum);
+	m_nIdxNum = m_iBoxNumX * m_iBoxNumZ * 6; // * 2(TriNum) * 3(VertexNum);
 	m_nIdxStart = 0;
 	m_nIdxPlus = 0;
 
@@ -269,9 +273,9 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	const int TEXTURE_REPEAT_U = 3;
 	const int TEXTURE_REPEAT_V = 3;
 
-	for (int j = 0; j < _iCntZ; ++j)
+	for (int j = 0; j < _iCntZ; j += m_iBoxSizeZ)
 	{
-		for (int i = 0; i < _iCntX; ++i)
+		for (int i = 0; i < _iCntX; i += m_iBoxSizeX)
 		{
 			// Vertex
 			int iVtxIndex = (j * _iCntX) + i;
@@ -280,7 +284,7 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 			if (m_pHeightMapTypeInfoArray)
 			{
 				fHeght = m_pHeightMapTypeInfoArray[(int)
-					(((m_iHeight / iBoxNumZ) * j) * m_iWidth) + ((m_iWidth / iBoxNumX) * i)].y;
+					(((m_iHeighMapImgHeight / m_iBoxNumZ) * j) * m_iHeighMapImgWidth) + ((m_iHeighMapImgWidth / m_iBoxNumX) * i)].y;
 			}
 
 			m_pVertexInfoArray[iVtxIndex].vPos
@@ -289,8 +293,8 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 				= D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 
-			float fTextureU = (float)i / (float)iBoxNumX;
-			float fTextureV = 1.0f - ((float)j / (float)iBoxNumZ);
+			float fTextureU = (float)i / (float)m_iBoxNumX;
+			float fTextureV = 1.0f - ((float)j / (float)m_iBoxNumZ);
 
 			fTextureU *= TEXTURE_REPEAT_U;
 			fTextureV *= TEXTURE_REPEAT_V;

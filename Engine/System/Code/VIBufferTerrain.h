@@ -46,13 +46,15 @@ protected :
 	HRESULT	Init_Buffer(const int _iCntX, const int _iCntY);
 
 protected:
-	int		m_iWidth;
-	int		m_iHeight;
+	int		m_iHeighMapImgWidth;
+	int		m_iHeighMapImgHeight;
 
 	D3DXVECTOR3* m_pHeightMapTypeInfoArray;
 
 protected :
 	VertexTexture * m_pVertexInfoArray;
+	int m_iBoxSizeX, m_iBoxSizeZ;
+	int m_iBoxNumX, m_iBoxNumZ;
 
 protected:
 	ID3D11Buffer*		m_pLightBuffer;
