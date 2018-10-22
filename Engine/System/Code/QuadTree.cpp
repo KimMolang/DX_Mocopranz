@@ -5,6 +5,8 @@
 #include "ShaderTerrain.h"
 #include "Frustum.h"
 
+#include <cmath>
+
 BEGIN(Engine)
 
 
@@ -132,10 +134,15 @@ int QuadTree::CountRectangles(int childrendIndex, float positionX, float positio
 {
 	if (childrendIndex == -1)
 	{
-		// Top of parents!!
+		// Top of parents!! root!!
+		return width * depth;
 	}
 
+
 	int count = 0;
+
+	width = ceilf(width);
+	depth = ceilf(depth);
 
 	// **
 	for (int i = 0; i < 0; ++i) // Sould I check all the triangles every time..?
