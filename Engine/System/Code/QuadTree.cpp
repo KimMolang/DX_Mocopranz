@@ -26,7 +26,7 @@ QuadTree::~QuadTree()
 void QuadTree::Initialize(VIBufferTerrain * _pTerrain)
 {
 	const int TOTAL_VERTEX_NUM = _pTerrain->GetVtxNum();
-	//m_iTriangleCount = TOTAL_VERTEX_NUM * 2;
+	//m_iRectanglesCount = TOTAL_VERTEX_NUM * 2;
 
 	m_pVertexList = new VertexTexture[TOTAL_VERTEX_NUM];
 	_pTerrain->CopyVertexInfoArray(m_pVertexList);
@@ -34,8 +34,6 @@ void QuadTree::Initialize(VIBufferTerrain * _pTerrain)
 	float fWidth = _pTerrain->GetTerrainWidth();
 	float fCenterX = fWidth / 2.0f;
 	float fCenderZ = _pTerrain->GetTerrainDepth() / 2.0f;
-
-	//CalculateMeshDimensions(TOTAL_VERTEX_NUM, fCenterX, fCenderZ, fWidth);
 
 	m_pParentNode = new NodeType();
 	CreateTreeNode(m_pParentNode, fCenterX, fCenderZ, fWidth);
@@ -68,58 +66,87 @@ void QuadTree::Release()
 	}
 }
 
-// How come I should do that?
-// I think I don't have to do.
-//void QuadTree::CalculateMeshDimensions(int vertexCount, float& centerX, float& centerZ, float& meshWidth)
-//{
-//	for (int i = 0; i < vertexCount; ++i)
-//	{
-//		centerX += m_pVertexList[i].vPos.x;
-//		centerZ += m_pVertexList[i].vPos.z;
-//	}
-//
-//	// the mid-point of the mesh.
-//	centerX = centerX / (float)vertexCount;
-//	centerZ = centerZ / (float)vertexCount;
-//
-//	float maxWidth = 0.0f;
-//	float maxDepth = 0.0f;
-//
-//	float minWidth = fabsf(m_pVertexList[0].vPos.x - centerX);
-//	float minDepth = fabsf(m_pVertexList[0].vPos.z - centerZ);
-//
-//
-//	// Go through all the vertices and find the maximum and minimum width and depth of the mesh.
-//	for (int i = 0; i < vertexCount; ++i)
-//	{
-//		float width = fabsf(m_pVertexList[i].vPos.x - centerX);
-//		float depth = fabsf(m_pVertexList[i].vPos.z - centerZ);
-//
-//		if (width > maxWidth) { maxWidth = width; }
-//		if (depth > maxDepth) { maxDepth = depth; }
-//		if (width < minWidth) { minWidth = width; }
-//		if (depth < minDepth) { minDepth = depth; }
-//	}
-//
-//	// Find the absolute maximum value between the min and max depth and width.
-//	float maxX = (float)max(fabs(minWidth), fabs(maxWidth));
-//	float maxZ = (float)max(fabs(minDepth), fabs(maxDepth));
-//
-//	meshWidth = max(maxX, maxZ) * 2.0f; // radius * 2.0f;
-//}
-
 void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, float width)
 {
+	node->fPosX = positionX;
+	node->fPosZ = positionZ;
+	node->width = width;
 
+	node->iRectanglesCount = 0;
+
+	int numRectangles = CountRectangles(positionX, positionZ, width);
+
+	// Case 1: If there are no triangles in this node then this part of the tree is complete.
+	if (numRectangles == 0)
+	{
+		return;
+	}
+
+
+	// Case 2: If there are too many triangles inside this node
+	// then it gets split into four new quads/nodes.
+	if (numRectangles > MAX_RECTANGLES)
+	{
+		float childrenWidth = (width / 2.0f);
+
+		for (int i = 0; i < 4; ++i)
+		{
+			// Calculate the position offsets for the new child node.
+			float offsetX = (((i % 2) < 1) ? -1.0f : 1.0f) * (width / 4.0f);
+			float offsetZ = ((i <= 2) ? -1.0f : 1.0f) * (width / 4.0f);
+
+			// See if there are any triangles in the new node.
+			float childPositionX = positionX + offsetX;
+			float childPositionZ = positionZ + offsetZ;
+			
+			int count = CountRectangles(childPositionX, childPositionZ, childrenWidth);
+
+			if (count > 0)
+			{
+				// If there are triangles inside where this new node would be then create the child node.
+				node->nodes[i] = new NodeType;
+
+				// Extend the tree starting from this new child node now.
+				CreateTreeNode(node->nodes[i], childPositionX, childPositionZ, childrenWidth);
+			}
+		}
+
+
+		return;
+	}
+
+	//Case 3: If there are the right number of triangles
+	// then create and load the vertex and index buffer from the terrain list into this node.
+	// We have also determined that this must be a bottom child node.
+	node->iRectanglesCount = numRectangles;
+	//int vertexCount = numRectangles * 3;
+
+	//VertexTexture* pVectexInfo = new VertexTexture[numRectangles];
+	// **
 }
 
-int QuadTree::CountTriangles(float positionX, float positionZ, float width)
+int QuadTree::CountRectangles(float positionX, float positionZ, float width)
 {
-	return 0;
+	int count = 0;
+
+	// **
+	for (int i = 0; i < 0; ++i) // Sould I check all the triangles every time..?
+	{
+		if (IsRectangleContained(i, positionX, positionZ, width))
+		{
+			++count;
+		}
+	}
+
+	return count;
 }
 
-bool QuadTree::IsTriangleContained(int index, float positionX, float positionZ, float width)
+bool QuadTree::IsRectangleContained(int index, float positionX, float positionZ, float width)
 {
+	float radius = width / 2.0f;
+
+	int vertexIndex = index * 3;
+
 	return false;
 }
 

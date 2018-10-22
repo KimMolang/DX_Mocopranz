@@ -4,7 +4,7 @@ BEGIN(Engine)
 
 
 
-const int MAX_TRIANGLES = 10000;
+const int MAX_RECTANGLES = 5000;
 
 class VIBufferTerrain;
 class Frustum; // ÀýµÎÃ¼
@@ -28,28 +28,31 @@ private:
 	struct NodeType
 	{
 		float fPosX, fPosY, fPosZ;
-		int iTriangleCount;
+		float width;
+		int iRectanglesCount;
 
-		ID3D11Buffer* pVertexBuffer, * pIndexBuffer;
+		ID3D11Buffer* pVertexBuffer, *pIndexBuffer;
 		NodeType* nodes[4];
 
 		NodeType()
 			: fPosX(0.0f), fPosY(0.0f), fPosZ(0.0f)
-			, iTriangleCount(0)
+			, width (0.0f)
+			, iRectanglesCount(0)
 			, pVertexBuffer(nullptr), pIndexBuffer(nullptr)
-		{ }
+		{
+			nodes[0] = nodes[1] = nodes[2] = nodes[3] = nullptr;
+		}
 	};
 
 private :
-	//void CalculateMeshDimensions(int vertexCount, float& centerX, float& centerZ, float& meshWidth);
 	void CreateTreeNode(NodeType* node, float positionX, float positionZ, float width);
-	int CountTriangles(float positionX, float positionZ, float width);
-	bool IsTriangleContained(int index, float positionX, float positionZ, float width);
+	int CountRectangles(float positionX, float positionZ, float width);
+	bool IsRectangleContained(int index, float positionX, float positionZ, float width);
 	void ReleaseNode(NodeType*);
 	void RenderNode(NodeType*, Frustum*);
 
 private:
-	//int m_iTriangleCount
+	//int m_iRectanglesCount
 	int m_iDrawCount;
 	struct VertexTexture* m_pVertexList;
 	NodeType* m_pParentNode;
