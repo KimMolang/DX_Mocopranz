@@ -40,8 +40,12 @@ protected:
 	virtual void	Release();
 
 public :
-	inline float GetTerrainWidth() { return (float)m_iBoxNumX * (float)m_iBoxSizeX; }
-	inline float GetTerrainDepth() { return (float)m_iBoxNumZ * (float)m_iBoxSizeZ; }
+	inline float GetTerrainWidth() { return (float)m_iBoxNumX; /** (float)m_iBoxSizeX;*/ }
+	inline float GetTerrainDepth() { return (float)m_iBoxNumZ; /** (float)m_iBoxSizeZ;*/ }
+	GET(int, BoxNumX, m_iBoxNumX);
+	GET(int, BoxNumZ, m_iBoxNumZ);
+	//GET(int, BoxSizeX, m_iBoxSizeX);
+	//GET(int, BoxSizeZ, m_iBoxSizeZ);
 
 
 protected :
@@ -58,7 +62,7 @@ protected:
 
 protected :
 	VertexTexture * m_pVertexInfoArray;
-	int m_iBoxSizeX, m_iBoxSizeZ;
+	//int m_iBoxSizeX, m_iBoxSizeZ;
 	int m_iBoxNumX, m_iBoxNumZ;
 
 protected:

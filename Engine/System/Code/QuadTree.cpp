@@ -97,7 +97,7 @@ void QuadTree::CreateTreeNode(NodeType* node, float positionX, float positionZ, 
 		for (int i = 0; i < 4; ++i)
 		{
 			// Calculate the position offsets for the new child node.
-			float offsetX = (((i % 2) < 1) ? -1.0f : 1.0f) * (width / 4.0f);
+			float offsetX = ((i % 2 == 0) ? -1.0f : 1.0f) * (width / 4.0f);
 			float offsetZ = ((i <= 2) ? -1.0f : 1.0f) * (width / 4.0f);
 
 			// See if there are any triangles in the new node.
@@ -135,22 +135,35 @@ int QuadTree::CountRectangles(int childrendIndex, float positionX, float positio
 	if (childrendIndex == -1)
 	{
 		// Top of parents!! root!!
-		return width * depth;
+		return (int)(width * depth);
 	}
 
 
 	int count = 0;
 
-	int iCntZ = ceilf(width);
-	int iCntX = ceilf(depth);
+	int iCntZ = (int)floorf(width);
+	int iCntX = (int)floorf(depth);
 
-	// I have to set the start value and end value of j and i!!!!
-	// It depents on the childrendIndex!!
-	for (int j = 0; j < iCntZ; ++j)
+	int offsetX = (int)floorf( positionX + ((childrendIndex % 2 == 0) ? -1.0f : 0.0f) * (width/2.0f) );
+	int offsetZ = (int)floorf( positionZ + ((childrendIndex <= 2) ? 0.0f : -1.0f) * (depth/2.0f) );
+
+	for (int j = offsetZ; j < (offsetZ + iCntZ) - 1; ++j)
 	{
-		for (int i = 0; i < iCntX; ++i)
+		for (int i = offsetX; i < (offsetX + iCntX) - 1; ++i)
 		{
+			// Vertex
+			int iVtxIndex = (j * iCntX) + i;
+			/*
+			iIndex	+ _iCntX ---  iIndex + _iCntX + 1
+			|\|
+			iIndex	---	 iIndex	+ 1
+			*/
 
+			// 전체 갯수 알아야함
+			//
+			//m_pVertexList[iVtxIndex].vPos.x;
+			//m_pVertexList[iVtxIndex + 1].vPos.x;
+			//m_pVertexList[iVtxIndex + 1].vPos.x;
 		}
 	}
 

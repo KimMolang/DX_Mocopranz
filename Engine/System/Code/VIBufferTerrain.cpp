@@ -11,8 +11,8 @@ VIBufferTerrain::VIBufferTerrain()
 	, m_iHeighMapImgHeight(0)
 
 	, m_pHeightMapTypeInfoArray(nullptr)
-	, m_iBoxSizeX(1)
-	, m_iBoxSizeZ(1)
+	//, m_iBoxSizeX(1)
+	//, m_iBoxSizeZ(1)
 	, m_iBoxNumX(0)
 	, m_iBoxNumZ(0)
 
@@ -263,8 +263,8 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 
 	/*
 	iIndex	+ _iCntX ---  iIndex + _iCntX + 1
-							|\|
-					iIndex	---	 iIndex	+ 1
+					|\|
+			iIndex	---	 iIndex	+ 1
 	*/
 
 	Index32* pIndexInfoArray = new Index32[m_nIdxNum];
@@ -273,9 +273,9 @@ HRESULT VIBufferTerrain::Init_Buffer(const int _iCntX, const int _iCntZ)
 	const int TEXTURE_REPEAT_U = 3;
 	const int TEXTURE_REPEAT_V = 3;
 
-	for (int j = 0; j < _iCntZ; j += m_iBoxSizeZ)
+	for (int j = 0; j < _iCntZ; ++j /*+= m_iBoxSizeZ*/)
 	{
-		for (int i = 0; i < _iCntX; i += m_iBoxSizeX)
+		for (int i = 0; i < _iCntX; ++i /*+= m_iBoxSizeX*/)
 		{
 			// Vertex
 			int iVtxIndex = (j * _iCntX) + i;
